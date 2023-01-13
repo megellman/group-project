@@ -7,9 +7,12 @@ var drinkFromSpirit = "";
 
 //API URL's
 var recipeApiKey =  "20f9574ee747498490dd1bd80b379967";
+var pairingApiKey = "";
 //this wine pairing is give it a wine and get a food
-var pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${recipeApiKey}`;
-var recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${food}&number=2&apiKey=20f9574ee747498490dd1bd80b379967`;
+var pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${pairingApiKey}`;
+
+var recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${food}&number=2&apiKey=${recipeApiKey}`;
+
 var cocktailURLSpirit = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`;
 
 var cocktailURLDrinkName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?key=1&s=${drinkName}`;
