@@ -1,48 +1,50 @@
-# travel-project
-## Project-One
-[Back to Course Content](../../README.md)
+# Group Project
 
------
-### :book: **[Student Resources](student-resources/README.md)**
-
-> `Student Resources` are a great way to explore examples, vocabulary, and resourcesful links related to this section of the class.
-
-> Great for obtaining a better **conceptual understanding** of the course material. 
-
-------
-### :dart: **[Code Drills](code-drills/README.md)**
-
-> `Code Drills` are a great way to get hands on keyboard, writing syntax, doing work, and encountering problem sets. 
-
-> Great for obtaining a better **practical understanding** of the course material. 
-
------
-
-
-### :fire: **[WarmUp Challenge](warm-up-challenge)**
-
-> Get your hands dirty with a daily coding challenge
-
------
-
-### :computer: Activity
-
-|  Activities |  Description |
-|:--	|:--
-|[01-Stu_Create-Repository](activities/01-Stu_Create-Repository)| Create a Repository |
-|[02-Stu_Protect-Main](activities/02-Stu_Protect-Main)| Protect Main Branch |
-|[03-Stu_Branching-Pushing](activities/03-Stu_Branching-Pushing)| Git Branching |
-|[04-Stu_Git-Recap](activities/04-Stu_Git-Recap)| Git/Github - A recap |
-|[05-Stu_MVP](activities/05-Stu_MVP)| MVP design |
-|[06_Stu-Issues](activities/06_Stu-Issues)| Github issues |
-|[07-Stu_kanban](activities/07-Stu_kanban)| Kanban board |
-|[08-Stu_Standup](activities/08-Stu_Standup)| Standup |
-|[09-Stu_Continuous-Deployment](activities/09-Stu_Continuous-Deployment)| Continuous Deployment |
-
------
-
-
-
+## Psuedo Code
+```
+Housekeeping Items
+    - put "Global Variables" -- (at the top of each page)
+    - back button (do as a group at the end)
+    - homepage logo a tag (do as a group at the end)
+    - local storage keys
+    - selector ids/classes
+    - design/color scheme (do as a group at the end)
+    - how js files talk to each other
+Home Page index.html - Michael & Peter 
+Button in main to select food and cocktails
+    - the food and cocktails buttons will disappear
+    - depending on which selected, the food & wine or the cocktails search forms will appear
+Results Page results.html - Megan & Becka
+Once food&wine or cocktails form submitted, js replace location to take user to results html page
+    - nav bar with sections at top and logo (a tag) that takes you to homepage
+    - api call based on form search terms
+    - dynamically generate content on page based on results - div container to house this
+    - save buttons on each results div
+        - when save button clicked, info saved to local storage
+            - key: ex. "christmas dinner" value: object with data from div saved
+            if(local storage variable exists i.e. 'christmas dinner')
+                localStorage.getItem('christmas dinner'), parse,
+                add the new recipe to the christmas dinner object as a nested array, then
+            else
+            localStorage.setItem(christmas dinner, the entire array )
+            var allsavedlists = {
+                christmas: {
+                    pumpkinPie: data returned from the ,
+                },
+                birthdaydinner: {
+                    soup: data returned from the,
+                    cereal: data returned from the,
+                }
+            }
+            - way to limit nested objects? if(objects > num){message "You have too many items saved to this event, please go to your saved page and delete a few"}
+    - when you click on the saved tab,  js replace location to take user to saved html page
+Saved Page saved.html - Reconvene later and divvy out assignments
+    - local storage.getItems to pull down the recipe/event info
+    - div container for each event
+    - divs (cards) for each recipe
+        - x button on card
+            - when clicked, delete element from DOM and remove object from local storage
+```
 ## Overview
 
 Welcome to Project 1! This is an important step in your full-stack journey as you will now use your newly acquired skills and knowledge to build web application from scratch. With your team, you will conceive and execute a design that solves a real-world problem by integrating data received from multiple server-side API requests. Because you will be working collaboratively, you will learn agile development methodologies and implement feature and bug fixes using the git branch workflow and pull requests.
@@ -56,6 +58,7 @@ Welcome to Project 1! This is an important step in your full-stack journey as yo
 ## Comprehension Check
 
 You will be employer-ready if you can answer the following questions:
+
 1. What is agile software development?
 2. What is an MVP?
 3. If you pull down a teammate's branch and you have merge conflicts, how do you handle it?
@@ -71,14 +74,13 @@ You will be employer-competitive if you are able to:
 * Design, build, and deploy a client-side web application using GitHub Pages
 * Prepare a professional presentation and repository README for your project
 
-
 Your project should fulfill the following requirements:
 
 * Must use a CSS framework other than Bootstrap
 
 * Must be Deployed (GitHub Pages)
 
-* Must be interactive (i.e: accept and respond to user input) 
+* Must be interactive (i.e: accept and respond to user input)
 
 * Must have User Input Validation
 
@@ -106,7 +108,7 @@ Your project should fulfill the following requirements:
 
 ## Presentation Requirements
 
-Use this [project presentation template](https://docs.google.com/presentation/d/1Y4ROswmKLgKzBQcAp5ZaYDjx2eALETuXmnwUjcO6byc/edit?usp=sharing) to address the following: 
+Use this [project presentation template](https://docs.google.com/presentation/d/1Y4ROswmKLgKzBQcAp5ZaYDjx2eALETuXmnwUjcO6byc/edit?usp=sharing) to address the following:
 
 * Elevator pitch: a one minute description of your application
 
@@ -138,10 +140,9 @@ Use this [project presentation template](https://docs.google.com/presentation/d/
 
 * Links to the deployed application and the GitHub repository
 
+## Grading Metrics
 
-## Grading Metrics 
-
-| Metric                | Weight | 
+| Metric                | Weight |
 | ---                   | ---    |
 | Technical Criteria    | 25%    |
 | Concept               | 10%    |
@@ -151,7 +152,6 @@ Use this [project presentation template](https://docs.google.com/presentation/d/
 | Presentation          | 10%    |
 | Collaboration         | 10%    |
 
-
 ## Grading Requirements
 
 This project is graded based on the following criteria:
@@ -160,15 +160,15 @@ This project is graded based on the following criteria:
 
 * Satisfies the following code requirements:
 
-	* Application uses at least two server-side APIs.
+  * Application uses at least two server-side APIs.
 
-    * Application uses client-side storage to store persistent data.
+  * Application uses client-side storage to store persistent data.
 
-    * Application doesn't use JS alerts, prompts, or confirms (uses modals instead).
+  * Application doesn't use JS alerts, prompts, or confirms (uses modals instead).
 
-    * Application uses a CSS framework other than Bootstrap.
+  * Application uses a CSS framework other than Bootstrap.
 
-    * Application is interactive (accepts and responds to user input)
+  * Application is interactive (accepts and responds to user input)
 
 ### Concept 10%
 
@@ -213,7 +213,6 @@ This project is graded based on the following criteria:
 ### Collaboration 10%
 
 * There are no major disparities in the number of GitHub contributions between group members.
-
 
 ## Submission on BCS
 
