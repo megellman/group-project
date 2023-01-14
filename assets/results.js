@@ -4,6 +4,7 @@ var backBtn = $('#backBtn')
 
 
 
+
 // Home page  user input search parameters 
 
 whatchaLookin4()
@@ -43,13 +44,47 @@ function getWineParing() {
       return response.json();
     })
     .then(function (data) {
-        console.log(data)
-      var resultEntry = $('<div>');
-      var saveBtn = $('<button>');
-      saveBtn.text('X');
-      resultEntry.text(data.text);
-      resultEntry.append(saveBtn);
-      resultsContainer.append(resultEntry);
+        for (var i = 0; i < data.pairings.length; i++) {
+            pairFood = data.pairings[i]
+            pairedWineRecipes(pairFood)
+        }
+    })
+}
+
+function pairedWineRecipes() {
+    fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${pairFood}&app_key=d0e7ce8996da109b870161b5504f5e87&app_id=b7a56f5e`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (dataPF) {
+        console.log(dataPF)
+        for (var i = 0; i < 5; i++) {
+            var dh = dataPF.hits[i]
+            var resultEntry = $('<div>');
+            var resultCardContainer = $('<div>')
+            var saveBtn = $('<button>');
+            var recipeImg = $('<img>');
+            var nameOfRecipe = $('<h2>');
+            var linkToRecipe = $('<a>')
+      
+            recipeImg.attr('src', dataPF.hits[i].recipe.image);
+            recipeImg.attr('class', 'object-scale-down h-48 w-96')
+          //   resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
+            linkToRecipe.attr('href', dh.recipe.url)
+            resultCardContainer.attr('class', 'px-6 py-4 border-4 border-green-800 border-double my-5' )
+            nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
+                  
+            nameOfRecipe.text(dh.recipe.label)
+            linkToRecipe.text('Go to Recipe')
+      
+            resultsContainer.append(resultEntry)
+            resultEntry.append(resultCardContainer)
+            resultCardContainer.append(recipeImg)
+            resultCardContainer.append(nameOfRecipe)
+            resultCardContainer.append(linkToRecipe)
+            resultCardContainer.append(saveBtn)
+        }      
+        
     })
 }
 
