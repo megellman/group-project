@@ -1,0 +1,29 @@
+header{
+    /* font-family: 'Antic Didone', serif;  */
+    font-family: 'Cinzel', serif; 
+    /* font-family: 'Italiana', serif; */
+    background: #182b2e;
+    color: #9FC6CD;
+}
+
+h1 {
+    font-size: xx-large;
+    padding: 10px;
+    margin: 40px;
+    font-weight: 100;
+    text-align: center;
+}
+
+body, header, div, nav, a{
+    font-size: small;
+}
+
+main {
+    line-height: 50%;
+    line-height: 50%;
+}
+
+main, a {
+    padding: 20px;    
+    text-align: center;
+}

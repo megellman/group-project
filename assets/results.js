@@ -390,6 +390,7 @@ resultsContainer.on('click', '.saveBtn', function () {
 })
 
 // When party (key) is selected, see if key already exists and if it does, get key data, add new objarr (recipe) to obj save to local storage. If it doesn't already exist, create a new key and save it to local storage
+<<<<<<< HEAD
 $('.recipe').on('click', '#submit', function (e) {
   e.preventDefault();
   var existingOption = [];
@@ -405,3 +406,4 @@ $('.recipe').on('click', '#submit', function (e) {
       existingOption.push(optionSelected);
   }
 })
+
