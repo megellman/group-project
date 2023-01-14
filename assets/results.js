@@ -13,14 +13,19 @@ function whatchaLookin4(){
 if (wine != "") {
   getWineParing()
   wine = "";
+  foodPairingUrl
+} else if (wineP === true && food !== "") {
+    getFoodParing()
+    food = "";
+    wineP = false
 } else if (spirit !== "") {
   getDrinkBySpirit()
   spirit = ""
 } else if (food !== "") {
+    console.log('made it to here going to getRecipes')
   getRecipes()
   food = "" 
 } else if (drinkName !== "") {
-    console.log("made it sending to getDrinkByName")
   getDrinkByName()
   drinkName = ""
 } else {
@@ -31,7 +36,7 @@ if (wine != "") {
 }
 }
 
-// Get Wine Pairings
+// Give it a wine and get a food
 function getWineParing() {
   fetch(pairingUrl)
     .then(function (response) {
@@ -47,14 +52,59 @@ function getWineParing() {
     })
 }
 
+// Give it a food and get a wine
+function getFoodParing() {
+    fetch(foodPairingUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        var resultEntry = $('<div>');
+        var saveBtn = $('<button>');
+        saveBtn.text('X');
+        resultEntry.text(data.text);
+        resultEntry.append(saveBtn);
+        resultsContainer.append(resultEntry);
+      })
+  }
+
 // Get Recipes
 function getRecipes() {
-  fetch(recipeUrl)
+  fetch(edrecipeUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       console.log(data);
+
+      for (var i = 0; i < 5; i++){
+      var dh = data.hits[i]
+      var resultEntry = $('<div>');
+      var resultCardContainer = $('<div>')
+      var saveBtn = $('<button>');
+      var recipeImg = $('<img>');
+      var nameOfRecipe = $('<h2>');
+      var linkToRecipe = $('<a>')
+
+      recipeImg.attr('src', data.hits[i].recipe.image);
+      recipeImg.attr('class', 'object-scale-down h-48 w-96')
+    //   resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
+      linkToRecipe.attr('href', dh.recipe.url)
+      resultCardContainer.attr('class', 'px-6 py-4 border-4 border-green-800 border-double my-5' )
+      nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
+            
+      nameOfRecipe.text(dh.recipe.label)
+      linkToRecipe.text('Go to Recipe')
+
+      resultsContainer.append(resultEntry)
+      resultEntry.append(resultCardContainer)
+      resultCardContainer.append(recipeImg)
+      resultCardContainer.append(nameOfRecipe)
+      resultCardContainer.append(linkToRecipe)
+      resultCardContainer.append(saveBtn)
+
+      }
+      
     })
 }
 
@@ -85,7 +135,6 @@ function getRecipeFromSpirit() {
       
       for (var i = 0; i < 5; i++) {
         var resultEntry = $('<div>');
-        var nameOfDrink = $('<h2>');
         var saveBtn = $('<button>');
         var cocktailImg = $('<img>');
         var nameOfDrink = $('<h2>');
@@ -98,6 +147,7 @@ function getRecipeFromSpirit() {
         cocktailImg.attr('src', dataDN.strDrinkThumb);
         cocktailImg.attr('class', 'object-scale-down h-48 w-96')
         resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
+        nameOfDrink.attr('class', 'font-bold text-xl mb-2')
 
         saveBtn.text('save');
         nameOfDrink.text(dataDN.strDrink)
@@ -147,6 +197,7 @@ function getDrinkByName() {
       cocktailImg.attr('src', dataD.strDrinkThumb);
       cocktailImg.attr('class', 'object-scale-down h-48 w-96')
       resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
+      nameOfDrink.attr('class', 'font-bold text-xl mb-2')
       
       
       nameOfDrink.text(dataD.strDrink)
@@ -197,6 +248,7 @@ function randomDrink() {
       resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
       cocktailImg.attr('src', dataR.strDrinkThumb);
       cocktailImg.attr('class', 'object-scale-down h-48 w-96');
+      nameOfDrink.attr('class', 'font-bold text-xl mb-2')
 
       drinkRecipe.text("Go to Recipe");
       nameOfDrink.text(dataR.strDrink);
