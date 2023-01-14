@@ -1,7 +1,7 @@
 //Parameter Variables
 var food = "";
-var drinkName = "tequila Sunrise";
-var spirit = "";
+var drinkName = "";
+var spirit = "vodka";
 var wine = "";
 var random = false
 

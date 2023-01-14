@@ -82,30 +82,51 @@ function getRecipeFromSpirit() {
     })
     .then(function (dataDrinkName) {
       console.log(dataDrinkName);
+      
       for (var i = 0; i < 5; i++) {
         var resultEntry = $('<div>');
         var nameOfDrink = $('<h2>');
         var saveBtn = $('<button>');
         var cocktailImg = $('<img>');
         var nameOfDrink = $('<h2>');
-        var drinkRecipe = $('<a>');
+        var instructions = $('<p>');
+        var dataDN = dataDrinkName.drinks[i]
+        var ingredientDNArray = [dataDN.strIngredient1, dataDN.strIngredient2, dataDN.strIngredient3 , dataDN.strIngredient4, dataDN.strIngredient5, dataDN.strIngredient6, dataDN.strIngredient7, dataDN.strIngredient8, dataDN.strIngredient9, dataDN.strIngredient10, dataDN.strIngredient11, dataDN.strIngredient12, dataDN.strIngredient13, dataDN.strIngredient14, dataDN.strIngredient15];
+        var amountDNArray = [dataDN.strMeasure1, dataDN.strMeasure2, dataDN.strMeasure3 , dataDN.strMeasure4, dataDN.strMeasure5, dataDN.strMeasure6, dataDN.strMeasure7, dataDN.strMeasure8, dataDN.strMeasure9, dataDN.strMeasure10, dataDN.strMeasure11, dataDN.strMeasure12, dataDN.strMeasure13, dataDN.strMeasure14, dataDN.strMeasure15];
 
          // displaying the image but console says that it is not reading strDrinkThumb
-        cocktailImg.attr('src', dataDrinkName.drinks[i].strDrinkThumb);
+        cocktailImg.attr('src', dataDN.strDrinkThumb);
         cocktailImg.attr('class', 'object-scale-down h-48 w-96')
-        resultEntry.attr('class', 'border-4 border-green-800 border-double')
+        resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
 
         saveBtn.text('save');
-        nameOfDrink.text(dataDrinkName.drinks[i].strDrink)
-        resultEntry.text(dataDrinkName.drinks[i].strInstructions);
+        nameOfDrink.text(dataDN.strDrink)
+
+        var ingredientDNList = [];
+      for (var i = 0; i < ingredientDNArray.length; i++){
+        if (ingredientDNArray[i] !== null) {
+            ingredientDNList.push(ingredientDNArray[i]);
+        }
+      }
+      var amountDNList = [];
+      for (var i = 0; i < amountDNArray.length; i++){
+        if (amountDNArray[i] !== null) {
+            amountDNList.push(amountDNArray[i]);
+        }
+      }
+      instructions.text(dataDN.strInstructions + '' + 'Ingredients: ' + ingredientDNList + '.' + ' Amounts: ' + amountDNList);
+
         
-        resultEntry.append(nameOfDrink)
-        resultEntry.append(cocktailImg);
-        resultEntry.append(saveBtn);
         resultsContainer.append(resultEntry);
+        resultEntry.append(cocktailImg);
+        resultEntry.append(nameOfDrink);
+        resultEntry.append(instructions);
+        resultEntry.append(saveBtn);
+       
       }
     })
 }
+
 // fetching a recipe by drink name 
 function getDrinkByName() {
   fetch(cocktailURLDrinkName)
@@ -114,22 +135,23 @@ function getDrinkByName() {
     })
     .then(function (dataDrinkName) {
       console.log(dataDrinkName);
-      var dataD = dataDrinkName.drink[0]
+      var dataD = dataDrinkName.drinks[0]
       var resultEntry = $('<div>');
       var saveBtn = $('<button>');
       var cocktailImg = $('<img>');
       var nameOfDrink = $('<h2>');
-      var instructions = $('<p>')
-      var ingredientDArray = [dataD.strIngredient1, dataD.strIngredient2, dataD.strIngredient3 , dataD.strIngredient4, dataD.strIngredient5, dataD.strIngredient6, dataD.strIngredient7, dataD.strIngredient8, dataD.strIngredient9, dataD.strIngredient10, dataD.strIngredient11, dataD.strIngredient12, dataD.strIngredient13, dataD.strIngredient14, dataD.strIngredient15]
-      var amountDArray = [dataD.strMeasure1, dataD.strMeasure2, dataD.strMeasure3 , dataD.strMeasure4, dataD.strMeasure5, dataD.strMeasure6, dataD.strMeasure7, dataD.strMeasure8, dataD.strMeasure9, dataD.strMeasure10, dataD.strMeasure11, dataD.strMeasure12, dataD.strMeasure13, dataD.strMeasure14, dataD.strMeasure15]
+      var instructions = $('<p>');
+      var ingredientDArray = [dataD.strIngredient1, dataD.strIngredient2, dataD.strIngredient3 , dataD.strIngredient4, dataD.strIngredient5, dataD.strIngredient6, dataD.strIngredient7, dataD.strIngredient8, dataD.strIngredient9, dataD.strIngredient10, dataD.strIngredient11, dataD.strIngredient12, dataD.strIngredient13, dataD.strIngredient14, dataD.strIngredient15];
+      var amountDArray = [dataD.strMeasure1, dataD.strMeasure2, dataD.strMeasure3 , dataD.strMeasure4, dataD.strMeasure5, dataD.strMeasure6, dataD.strMeasure7, dataD.strMeasure8, dataD.strMeasure9, dataD.strMeasure10, dataD.strMeasure11, dataD.strMeasure12, dataD.strMeasure13, dataD.strMeasure14, dataD.strMeasure15];
 
-      cocktailImg.attr('src', dataDrinkName.drinks[0].strDrinkThumb);
+      cocktailImg.attr('src', dataD.strDrinkThumb);
       cocktailImg.attr('class', 'object-scale-down h-48 w-96')
-      resultEntry.attr('class', 'border-4 border-green-800 border-double')
+      resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
       
+      
+      nameOfDrink.text(dataD.strDrink)
       saveBtn.text('save');
-      resultEntry.text(dataDrinkName.drinks[i].strInstructions);
-      resultEntry.text(dataDrinkName.drinks.strInstructions);
+      
 
       var ingredientDList = [];
       for (var i = 0; i < ingredientDArray.length; i++){
@@ -139,17 +161,16 @@ function getDrinkByName() {
       }
       var amountDList = [];
       for (var i = 0; i < amountDArray.length; i++){
-        console.log(amountDArray[i])
-        console.log(amountDArray[i] === null)
-        if (amountDList[i] !== null) {
+        if (amountDArray[i] !== null) {
             amountDList.push(amountDArray[i]);
         }
       }
       instructions.text(dataD.strInstructions + '' + 'Ingredients: ' + ingredientDList + '.' + ' Amounts: ' + amountDList);
 
       resultsContainer.append(resultEntry);
-      resultEntry.append(nameOfDrink)
-      resultEntry.append(cocktailImg);
+      resultEntry.append(cocktailImg);    
+      resultEntry.append(nameOfDrink);
+      resultEntry.append(instructions);
       resultEntry.append(saveBtn);
       
     })
@@ -173,7 +194,7 @@ function randomDrink() {
       var drinkRecipe = $('<a>');
       var instructions = $('<p>');
 
-      resultEntry.attr('class', 'border-4 border-green-800 border-double')
+      resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
       cocktailImg.attr('src', dataR.strDrinkThumb);
       cocktailImg.attr('class', 'object-scale-down h-48 w-96');
 
