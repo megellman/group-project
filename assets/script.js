@@ -1,9 +1,9 @@
 //Parameter Variables
 var food = "";
-var drinkName = "";
-var spirit = "gin";
+var drinkName = "tequila Sunrise";
+var spirit = "";
 var wine = "";
-var drinkFromSpirit = "";
+var random = false
 
 //API URL's
 var recipeApiKey =  "20f9574ee747498490dd1bd80b379967";
@@ -14,7 +14,6 @@ var cocktailURLSpirit = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?
 
 var cocktailURLDrinkName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?key=1&s=${drinkName}`;
 
-var drinkNameUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?key=1&s=${drinkFromSpirit}`;
 
 // Get Wine Pairings
 // fetch(pairingUrl)
