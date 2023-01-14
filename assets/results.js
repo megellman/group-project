@@ -43,6 +43,7 @@ function getWineParing() {
       return response.json();
     })
     .then(function (data) {
+        console.log(data)
       var resultEntry = $('<div>');
       var saveBtn = $('<button>');
       saveBtn.text('X');
@@ -59,12 +60,30 @@ function getFoodParing() {
         return response.json();
       })
       .then(function (data) {
+        console.log(data)
         var resultEntry = $('<div>');
+        var pairMatch = $('<p>');
+        var pairingText = $('<p>');
+        var wineImg = $('<img>');
+        var wineLink = $('<a>');
         var saveBtn = $('<button>');
-        saveBtn.text('X');
-        resultEntry.text(data.text);
-        resultEntry.append(saveBtn);
+
+        wineImg.attr('src', data.productMatches[0].imageUrl)
+        wineLink.attr('href', data.productMatches[0].link)
+        resultEntry.attr('class', 'px-6 py-4 border-4 border-green-800 border-double my-5' )
+
+        pairMatch.text('Top Choice: ' + data.productMatches[0].title)
+        saveBtn.text('Save');
+        pairingText.text(data.pairingText)
+        wineLink.text('Grab One Here')
+
         resultsContainer.append(resultEntry);
+        resultEntry.append(wineImg);
+        resultEntry.append(pairingText);
+        resultEntry.append(pairMatch);
+        resultEntry.append(wineLink);
+        resultEntry.append(saveBtn);
+        
       })
   }
 

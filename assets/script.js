@@ -1,11 +1,11 @@
 //Parameter Variables
-var food = "Beef Stew";
+var food = "steak";
 var drinkName = "";
 var spirit = "";
 var wine = "";
 var random = false
 // if the user is looking for a pairing of a wine for a particular food then they will have to give us the food and check the box for pairing 
-var wineP = false
+var wineP = true
 
 //API URL's
 var recipeApiKey =  "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
