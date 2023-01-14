@@ -2,7 +2,7 @@
 var food = "";
 var drinkName = "";
 var spirit = "";
-var wine = "merlot";
+var wine = "";
 var random = false
 // if the user is looking for a pairing of a wine for a particular food then they will have to give us the food and check the box for pairing 
 var wineP = false

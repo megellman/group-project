@@ -381,4 +381,4 @@ $('form').on('submit', function(){
     var existingOption = JSON.parse(localStorage.getItem(optionSelected));
     existingOption.push(recipeText);
   }
-})
+})}
