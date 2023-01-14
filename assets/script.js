@@ -8,6 +8,7 @@ var random = false
 var wineP = false
 
 //API URL's
+
 var recipeApiKey =  "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
 
 //this wine pairing is give it a wine and get a food
@@ -18,6 +19,7 @@ var foodPairingUrl = `https://api.spoonacular.com/food/wine/pairing?food=${food}
 var edrecipeUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${food}&app_key=d0e7ce8996da109b870161b5504f5e87&app_id=b7a56f5e`;
 
 // var recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${food}&number=2&apiKey=20f9574ee747498490dd1bd80b379967&addRecipeInformation=true`;
+
 var cocktailURLSpirit = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`;
 
 var cocktailURLDrinkName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?key=1&s=${drinkName}`;
