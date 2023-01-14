@@ -34,31 +34,41 @@
 
   <main>
     <div class="container flex flex-row text-center">
-      <div id="Food-form" class="box-border border-4 m-10">
-        <button id="Form-1">Food & Wine</button>
-        <form id="Form-1" class="hidden">
-          <label></label>
-          <input type="text"></input>
-          <input type="checkbox"></input>
-          <button></button>
+      <div id="food-form" class="box-border border-4 m-10">
+        <button id="food-bttn">Food & Wine</button>
+      </div>
+      <div id="form-1" class="hidden">
+        <form >
+          <h3>Hungry</h3>
+          <label for="food-name">Food
+          <input type="text" id="food-input"></input>
+          </label>
+          <input type="checkbox" class="value=false" id="checkbox"></input>
+          <button id="food-submit">Search</button>
         </form>
       </div>
-      <div id="Cocktails-form" class="box-border border-4 m-10">
-        <button id="Form-2">Cocktails
-        </button>
-        <form id="Form-2" class="hidden">
-          <label></label>
-          <input></input>
-          <button></button>
-          <button></button>
+      <div id="cocktails-form" class="box-border border-4 m-10">
+        <button id="cocktail-bttn">Cocktails</button>
+      </div>
+      <div id="form-2" class="hidden">
+        <form>
+          <h3>Thirsty</h3>
+          <label for="drink-name"> Enter Drink 
+          <input type="text" id="cocktail-input" class=""></input>
+          </label>
+          <button id="cocktails-submit">Search</button>
+          <button id="feeling-advent" class="value=false">Feeling Adventurous?</button>
         </form>
       </div>
     </div>
 
 
   </main>
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
 
   <script src="./assets/script.js"></script>
+  <!-- <script src="./assets/results.js"></script> -->
 </body>
 
 </html>
