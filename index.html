@@ -26,8 +26,8 @@
         <!-- </div>
       <div class=" "> -->
         <nav class="flex items-end flex-row absolute bottom-0 right-0 space-x-5 pr-5 ">
-          <a id="food-wine" href="#" class="box-border p-4 border-4">Food & Wine</a>
-          <a id="cocktail" href="#" class="box-border p-4 border-4">Cocktails</a>
+          <a id="food-wine" href="Form-1" class="box-border p-4 border-4">Food & Wine</a>
+          <a id="cocktail" href="Form-2" class="box-border p-4 border-4">Cocktails</a>
           <a id="saved" href="./results.html" class="box-border p-4 border-4">Saved</a>
         </nav>
       </div>
@@ -36,15 +36,25 @@
 
     <main>
       <div class="container flex flex-row text-center">
-        <div class="box-border border-4 m-10">
-          <button><a>Food & Wine</a></button>
+        <div id="Food-form" class="box-border border-4 m-10">
+          <button><a href="Form-1">Food & Wine</a></button>
+          <form id="Form-1" class="hidden"></form>
+          <label></label>
+          <input type="text"></input>
+          <input type="checkbox"></input>
+          <button></button>
 
         </div>
-        <div class="box-border border-4 m-10">
+        <div id="Cocktails-form" class="box-border border-4 m-10">
           <button>
-            <a>Cocktails</a>
+            <a href="Form-2">Cocktails</a>
           </button>
-
+<form id="Form-2" class="hidden"> 
+  <label></label>
+  <input></input>
+  <button></button>
+  <button></button>
+</form>
         </div>
       </div>
 
