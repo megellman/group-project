@@ -12,8 +12,8 @@ var cocktailInput =$('#cocktail-input')
 var cocktailSubmit = $('#cocktails-submit')
 var feelingAdvent = $('#feeling-advent')
 //Parameter Variables 
-var food = foodInput.val();
-var drinkName = cocktailInput.val();
+var food = "pizza";
+var drinkName = ""
 var spirit = "";
 // var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type
 var wine = "";
