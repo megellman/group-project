@@ -133,30 +133,7 @@ function getRecipes() {
       }
       
     })
-
-// fetching a recipe by drink name 
-function getDrinkByName() {
-fetch(cocktailURLDrinkName) 
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function(dataDrinkName){
-    console.log(dataDrinkName)
-  })
-
-  fetch(cocktailURLSpirit)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (dataSpirit) {
-        console.log('made it to getDrinkBySpirit')
-      console.log(dataSpirit);
-      for (var i = 0; i < 5; i++) {
-        drinkFromSpirit = dataSpirit.drinks[i].strDrink;
-        getRecipeFromSpirit(drinkFromSpirit)
-      }
-    })
-}
+  }
 
 // fetching a recipe by drink name  *** trying to get this to run when given a spirit
 function getRecipeFromSpirit() {
@@ -252,7 +229,7 @@ function getDrinkByName() {
         }
       }
       instructions.text(dataD.strInstructions + '' + 'Ingredients: ' + ingredientDList + '.' + ' Amounts: ' + amountDList);
-
+      console.log(dataD.strDrink)
       resultsContainer.append(resultEntry);
       resultEntry.append(cocktailImg);    
       resultEntry.append(nameOfDrink);
@@ -317,6 +294,8 @@ function randomDrink() {
 
 // this says depending on what parameters the user choose run the corresponding function 
 function apiCalls(){
+  console.log("aswefd")
+
   if (wine != "") {
     getWineParing()
     wine = "";
@@ -409,5 +388,5 @@ $('.recipe').on('click', '#submit', function (e) {
       existingOption.push(optionSelected);
   }
 })
-}
+
 
