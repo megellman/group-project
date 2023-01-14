@@ -7,35 +7,8 @@ var backBtn = $('#backBtn')
 
 // Home page  user input search parameters 
 
-whatchaLookin4()
 
-// this says depending on what parameters the user choose run the corresponding function 
-function whatchaLookin4(){
-if (wine != "") {
-  getWineParing()
-  wine = "";
-  foodPairingUrl
-} else if (wineP === true && food !== "") {
-    getFoodParing()
-    food = "";
-    wineP = false
-} else if (spirit !== "") {
-  getDrinkBySpirit()
-  spirit = ""
-} else if (food !== "") {
-    console.log('made it to here going to getRecipes')
-  getRecipes()
-  food = "" 
-} else if (drinkName !== "") {
-  getDrinkByName()
-  drinkName = ""
-} else {
-  (random)
-  randomDrink()
-  // Homepage - the initial value is going to be false and then there is going to be an event listener that sets this to true
-  random = false
-}
-}
+
 
 // Give it a wine and get a food
 function getWineParing() {
@@ -60,7 +33,6 @@ function pairedWineRecipes() {
         console.log(dataPF)
         for (var i = 0; i < 5; i++) {
             var dh = dataPF.hits[i]
-            var resultEntry = $('<div>');
             var resultCardContainer = $('<div>')
             var saveBtn = $('<button>');
             var recipeImg = $('<img>');
@@ -68,17 +40,18 @@ function pairedWineRecipes() {
             var linkToRecipe = $('<a>')
       
             recipeImg.attr('src', dataPF.hits[i].recipe.image);
+            saveBtn.text('save');
+            saveBtn.attr('class', 'saveBtn');
             recipeImg.attr('class', 'object-scale-down h-48 w-96')
           //   resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
             linkToRecipe.attr('href', dh.recipe.url)
-            resultCardContainer.attr('class', 'px-6 py-4 border-4 border-green-800 border-double my-5' )
+            resultCardContainer.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5' )
             nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
                   
             nameOfRecipe.text(dh.recipe.label)
             linkToRecipe.text('Go to Recipe')
       
-            resultsContainer.append(resultEntry)
-            resultEntry.append(resultCardContainer)
+            resultsContainer.append(resultCardContainer)
             resultCardContainer.append(recipeImg)
             resultCardContainer.append(nameOfRecipe)
             resultCardContainer.append(linkToRecipe)
@@ -207,8 +180,9 @@ function getRecipeFromSpirit() {
          // displaying the image but console says that it is not reading strDrinkThumb
         cocktailImg.attr('src', dataDN.strDrinkThumb);
         cocktailImg.attr('class', 'object-scale-down h-48 w-96')
-        resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
-        nameOfDrink.attr('class', 'font-bold text-xl mb-2')
+        resultEntry.attr('class', 'recipe border-4 border-green-800 border-double my-5')
+        nameOfDrink.attr('class', 'font-bold text-xl mb-2');
+        saveBtn.attr('class', 'saveBtn');
 
         saveBtn.text('save');
         nameOfDrink.text(dataDN.strDrink)
@@ -341,60 +315,99 @@ function randomDrink() {
     })
 }
 
+// this says depending on what parameters the user choose run the corresponding function 
+function apiCalls(){
+  if (wine != "") {
+    getWineParing()
+    wine = "";
+    foodPairingUrl
+  } else if (wineP === true && food !== "") {
+      getFoodParing()
+      food = "";
+      wineP = false
+  } else if (spirit !== "") {
+    getRecipeFromSpirit()
+    spirit = ""
+  } else if (food !== "") {
+      console.log('made it to here going to getRecipes')
+    getRecipes()
+    food = "" 
+  } else if (drinkName !== "") {
+    getDrinkByName()
+    drinkName = ""
+  } else {
+    (random)
+    randomDrink()
+    // Homepage - the initial value is going to be false and then there is going to be an event listener that sets this to true
+    random = false
+  }
+  }
+
+  apiCalls();
+
 var resultsContainer = $('#results');
 
 // Click save button to get form to select what party (key) to save recipe to
 resultsContainer.on('click', '.saveBtn', function () {
-    
-    var currentContainer = $(this).parent();
-    var form = $('<form>');
-    var input = $('<input>');
-    var datalist = $('<datalist>');
+  console.log('hello');
+  var currentContainer = $(this).parent();
+  var form = $('<form>');
+  var input = $('<input>');
+  var datalist = $('<datalist>');
+  var submit = $('<input>');
 
-    input.attr({
-        type: 'text',
-        list: 'options'
-    });
-    datalist.attr('id', 'formOps');
-    form.attr('id', 'form');
-    input.attr('id', 'input');
+  input.attr({
+      type: 'text',
+      list: 'options',
+      class: 'input'
+  });
+  datalist.attr('id', 'options');
+  form.attr('id', 'form');
+  submit.attr({
+      type: 'submit',
+      value: 'Submit',
+      id: 'submit'
+  })
 
-    form.append(input);
-    form.append(datalist);
-    currentContainer.append(form);
+  form.append(input);
+  form.append(submit);
+  form.append(datalist);
+  currentContainer.append(form);
 
-    // If there are already form options saved in local storage, pull them down and make them options
-    if(localStorage.getItem('formObj.hasOwnProperty(input.val())')) {
-        console.log('load form options');
-        var formOptions = JSON.parse(localStorage.getItem('formObj'));
-        for (var i = 0; i < formObj.length; i++) {
-            var formEntry = $('<option>');
-            formEntry.text(formOptions[i])
-            datalist.append(formEntry);
-            return
-        }
-    } else if(window.localStorage.length === 0){
-        console.log('local storage empty, waiting');
-        return
-    } else {    
-        console.log('save to formObj');
-        localStorage.setItem('formObj', input.val());
-    }
+  // If there are already form options saved in local storage, pull them down and make them options
+  if (localStorage.getItem('formObj.hasOwnProperty(input.val())')) {
+      console.log('load form options');
+      var formOptions = JSON.parse(localStorage.getItem('formObj'));
+      for (var i = 0; i < formObj.length; i++) {
+          var formEntry = $('<option>');
+          formEntry.text(formOptions[i])
+          datalist.append(formEntry);
+          return
+      }
+  } else if (window.localStorage.length === 0) {
+      console.log('local storage empty, waiting');
+      return
+  } else {
+      console.log('save to formObj');
+      localStorage.setItem('formObj', input.val());
+  }
 })
 
 // When party (key) is selected, see if key already exists and if it does, get key data, add new objarr (recipe) to obj save to local storage. If it doesn't already exist, create a new key and save it to local storage
-$('#form').on('submit', function (e) {
-    e.preventDefault();
-    var optionSelected = input.value;
-    console.log(optionSelected);
-    $('#form').remove();
-    var recipeText = this.parent().text();
-    console.log(recipeText);
-    if (localStorage.getItem(optionSelected) === null) {
-        localStorage.setItem(optionSelected, recipeText);
-    } else {
-        var existingOption = JSON.parse(localStorage.getItem(optionSelected));
-        existingOption.push(recipeText);
-    }
+$('.recipe').on('click', '#submit', function (e) {
+  e.preventDefault();
+  var existingOption = [];
+  var optionSelected = $('.input').val();
+  console.log(`option selected is ${optionSelected}`);
+  var recipeText = $(this).closest('.recipe').text();
+  if (localStorage.getItem(optionSelected) === null) {
+      localStorage.setItem(optionSelected, recipeText);
+      console.log('Saved!')
+  } else {
+      existingOption = localStorage.getItem(optionSelected);
+      console.log(optionSelected);
+      existingOption.push(optionSelected);
+  }
 })
+}
 
