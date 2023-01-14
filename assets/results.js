@@ -397,3 +397,4 @@ $('#form').on('submit', function (e) {
         existingOption.push(recipeText);
     }
 })
+

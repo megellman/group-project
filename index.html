@@ -7,45 +7,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Bebas+Neue&family=Cinzel:wght@500&family=Italiana&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
 <body>
   <header>
-    <div class="w-full h-auto relative bg-black text-white">
-      <div class="flex flex-row w-auto box-border border-4">
-        <img src="./assets/images/logo.png" aria-placeholder="Image" class=" place-self-stretch m-5 rounded-full w-24 h-24"/>
-        <h1 class="flex items-center m-5 box-border border-4 "><b>Nibble Nabble</b></h1>
-      <!-- </div>
+    <div id="greyish-cyan" class="w-full h-auto relative ">
+      <div class="flex flex-row w-auto">
+        <img src="./assets/images/logo.png" aria-placeholder="Image"
+          class="place-self-stretch m-5 rounded-full w-24 h-24" />
+        <h1 class="flex text-center">Nibble Nabble</h1>
+        <!-- </div>
       <div class=" "> -->
         <nav class="flex items-end flex-row absolute bottom-0 right-0 space-x-5 pr-5 ">
-          <a class="box-border p-4 border-4">Food & Wine</a>
-          <a class="box-border p-4 border-4">Cocktails</a>
-          <a class="box-border p-4 border-4">Saved</a>
+          <a id="food-wine" href="Form-1" class="box-border p-4 border-4">Food & Wine</a>
+          <a id="cocktail" href="Form-2" class="box-border p-4 border-4">Cocktails</a>
+          <a id="saved" href="./results.html" class="box-border p-4 border-4">Saved</a>
         </nav>
       </div>
     </div>
-  </header>
+    </header>
 
-  <main>
-    <div class="container">
-      <div>
-        <button><a>Food & Wine</a></button>
-
+    <main>
+      <div class="container flex flex-row text-center">
+        <div id="Food-form" class="box-border border-4 m-10">
+          <button id="Form-1">Food & Wine</button>
+          <form id="Form-1" class="hidden">
+          <label></label>
+          <input type="text"></input>
+          <input type="checkbox"></input>
+          <button></button>
+        </form>
+        </div>
+        <div id="Cocktails-form" class="box-border border-4 m-10">
+          <button
+            id="Form-2">Cocktails
+          </button>
+<form id="Form-2" class="hidden"> 
+  <label></label>
+  <input></input>
+  <button></button>
+  <button></button>
+</form>
+        </div>
       </div>
-      <div>
-        <button>
-          <a>Cocktails</a>
-        </button>
-
-      </div>
-    </div>
 
 
 
-  </main>
+    </main>
 
-  <script src="./assets/script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>
