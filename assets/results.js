@@ -345,55 +345,63 @@ var resultsContainer = $('#results');
 
 // Click save button to get form to select what party (key) to save recipe to
 resultsContainer.on('click', '.saveBtn', function () {
-    
-    var currentContainer = $(this).parent();
-    var form = $('<form>');
-    var input = $('<input>');
-    var datalist = $('<datalist>');
 
-    input.attr({
-        type: 'text',
-        list: 'options'
-    });
-    datalist.attr('id', 'formOps');
-    form.attr('id', 'form');
-    input.attr('id', 'input');
+  var currentContainer = $(this).parent();
+  var form = $('<form>');
+  var input = $('<input>');
+  var datalist = $('<datalist>');
+  var submit = $('<input>');
 
-    form.append(input);
-    form.append(datalist);
-    currentContainer.append(form);
+  input.attr({
+      type: 'text',
+      list: 'options',
+      class: 'input'
+  });
+  datalist.attr('id', 'options');
+  form.attr('id', 'form');
+  submit.attr({
+      type: 'submit',
+      value: 'Submit',
+      id: 'submit'
+  })
 
-    // If there are already form options saved in local storage, pull them down and make them options
-    if(localStorage.getItem('formObj.hasOwnProperty(input.val())')) {
-        console.log('load form options');
-        var formOptions = JSON.parse(localStorage.getItem('formObj'));
-        for (var i = 0; i < formObj.length; i++) {
-            var formEntry = $('<option>');
-            formEntry.text(formOptions[i])
-            datalist.append(formEntry);
-            return
-        }
-    } else if(window.localStorage.length === 0){
-        console.log('local storage empty, waiting');
-        return
-    } else {    
-        console.log('save to formObj');
-        localStorage.setItem('formObj', input.val());
-    }
+  form.append(input);
+  form.append(submit);
+  form.append(datalist);
+  currentContainer.append(form);
+
+  // If there are already form options saved in local storage, pull them down and make them options
+  if (localStorage.getItem('formObj.hasOwnProperty(input.val())')) {
+      console.log('load form options');
+      var formOptions = JSON.parse(localStorage.getItem('formObj'));
+      for (var i = 0; i < formObj.length; i++) {
+          var formEntry = $('<option>');
+          formEntry.text(formOptions[i])
+          datalist.append(formEntry);
+          return
+      }
+  } else if (window.localStorage.length === 0) {
+      console.log('local storage empty, waiting');
+      return
+  } else {
+      console.log('save to formObj');
+      localStorage.setItem('formObj', input.val());
+  }
 })
 
 // When party (key) is selected, see if key already exists and if it does, get key data, add new objarr (recipe) to obj save to local storage. If it doesn't already exist, create a new key and save it to local storage
-$('#form').on('submit', function (e) {
-    e.preventDefault();
-    var optionSelected = input.value;
-    console.log(optionSelected);
-    $('#form').remove();
-    var recipeText = this.parent().text();
-    console.log(recipeText);
-    if (localStorage.getItem(optionSelected) === null) {
-        localStorage.setItem(optionSelected, recipeText);
-    } else {
-        var existingOption = JSON.parse(localStorage.getItem(optionSelected));
-        existingOption.push(recipeText);
-    }
+$('.recipe').on('click', '#submit', function (e) {
+  e.preventDefault();
+  var existingOption = [];
+  var optionSelected = $('.input').val();
+  console.log(`option selected is ${optionSelected}`);
+  var recipeText = $(this).closest('.recipe').text();
+  if (localStorage.getItem(optionSelected) === null) {
+      localStorage.setItem(optionSelected, recipeText);
+      console.log('Saved!')
+  } else {
+      existingOption = localStorage.getItem(optionSelected);
+      console.log(optionSelected);
+      existingOption.push(optionSelected);
+  }
 })
