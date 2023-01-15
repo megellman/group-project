@@ -6,12 +6,13 @@ var backBtn = $('#backBtn')
 // Home page  user input search parameters 
 
 // Give it a wine and get a food
-function getWineParing() {
+function getWinePairing() {
   fetch(pairingUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
+      console.log(data)
       for (var i = 0; i < data.pairings.length; i++) {
         pairFood = data.pairings[i]
         pairedWineRecipes(pairFood)
@@ -26,15 +27,15 @@ function pairedWineRecipes() {
     })
     .then(function (dataPF) {
       console.log(dataPF)
-      for (var i = 0; i < 5; i++) {
-        var dh = dataPF.hits[i]
+      
+        var dh = dataPF.hits[0]
         var resultCardContainer = $('<div>')
         var saveBtn = $('<button>');
         var recipeImg = $('<img>');
         var nameOfRecipe = $('<h2>');
         var linkToRecipe = $('<a>')
 
-        recipeImg.attr('src', dataPF.hits[i].recipe.image);
+        recipeImg.attr('src', dataPF.hits[0].recipe.image);
         saveBtn.text('save');
         saveBtn.attr('class', 'saveBtn');
         recipeImg.attr('class', 'object-scale-down h-48 w-96')
@@ -53,11 +54,11 @@ function pairedWineRecipes() {
         resultCardContainer.append(saveBtn)
       }
 
-    })
+    )
 }
 
 // Give it a food and get a wine
-function getFoodParing() {
+function getFoodPairing() {
   fetch(foodPairingUrl)
     .then(function (response) {
       return response.json();
@@ -225,12 +226,11 @@ function randomDrink() {
 
 // this says depending on what parameters the user choose run the corresponding function 
 function apiCalls() {
-  if (wine != "") {
-    getWineParing()
+  if (wine !== "") {
+    getWinePairing()
     wine = "";
-    foodPairingUrl
   } else if (wineP === true && food !== "") {
-    getFoodParing()
+    getFoodPairing()
     food = "";
     wineP = false
   } else if (food !== "") {
@@ -240,8 +240,7 @@ function apiCalls() {
   } else if (drinkName !== "") {
     getDrinkByName()
     drinkName = ""
-  } else {
-    (random)
+  } else if(random == true){
     randomDrink()
     // Homepage - the initial value is going to be false and then there is going to be an event listener that sets this to true
     random = false

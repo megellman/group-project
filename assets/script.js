@@ -12,12 +12,12 @@ var cocktailInput =$('#cocktail-input')
 var cocktailSubmit = $('#cocktails-submit')
 var feelingAdvent = $('#feeling-advent')
 //Parameter Variables 
-var food = "";
+var food = "taco";
 var drinkName = ""
 // var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type
 var wine = "";
 // NO input for wine as of rn
-var random = true
+var random = false
 // if the user is looking for a pairing of a wine for a particular food then they will have to give us the food and check the box for pairing 
 var wineP = false
 
