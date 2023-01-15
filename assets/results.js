@@ -284,16 +284,17 @@ resultsContainer.on('click', '.saveBtn', function () {
   currentContainer.append(form);
 
   // If there are already form options saved in local storage, pull them down and make them options
+  // If this exists,
   if (localStorage.getItem('formObj.hasOwnProperty(input.val())')) {
     console.log('load form options');
-    var formOptions = JSON.parse(localStorage.getItem('formObj'));
+    var formOptions = JSON.stringify(localStorage.getItem('formObj'));
     for (var i = 0; i < formObj.length; i++) {
       var formEntry = $('<option>');
       formEntry.text(formOptions[i])
       datalist.append(formEntry);
       return
     }
-  } else if (window.localStorage.length === 0) {
+  } else if (localStorage.getItem('formObj')=== 0) {
     console.log('local storage empty, waiting');
     return
   } else {
@@ -306,7 +307,7 @@ resultsContainer.on('click', '.saveBtn', function () {
 $(document).on('click', '#submit', function (e) {
   console.log('form submitted!');
   e.preventDefault();
-  var existingOption = [];
+  var existingOption = {};
   var optionSelected = $('.input').val();
   console.log(`option selected is ${optionSelected}`);
   var recipeText = $(this).closest('.recipe').text();
@@ -314,7 +315,7 @@ $(document).on('click', '#submit', function (e) {
     localStorage.setItem(optionSelected, recipeText);
     console.log('Saved!');
   } else {
-    existingOption = localStorage.getItem(optionSelected);
+    existingOption = JSON.parse(localStorage.getItem(optionSelected));
     console.log(existingOption);
     console.log(optionSelected);
     existingOption.push(recipeText);
