@@ -17,7 +17,7 @@ var hungryForm = $('#hungryForm')
 
 var food = "";
 
-var drinkName = ""
+var drinkName = "gin"
 // var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type
 var wine = "";
 // NO input for wine as of rn
