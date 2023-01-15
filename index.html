@@ -24,9 +24,9 @@
           class="place-self-stretch m-5 rounded-full w-24 h-24" />
         <h1 class="flex text-center">Nibble Nabble</h1>
         <nav class="flex items-end flex-row absolute bottom-0 right-0 space-x-5 pr-5 ">
-          <a id="food-wine" href="Form-1" class="box-border p-4 border-4">Food & Wine</a>
-          <a id="cocktail" href="Form-2" class="box-border p-4 border-4">Cocktails</a>
-          <a id="saved" href="./saved.html" class="box-border p-4 border-4">Saved</a>
+          <a id="food-wine" href="#" class="box-border p-4 border-4">Food & Wine</a>
+          <a id="cocktail" href="#" class="box-border p-4 border-4">Cocktails</a>
+          <a id="saved" href="./results.html" class="box-border p-4 border-4">Saved</a>
         </nav>
       </div>
     </div>
@@ -38,12 +38,12 @@
         <button id="food-bttn">Food & Wine</button>
       </div>
       <div id="form-1" class="hidden">
-        <form >
+        <form id="hungryForm">
           <h3>Hungry</h3>
           <label for="food-name">Food
           <input type="text" id="food-input"></input>
           </label>
-          <input type="checkbox" class="value=false" id="checkbox"></input>
+          <input type="checkbox"  id="mycheckbox"></input>
           <button id="food-submit">Search</button>
         </form>
       </div>
@@ -61,14 +61,14 @@
         </form>
       </div>
     </div>
-
-
   </main>
+
+  
+  
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
-
   <script src="./assets/script.js"></script>
-  <!-- <script src="./assets/results.js"></script> -->
+  <script src="./assets/results.js"></script>
+  
 </body>
-
 </html>

@@ -74,7 +74,7 @@ function getFoodPairing() {
 
       wineImg.attr('src', data.productMatches[0].imageUrl)
       wineLink.attr('href', data.productMatches[0].link)
-      resultEntry.attr('class', 'px-6 py-4 border-4 border-green-800 border-double my-5')
+      resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5')
 
       pairMatch.text('Top Choice: ' + data.productMatches[0].title)
       saveBtn.text('Save');
@@ -111,9 +111,11 @@ function getRecipes() {
 
         recipeImg.attr('src', data.hits[i].recipe.image);
         recipeImg.attr('class', 'object-scale-down h-48 w-96')
+        saveBtn.text('save');
+        saveBtn.attr('class', 'saveBtn');
         //   resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
         linkToRecipe.attr('href', dh.recipe.url)
-        resultCardContainer.attr('class', 'px-6 py-4 border-4 border-green-800 border-double my-5')
+        resultCardContainer.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5')
         nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
 
         nameOfRecipe.text(dh.recipe.label)
@@ -145,10 +147,14 @@ function getDrinkByName() {
       var instructions = $('<p>').appendTo(entryContainer);
       var measurements = $('<p>').appendTo(entryContainer);
       var thumbNail = $('<img>').appendTo(entryContainer);
+      var saveBtn = $('<button>');
       // URL issue, if time, revisit this
       // var video = $('<iframe>').appendTo(entryContainer);
 
+      saveBtn.text('save');
+      saveBtn.attr('class', 'saveBtn');
       thumbNail.attr('src', dataDrinkName.drinks[0].strDrinkThumb);
+      entryContainer.attr('class', 'recipe');
       // video.attr({
       //   src: dataDrinkName.drinks[0].strVideo,
       //   class: 'aspect-video'
@@ -189,7 +195,7 @@ function randomDrink() {
       var drinkRecipe = $('<a>');
       var instructions = $('<p>');
 
-      resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
+      resultEntry.attr('class', 'recipe border-4 border-green-800 border-double my-5')
       cocktailImg.attr('src', dataR.strDrinkThumb);
       cocktailImg.attr('class', 'object-scale-down h-48 w-96');
       nameOfDrink.attr('class', 'font-bold text-xl mb-2')
@@ -197,6 +203,7 @@ function randomDrink() {
       drinkRecipe.text("Go to Recipe");
       nameOfDrink.text(dataR.strDrink);
       saveBtn.text('save');
+      saveBtn.attr('class', 'saveBtn');
 
       var ingredientList = [];
       for (var i = 0; i < ingredientArray.length; i++) {
@@ -249,8 +256,6 @@ function apiCalls() {
 
 apiCalls();
 
-var resultsContainer = $('#results');
-
 // Click save button to get form to select what party (key) to save recipe to
 resultsContainer.on('click', '.saveBtn', function () {
   console.log('hello');
@@ -298,7 +303,8 @@ resultsContainer.on('click', '.saveBtn', function () {
 })
 
 // When party (key) is selected, see if key already exists and if it does, get key data, add new objarr (recipe) to obj save to local storage. If it doesn't already exist, create a new key and save it to local storage
-$('.recipe').on('click', '#submit', function (e) {
+$(document).on('click', '#submit', function (e) {
+  console.log('form submitted!');
   e.preventDefault();
   var existingOption = [];
   var optionSelected = $('.input').val();
@@ -306,11 +312,12 @@ $('.recipe').on('click', '#submit', function (e) {
   var recipeText = $(this).closest('.recipe').text();
   if (localStorage.getItem(optionSelected) === null) {
     localStorage.setItem(optionSelected, recipeText);
-    console.log('Saved!')
+    console.log('Saved!');
   } else {
     existingOption = localStorage.getItem(optionSelected);
+    console.log(existingOption);
     console.log(optionSelected);
-    existingOption.push(optionSelected);
+    existingOption.push(recipeText);
   }
 })
 
