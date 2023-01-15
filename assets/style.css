@@ -27,3 +27,18 @@ main, a {
     padding: 20px;    
     text-align: center;
 }
+
+.saveBtn{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: aqua;
+}
+
+.input{
+    background-color: bisque;
+    margin: 20px;
+}
+
+#form{
+    background-color: pink;
+}

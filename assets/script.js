@@ -16,8 +16,8 @@ var hungryForm = $('#hungryForm')
 //Parameter Variables 
 
 var food = "";
-
-var drinkName = ""
+var drinkName = "gin"
+localStorage.setItem('drinkName', drinkName);
 // var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type 
 
 
