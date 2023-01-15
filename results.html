@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/results.js">
-    <title>Your Saved List</title>
+    <title>Results</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Bebas+Neue&family=Cinzel:wght@500&family=Italiana&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css" />
 </head>
+
 <body>
     <header>
-        <!--Leaving space for header-->
+        <div id="greyish-cyan" class="w-full h-auto relative ">
+            <div class="flex flex-row w-auto">
+                <img src="./assets/images/logo.png" aria-placeholder="Image"
+                    class="place-self-stretch m-5 rounded-full w-24 h-24" />
+                <h1 class="flex text-center">Nibble Nabble</h1>
+                <nav class="flex items-end flex-row absolute bottom-0 right-0 space-x-5 pr-5 ">
+                    <a id="food-wine" href="Form-1" class="box-border p-4 border-4">Food & Wine</a>
+                    <a id="cocktail" href="Form-2" class="box-border p-4 border-4">Cocktails</a>
+                    <a id="saved" href="./results.html" class="box-border p-4 border-4">Saved</a>
+                </nav>
+            </div>
+        </div>
     </header>
-    <div id="resultsContainer"></div>
-
+    <main>
+        <div id="resultsContainer">
+        </div>
+    </main>
     <button><a href="./index.html" id="backBtn"></a></button>
 
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="./assets/script.js"></script>
     <script src="./assets/results.js"></script>
 </body>
+
 </html>

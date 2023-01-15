@@ -13,7 +13,22 @@ var cocktailSubmit = $('#cocktails-submit')
 var feelingAdvent = $('#feeling-advent')
 var hungryForm = $('#hungryForm')
 
+// Id Variables
+var foodForm = $('#food-form')
+var form1 = $('#form-1')
+var foodButton = $('#food-bttn')
+var foodInput = $('#foor-input')
+var checkBox = $('#checkbox')
+var foodSubmit = $('#food-submit')
+var cocktailForm = $('#cocktails-form')
+var cocktailButton = $('#cocktail-bttn')
+var form2 = $('#form-2')
+var cocktailInput =$('#cocktail-input')
+var cocktailSubmit = $('#cocktails-submit')
+var feelingAdvent = $('#feeling-advent')
 //Parameter Variables 
+var food = "pizza";
+var drinkName = ""
 var food = ''; 
 var drinkName = cocktailInput.val();
 var spirit = "";
@@ -62,4 +77,18 @@ hungryForm.on('submit', function(event){
   wineP = false;
   // whatchaLookin4(food, wineP);
   location.replace('./results.html')
+})
+
+foodButton.on("click", function(e){
+  e.stopPropagation()
+  foodForm.attr('class', 'hidden')
+  cocktailForm.attr('class', 'hidden')
+  form1.removeClass('hidden')
+})
+
+cocktailButton.on('click', function(e){
+  e.stopPropagation()
+  foodForm.attr('class', 'hidden')
+  cocktailForm.attr('class', 'hidden')
+  form2.removeClass('hidden')
 })
