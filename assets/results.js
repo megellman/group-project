@@ -23,6 +23,7 @@ if (wine != "") {
   getDrinkBySpirit()
   spirit = ""
 } else if (food !== "") {
+} else if (wineP === false && food !== "") {
     console.log('made it to here going to getRecipes')
   getRecipes()
   food = "" 
@@ -381,4 +382,5 @@ $('form').on('submit', function(){
     var existingOption = JSON.parse(localStorage.getItem(optionSelected));
     existingOption.push(recipeText);
   }
-})
+}
+)}

@@ -1,8 +1,25 @@
+// Id Variables
+var foodForm = $('#food-form')
+var form1 = $('#form-1')
+var foodButton = $('#food-bttn')
+var foodInput = $('#food-input')
+var checkBox = $('#checkbox')
+var foodSubmit = $('#food-submit')
+var cocktailForm = $('#cocktails-form')
+var cocktailButton = $('#cocktail-bttn')
+var form2 = $('#form-2')
+var cocktailInput =$('#cocktail-input')
+var cocktailSubmit = $('#cocktails-submit')
+var feelingAdvent = $('#feeling-advent')
+var hungryForm = $('#hungryForm')
+
 //Parameter Variables 
-var food = "";
-var drinkName = "";
+var food = ''; 
+var drinkName = cocktailInput.val();
 var spirit = "";
-var wine = "merlot";
+// var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type
+var wine = "";
+// NO input for wine as of rn
 var random = false
 // if the user is looking for a pairing of a wine for a particular food then they will have to give us the food and check the box for pairing 
 var wineP = false
@@ -25,58 +42,24 @@ var cocktailURLSpirit = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?
 var cocktailURLDrinkName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?key=1&s=${drinkName}`;
 
 
-// Get Wine Pairings
-// fetch(pairingUrl)
-//     .then(function(response){
-//         return response.json();
-//     })
-//     .then(function (data){
-//         console.log(data);
-//     })
+foodButton.on("click", function(e){
+  e.stopPropagation()
+  foodForm.attr('class', 'hidden')
+  cocktailForm.attr('class', 'hidden')
+  form1.removeClass('hidden')
+})
 
-// // Get Recipes
-// fetch(recipeUrl)
-//     .then(function(response){
-//         return response.json();
-//     })
-//     .then(function (data){
-//         console.log(data);
-//     })
+cocktailButton.on('click', function(e){
+  e.stopPropagation()
+  foodForm.attr('class', 'hidden')
+  cocktailForm.attr('class', 'hidden')
+  form2.removeClass('hidden')
+})
 
-
-// // fetching a recipe by drink name 
-// fetch(cocktailURLDrinkName) 
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function(dataDrinkName){
-//     console.log(dataDrinkName)
-//   })
-
-//   // fetching a list by spirit 
-// fetch(cocktailURLDrinkName) 
-// .then(function (response) {
-//   return response.json();
-// })
-// .then(function(dataSpirit){
-//   console.log(dataSpirit)
-// })
-
-//   // fetching a Random drink
-//   fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php") 
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function(dataRandom){
-//     console.log(dataRandom)
-//   })
-
-  // //
-  // fetch(cocktailURLDrinkName) 
-  // .then(function (response) {
-  //   return response.json();
-  // })
-  // .then(function(dataDrinkName){
-  //   console.log(dataDrinkName)
-  // })
-  
+hungryForm.on('submit', function(event){
+  event.preventDefault();
+  food = foodInput.val();
+  wineP = false;
+  // whatchaLookin4(food, wineP);
+  location.replace('./results.html')
+})
