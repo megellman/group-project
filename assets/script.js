@@ -14,7 +14,7 @@ var feelingAdvent = $('#feeling-advent')
 var hungryForm = $('#hungryForm')
 
 //Parameter Variables 
-var food = "pizza";
+var food = "";
 var drinkName = ""
 var spirit = "";
 // var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type
@@ -52,16 +52,21 @@ cocktailButton.on('click', function(e){
 })
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
+
 foodSubmit.on('click', function(e){ 
+  // hungryForm.on('click', '#foodSubmit', function(e){ 
   e.preventDefault()
+  e.isPre
   food = foodInput.val()
- location.assign('results.html')
+  console.log(food)
+  // location.assign('results.html')
 
 })
 
 
+
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
-cocktailSubmit.on('click', function(e){ 
+cocktailSubmit.on('submit', function(e){ 
   e.preventDefault()
   drinkName = cocktailInput.val()
   location.assign('results.html')
@@ -75,5 +80,14 @@ cocktailSubmit.on('click', function(e){
     } else {
       wineP = false
       console.log(wineP) 
+    } 
+  })
+
+  // toggles wine p value true/false to if button is checked
+  feelingAdvent.on('click', function(e){    
+    if (random === false) {
+      random = true
+    } else {
+      random = false
     } 
   })
