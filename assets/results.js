@@ -7,36 +7,6 @@ var backBtn = $('#backBtn')
 
 // Home page  user input search parameters 
 
-whatchaLookin4()
-
-// this says depending on what parameters the user choose run the corresponding function 
-function whatchaLookin4(){
-if (wine != "") {
-  getWineParing()
-  wine = "";
-  foodPairingUrl
-} else if (wineP === true && food !== "") {
-    getFoodParing()
-    food = "";
-    wineP = false
-} else if (spirit !== "") {
-  getDrinkBySpirit()
-  spirit = ""
-} else if (food !== "") {
-} else if (wineP === false && food !== "") {
-    console.log('made it to here going to getRecipes')
-  getRecipes()
-  food = "" 
-} else if (drinkName !== "") {
-  getDrinkByName()
-  drinkName = ""
-} else {
-  (random)
-  randomDrink()
-  // Homepage - the initial value is going to be false and then there is going to be an event listener that sets this to true
-  random = false
-}
-}
 
 // Give it a wine and get a food
 function getWineParing() {
@@ -89,6 +59,7 @@ function pairedWineRecipes() {
     })
 }
 
+
 // Give it a food and get a wine
 function getFoodParing() {
     fetch(foodPairingUrl)
@@ -121,7 +92,7 @@ function getFoodParing() {
         resultEntry.append(saveBtn);
         
       })
-  }
+}
 
 // Get Recipes
 function getRecipes() {
@@ -159,8 +130,9 @@ function getRecipes() {
       resultCardContainer.append(saveBtn)
 
       }
-      
+     
     })
+}
 
 // fetching a recipe by drink name 
 function getDrinkByName() {
@@ -296,7 +268,6 @@ function randomDrink() {
       return response.json();
     })
     .then(function (dataRandom) {
-      console.log(dataRandom)
       var dataR = dataRandom.drinks[0]
       var ingredientArray = [dataR.strIngredient1, dataR.strIngredient2, dataR.strIngredient3 , dataR.strIngredient4, dataR.strIngredient5, dataR.strIngredient6, dataR.strIngredient7, dataR.strIngredient8, dataR.strIngredient9, dataR.strIngredient10, dataR.strIngredient11, dataR.strIngredient12, dataR.strIngredient13, dataR.strIngredient14, dataR.strIngredient15]
       var amountArray = [dataR.strMeasure1, dataR.strMeasure2, dataR.strMeasure3 , dataR.strMeasure4, dataR.strMeasure5, dataR.strMeasure6, dataR.strMeasure7, dataR.strMeasure8, dataR.strMeasure9, dataR.strMeasure10, dataR.strMeasure11, dataR.strMeasure12, dataR.strMeasure13, dataR.strMeasure14, dataR.strMeasure15]
@@ -318,16 +289,12 @@ function randomDrink() {
       
       var ingredientList = [];
       for (var i = 0; i < ingredientArray.length; i++){
-        console.log(ingredientArray[i])
-        console.log(ingredientArray[i] === null)
         if (ingredientArray[i] !== null) {
             ingredientList.push(ingredientArray[i]);
         }
       }
       var amountList = [];
       for (var i = 0; i < amountArray.length; i++){
-        console.log(amountArray[i])
-        console.log(amountArray[i] === null)
         if (amountArray[i] !== null) {
             amountList.push(amountArray[i]);
         }
@@ -341,6 +308,41 @@ function randomDrink() {
       resultEntry.append(saveBtn);
     })
 }
+
+
+console.log("at least ")
+// this says depending on what parameters the user choose run the corresponding function 
+function apiCalls(){
+if (wine != "") {
+  getWineParing()
+  wine = "";
+  foodPairingUrl
+} else if (wineP === true && food !== "") {
+    getFoodParing()
+    food = "";
+    wineP = false
+} else if (spirit !== "") {
+  getDrinkBySpirit()
+  spirit = ""
+} else if (food !== "") {
+  console.log('made it to here going to getRecipes')
+  getRecipes()
+  food = "" 
+// } else if (wineP === false && food !== "") {
+//   getRecipes()
+//   food = "" // might use this later
+} else if (drinkName !== "") {
+  getDrinkByName()
+  drinkName = ""
+} else {
+  (random)
+  randomDrink()
+  // Homepage - the initial value is going to be false and then there is going to be an event listener that sets this to true
+  random = false
+}
+}
+
+apiCalls()
 
 // Click save button to get form to select what party (key) to save recipe to
 resultsContainer.on('click', '.saveBtn', function(){
@@ -382,5 +384,4 @@ $('form').on('submit', function(){
     var existingOption = JSON.parse(localStorage.getItem(optionSelected));
     existingOption.push(recipeText);
   }
-}
-)}
+})
