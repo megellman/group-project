@@ -291,7 +291,6 @@ resultsContainer.on('click', '.saveBtn', function () {
       var formEntry = $('<option>');
       formEntry.text(formObj[i])
       datalist.append(formEntry);
-      return
     }
   } else if (localStorage.getItem('formObj') == null) {
     console.log('local storage empty, waiting');
@@ -312,15 +311,18 @@ $(document).on('click', '#submit', function (e) {
     formObj.push($('.input').val());
     localStorage.setItem('formObj', JSON.stringify(formObj));
   }
-  var existingOption = {};
-  var optionSelected = $('.input').val();
+  var recipeObj = {};
+  var newKey = $('.input').val();
+  var nestedKey = $(this).closest('h2').text();
+  var nestedVal = {content}
+  var nestedObj = {nestedKey, nestedVal}
   console.log(`option selected is ${optionSelected}`);
-  var recipeText = $(this).closest('.recipe').text();
+  var newObj = {newKey, nestedObj}
   if (localStorage.getItem(optionSelected) === null) {
-    localStorage.setItem(optionSelected, recipeText);
+    localStorage.setItem(recipeObj, newObj);
     console.log('Saved!');
   } else {
-    existingOption = JSON.parse(localStorage.getItem(optionSelected));
+    recipeObj = JSON.parse(localStorage.getItem(optionSelected));
     console.log(existingOption);
     console.log(optionSelected);
     existingOption.push(recipeText);
@@ -328,3 +330,4 @@ $(document).on('click', '#submit', function (e) {
 })
 
 
+$(this).closest('.recipe'.children('option'.content()))
