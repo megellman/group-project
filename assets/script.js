@@ -12,13 +12,12 @@ var cocktailInput =$('#cocktail-input')
 var cocktailSubmit = $('#cocktails-submit')
 var feelingAdvent = $('#feeling-advent')
 //Parameter Variables 
-var food = "pizza";
+var food = "";
 var drinkName = ""
-var spirit = "";
 // var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type
 var wine = "";
 // NO input for wine as of rn
-var random = false
+var random = true
 // if the user is looking for a pairing of a wine for a particular food then they will have to give us the food and check the box for pairing 
 var wineP = false
 
@@ -35,10 +34,7 @@ var edrecipeUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${food}&a
 
 // var recipeUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${food}&number=2&apiKey=20f9574ee747498490dd1bd80b379967&addRecipeInformation=true`;
 
-var cocktailURLSpirit = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`;
-
 var cocktailURLDrinkName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?key=1&s=${drinkName}`;
-
 
 foodButton.on("click", function(e){
   e.stopPropagation()
