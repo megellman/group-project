@@ -2,9 +2,6 @@
 var resultsContainer = $('#results')
 var backBtn = $('#backBtn')
 
-
-// Home page  user input search parameters 
-
 // Give it a wine and get a food
 function getWinePairing() {
   fetch(pairingUrl)
@@ -148,7 +145,7 @@ function getDrinkByName() {
       var instructions = $('<p>').appendTo(entryContainer);
       var measurements = $('<p>').appendTo(entryContainer);
       var thumbNail = $('<img>').appendTo(entryContainer);
-      var saveBtn = $('<button>');
+      var saveBtn = $('<button>').appendTo(entryContainer);
       // URL issue, if time, revisit this
       // var video = $('<iframe>').appendTo(entryContainer);
 
@@ -303,28 +300,36 @@ resultsContainer.on('click', '.saveBtn', function () {
 
   // If there are already form options saved in local storage, pull them down and make them options
   // If this exists,
-  if (localStorage.getItem('formObj.hasOwnProperty(input.val())')) {
+  if (localStorage.getItem('formObj')) {
     console.log('load form options');
-    var formOptions = JSON.stringify(localStorage.getItem('formObj'));
+    var formObj = JSON.parse(localStorage.getItem('formObj'));
+    console.log(formObj);
+    console.log(`type is ${typeof formObj}`);
     for (var i = 0; i < formObj.length; i++) {
       var formEntry = $('<option>');
-      formEntry.text(formOptions[i])
+      formEntry.text(formObj[i])
       datalist.append(formEntry);
       return
     }
-  } else if (localStorage.getItem('formObj')=== 0) {
+  } else if (localStorage.getItem('formObj') == null) {
     console.log('local storage empty, waiting');
     return
-  } else {
-    console.log('save to formObj');
-    localStorage.setItem('formObj', input.val());
-  }
+}
 })
 
-// When party (key) is selected, see if key already exists and if it does, get key data, add new objarr (recipe) to obj save to local storage. If it doesn't already exist, create a new key and save it to local storage
 $(document).on('click', '#submit', function (e) {
   console.log('form submitted!');
   e.preventDefault();
+  console.log('save to formObj');
+  if(localStorage.getItem('formObj') == null){
+    localStorage.setItem('formObj', JSON.stringify($('.input').val()));
+  } else {
+    var formOption = JSON.parse(localStorage.getItem('formObj'));
+    var formObj = [];
+    formObj.push(formOption);
+    formObj.push($('.input').val());
+    localStorage.setItem('formObj', JSON.stringify(formObj));
+  }
   var existingOption = {};
   var optionSelected = $('.input').val();
   console.log(`option selected is ${optionSelected}`);

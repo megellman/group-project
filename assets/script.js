@@ -17,8 +17,11 @@ var hungryForm = $('#hungryForm')
 
 var food = "";
 
+
 var drinkName = ""
 // var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type 
+
+
 var wine = "";
 localStorage.setItem('wine', wine)
 var pairingUrl;
@@ -30,6 +33,7 @@ var wineP = false
 localStorage.setItem('wineP', wineP)
 //API URL's
 
+
 //this wine pairing is give it a wine and get a food
     // this wine pairing is give it a food and get a wine
 var foodPairingUrl;
@@ -37,6 +41,9 @@ var edrecipeUrl;
 var cocktailURLDrinkName;
 
 var userParameters= [];
+
+
+
 
 
 foodButton.on("click", function(e){
