@@ -2,9 +2,6 @@
 var resultsContainer = $('#results')
 var backBtn = $('#backBtn')
 
-
-// Home page  user input search parameters 
-
 // Give it a wine and get a food
 function getWinePairing() {
   fetch(pairingUrl)
