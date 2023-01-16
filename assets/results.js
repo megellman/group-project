@@ -10,6 +10,14 @@ function getWinePairing() {
     })
     .then(function (data) {
       console.log(data)
+      var resultCardContainer = $('<div>')
+      var description = $('<p>')
+
+      description.text(data.text)
+
+      resultsContainer.append(resultCardContainer)
+      resultCardContainer.append(description)
+
       for (var i = 0; i < data.pairings.length; i++) {
         pairFood = data.pairings[i]
         pairedWineRecipes(pairFood)
@@ -20,6 +28,7 @@ function getWinePairing() {
 function pairedWineRecipes() {
   fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${pairFood}&app_key=d0e7ce8996da109b870161b5504f5e87&app_id=b7a56f5e`)
     .then(function (response) {
+      console.log(response)
       return response.json();
     })
     .then(function (dataPF) {
@@ -37,10 +46,12 @@ function pairedWineRecipes() {
       saveBtn.attr('class', 'saveBtn');
       recipeImg.attr('class', 'object-scale-down h-48 w-96')
       //   resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
-      linkToRecipe.attr([{
-        'href': dh.recipe.url,
-        'class': 'recipe-content'
-      }])
+      // linkToRecipe.attr([{
+      //   'href': dh.recipe.url,
+      //   'class': 'recipe-content'
+      // }]) // don't know why but these were not working had to separate them 
+      linkToRecipe.attr('href', dh.recipe.url)
+      linkToRecipe.attr('class', 'recipe-content')
       resultCardContainer.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5')
       nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
 
@@ -251,31 +262,33 @@ function randomDrink() {
 
 // this says depending on what parameters the user choose run the corresponding function 
 function apiCalls() {
+  
   if (wine !== null) {
     getWinePairing()
     wine = "";
-    localStorage.setItem('wine', wine)
-  } else if (wineP === true && food !== null) {
+    localStorage.removeItem('wine')
+  } else if (wineP === 'true' && food !== null) {
     getFoodPairing()
     food = "";
-    localStorage.setItem('food', food)
-    wineP = false
-   
-    localStorage.setItem('wineP', wineP)
+    
+    localStorage.removeItem('food')
+    wineP = 'false'
+    localStorage.removeItem('wineP')
+    
   } else if (food !== null) {
     getRecipes()
     food = "";
-    localStorage.setItem('food', food)
+    localStorage.removeItem('food')
   } else if (drinkName !== null) {
   
     getDrinkByName()
     drinkName = ""
-    localStorage.setItem('drinkName', drinkName)
-  } else if (random == true) {
+    localStorage.removeItem('drinkName')
+  } else if (random === 'true') {
     randomDrink()
-    // Homepage - the initial value is going to be false and then there is going to be an event listener that sets this to true
-    random = false
-    localStorage.setItem('random', random)
+    // Homepage - the initial value is going to be false and then there is going to be an event listener that removes this to true
+    random = 'false'
+    localStorage.removeItem('random')
   }
 }
 setURL()
@@ -286,7 +299,11 @@ function setURL() {
   wine = localStorage.getItem("wine")
   random = localStorage.getItem("random")
   wineP = localStorage.getItem("wineP")
-
+console.log(food + "food" +
+drinkName + "drinkName" +
+wine + "wine" +
+random + "random" +
+wineP + "wineP")
 
   var recipeApiKey = "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
   pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${recipeApiKey}`;
