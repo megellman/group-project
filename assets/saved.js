@@ -1,10 +1,6 @@
 // create elements
 var savedContainer = $('#saved-container');
 
-
-
-
-
 // grabb items from localStorage
 
 function loadItems() {
