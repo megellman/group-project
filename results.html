@@ -18,22 +18,27 @@
 <body>
     <header>
         <div id="greyish-cyan" class="w-full h-auto relative ">
-            <div class="flex flex-row w-auto">
-                <img src="./assets/images/logo.png" aria-placeholder="Image"
-                    class="place-self-stretch m-5 rounded-full w-24 h-24" />
-                <h1 class="flex text-center">Nibble Nabble</h1>
-                <nav class="flex items-end flex-row absolute bottom-0 right-0 space-x-5 pr-5 ">
-                    <a id="food-wine" href="Form-1" class="box-border p-4 border-4">Food & Wine</a>
-                    <a id="cocktail" href="Form-2" class="box-border p-4 border-4">Cocktails</a>
-                    <a id="saved" href="./results.html" class="box-border p-4 border-4">Saved</a>
-                </nav>
-            </div>
+          <div class="flex flex-row w-auto">
+            <div id=logo-home>
+            <img src="./assets/images/logo.png" aria-placeholder="Image"
+              class="place-self-stretch m-5 rounded-full w-24 h-24" />
+            <h1 class="flex text-center">Nibble Nabble</h1>
+          </div>
+            <nav class="flex items-end flex-row absolute bottom-0 right-0 
+      space-x-5 pr-5 ">
+              <button id="food-wine" href="form-1" class="box-border p-4 
+      border-4">Food & Wine></button>
+              <button id="cocktails" href="form-2" class="box-border p-4 
+      border-4">Cocktails</button>
+              <a id="saved" href="./results.html" class="box-border p-4 
+      border-4">Saved</a>
+            </nav>
+          </div>
         </div>
-    </header>
-
+    
     <main id="results"></main>
 
-    <button><a href="./index.html" id="backBtn"></a></button>
+    <button><a href="./index.html" id="backBtn">Back</a></button>
 
     <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
