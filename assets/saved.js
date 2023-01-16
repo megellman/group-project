@@ -7,24 +7,55 @@ var savedContainer = $('#saved-container');
 
 // grabb items from localStorage
 
+function loadItems() {
+    retrieveItems();
+    if (localStorage.getItem('formObj') != null) {
+        var formObj = JSON.parse(localStorage.getItem('formObj'))
+        for (var i = 0; i < formObj.length; i++) {
+            console.log('formObj', formObj[i])
 
-setURL()
-function setURL() {
-  food = localStorage.getItem("food")
-  drinkName = localStorage.getItem("drinkName")
-  wine = localStorage.getItem("wine")
-  random = localStorage.getItem("random")
-  wineP = localStorage.getItem("wineP")
+        }
+    } else if (formObj.length == 0) {
+        console.log('no items')
 
-  var recipeApiKey = "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
-  pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${recipeApiKey}`;
-  // this wine pairing is give it a food and get a wine
-  foodPairingUrl = `https://api.spoonacular.com/food/wine/pairing?food=${food}&apiKey=${recipeApiKey}`;
-  edrecipeUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${food}&app_key=d0e7ce8996da109b870161b5504f5e87&app_id=b7a56f5e`;
+    }
+}
 
-  cocktailURLDrinkName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?key=1&s=${drinkName}`;
 
-};
+
+function retrieveItem() {
+    if (food == true) {
+        food = localStorage.getItem("food")
+    } else if (drinkName == true) {
+        drinkName = localStorage.getItem("drinkName")
+    } else if (wine == true) {
+        wine = localStorage.getItem("wine")
+    } else if (randomName == true) {
+        randomName = localStorage.getItem("randomName")
+    } else if (wineP == true) {
+        wineP = localStorage.getItem("wine")
+    }
+}
 
 // create and display items from localStorage
- 
+var devEl = $('<div>')
+var cardEl = $('<section>')
+var unorderList = $('<ul>')
+var listedItem = $('<li>')
+// what
+// creating a card for each item that has been saved to localStorage
+// how
+// creating elements to display the card
+// why
+// for the user to save their items
+devEl.attr('class', 'dev-element')
+cardEl.attr('class', 'card-element w-24 h-48 border')
+unorderList.attr('class', 'unorder-list')
+listedItem.attr('class', '')
+listedItem.attr('src', recipeUrl)
+    // what
+    // creating attributes to the created elements
+    // how
+    // adding the jquery object .attr
+    // why
+    // to give characters to the created elements

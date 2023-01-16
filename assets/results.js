@@ -262,7 +262,7 @@ function randomDrink() {
 
 // this says depending on what parameters the user choose run the corresponding function 
 function apiCalls() {
-  
+
   if (wine !== null) {
     getWinePairing()
     wine = "";
@@ -270,17 +270,17 @@ function apiCalls() {
   } else if (wineP === 'true' && food !== null) {
     getFoodPairing()
     food = "";
-    
+
     localStorage.removeItem('food')
     wineP = 'false'
     localStorage.removeItem('wineP')
-    
+
   } else if (food !== null) {
     getRecipes()
     food = "";
     localStorage.removeItem('food')
   } else if (drinkName !== null) {
-  
+
     getDrinkByName()
     drinkName = ""
     localStorage.removeItem('drinkName')
@@ -299,11 +299,11 @@ function setURL() {
   wine = localStorage.getItem("wine")
   random = localStorage.getItem("random")
   wineP = localStorage.getItem("wineP")
-console.log(food + "food" +
-drinkName + "drinkName" +
-wine + "wine" +
-random + "random" +
-wineP + "wineP")
+  console.log(food + "food" +
+    drinkName + "drinkName" +
+    wine + "wine" +
+    random + "random" +
+    wineP + "wineP")
 
   var recipeApiKey = "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
   pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${recipeApiKey}`;
@@ -340,17 +340,17 @@ resultsContainer.on('click', '.saveBtn', function () {
   form.append(input, submit, select);
   currentContainer.append(form);
 
-   // Get formObj from local storage, OR if that key doesn't exist, console waiting message
-   var formObj = JSON.parse(localStorage.getItem("formObj")) || console.log('formObj doesn\'t exist yet, waiting');
+  // Get formObj from local storage, OR if that key doesn't exist, console waiting message
+  var formObj = JSON.parse(localStorage.getItem("formObj")) || console.log('formObj doesn\'t exist yet, waiting');
   // If formObj exists, create datalist options for each item
-   if (formObj){
-     for (var i = 0; i < formObj.length; i++) {
+  if (formObj) {
+    for (var i = 0; i < formObj.length; i++) {
       var formEntry = $('<option>');
       console.log(formObj[i]);
       formEntry.text(formObj[i]);
       select.append(formEntry);
-   }
-}
+    }
+  }
 })
 
 $(document).on('click', '#submit', function (e) {
@@ -360,7 +360,7 @@ $(document).on('click', '#submit', function (e) {
   // Whatever the user types/selects will be newItem
   var newItem = ($('.input').val());
   // If the user types in a category that already exists, don't add it to local storage
-  if(formObj.includes(newItem)){
+  if (formObj.includes(newItem)) {
     console.log('done');
   } else {
     // If this category doesn't exist, push it into the array
@@ -371,16 +371,16 @@ $(document).on('click', '#submit', function (e) {
 
   // Get the entire recipeObj from local storage OR if it doesn't exist, create a new object
   var recipeObj = JSON.parse(localStorage.getItem("recipeObj")) || {};
- // If the key newItem exists, 
- console.log(recipeObj[newItem])
-  if(recipeObj[newItem]){
+  // If the key newItem exists, 
+  console.log(recipeObj[newItem])
+  if (recipeObj[newItem]) {
     console.log('category does exist');
     var key = $('#form').siblings('h2').text();
     console.log(key)
     var value = $('#form').siblings('.recipe-content').text();
     console.log(value)
     // The new object will hold the key and value made above
-    var newObj = {[key]: [value]};
+    var newObj = { [key]: [value] };
     console.log(newObj)
     console.log(recipeObj[newItem]);
     recipeObj[newItem].push(newObj);
@@ -396,8 +396,8 @@ $(document).on('click', '#submit', function (e) {
     //   }
     // ]
 
-    var obj = {[key]: [value]};
-    var objKey = {[newItem]: [obj]}
+    var obj = { [key]: [value] };
+    var objKey = { [newItem]: [obj] }
 
     localStorage.setItem("recipeObj", JSON.stringify(objKey));
   }
