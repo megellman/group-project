@@ -12,29 +12,21 @@ var cocktailInput =$('#cocktail-input')
 var cocktailSubmit = $('#cocktails-submit')
 var feelingAdvent = $('#feeling-advent')
 var hungryForm = $('#hungryForm')
+var wineInput = $('#wine-input')
 
 //Parameter Variables 
 
 var food = "";
 var drinkName = "";
-// var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type 
 var wine = "";
-var pairingUrl;
-// NO input for wine as of rn
 var random = false
-
-// if the user is looking for a pairing of a wine for a particular food then they will have to give us the food and check the box for pairing 
 var wineP = false
 
 //API URL's
-
-
-//this wine pairing is give it a wine and get a food
-    // this wine pairing is give it a food and get a wine
+var pairingUrl;
 var foodPairingUrl;
 var edrecipeUrl;
 var cocktailURLDrinkName;
-
 var userParameters= [];
 
 
@@ -63,8 +55,10 @@ foodSubmit.on('click', function(e){
   e.preventDefault()
   food = foodInput.val()
   localStorage.setItem('food', food)
+  wine = wineInput.val()
+  localStorage.setItem('wine', wine)
   newFunction()
-  return food;// might be dead
+  return food, wine;// might be dead
 })
 
 
@@ -77,25 +71,27 @@ cocktailSubmit.on('click', function(e){
   newFunction()
   return drinkName;
 })
-
+ 
  // toggles wine p value true/false to if button is checked
-  checkBox.on('click', function(e){    
-    if (wineP === false) {
+  checkBox.on('click', function(e){  
+    if (wineP === 'false' || wineP === false) {
       wineP = true
-      console.log(wineP) 
+      localStorage.setItem('wineP', wineP)
     } else {
       wineP = false
-      console.log(wineP) 
+      localStorage.setItem('wineP', wineP)
     } 
   })
 
   // toggles wine p value true/false to if button is checked
-  feelingAdvent.on('click', function(e){    
-    if (random === false) {
+  feelingAdvent.on('click', function(e){  
+    e.preventDefault()  
+    if (random !== false) {
       random = true
-    } else {
-      random = false
-    } 
+      console.log(random)
+      localStorage.setItem('random', random)
+      newFunction()
+    }
   })
 
   
