@@ -86,9 +86,8 @@ cocktailSubmit.on('click', function(e){
   // toggles wine p value true/false to if button is checked
   feelingAdvent.on('click', function(e){  
     e.preventDefault()  
-    if (random !== false) {
+    if (random !== true) {
       random = true
-      console.log(random)
       localStorage.setItem('random', random)
       newFunction()
     }

@@ -251,6 +251,7 @@ function randomDrink() {
 
 // this says depending on what parameters the user choose run the corresponding function 
 function apiCalls() {
+  console.log(random === true)
   if (wine !== null) {
     getWinePairing()
     wine = "";
@@ -269,7 +270,7 @@ function apiCalls() {
     getDrinkByName()
     drinkName = ""
     localStorage.setItem('drinkName', drinkName)
-  } else if (random == true) {
+  } else if (random !== true) {
     randomDrink()
     // Homepage - the initial value is going to be false and then there is going to be an event listener that sets this to true
     random = false
@@ -284,7 +285,11 @@ function setURL() {
   wine = localStorage.getItem("wine")
   random = localStorage.getItem("random")
   wineP = localStorage.getItem("wineP")
-
+console.log(food + "food" +
+drinkName + "drinkName" +
+wine + "wine" +
+random + "random" +
+wineP + "wineP")
 
   var recipeApiKey = "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
   pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${recipeApiKey}`;
