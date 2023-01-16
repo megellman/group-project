@@ -270,14 +270,17 @@ function apiCalls() {
   } else if (wineP === 'true' && food !== null) {
     getFoodPairing()
     food = "";
+    
     localStorage.removeItem('food')
     wineP = 'false'
     localStorage.removeItem('wineP')
+    
   } else if (food !== null) {
     getRecipes()
     food = "";
     localStorage.removeItem('food')
   } else if (drinkName !== null) {
+  
     getDrinkByName()
     drinkName = ""
     localStorage.removeItem('drinkName')
@@ -318,7 +321,7 @@ resultsContainer.on('click', '.saveBtn', function () {
   var currentContainer = $(this).parent();
   var form = $('<form>');
   var input = $('<input>');
-  var select = $('<select>');
+  var select = $('<datalist>');
   var submit = $('<input>');
 
   input.attr({
@@ -334,68 +337,80 @@ resultsContainer.on('click', '.saveBtn', function () {
     id: 'submit'
   })
 
-  form.append(input);
-  form.append(submit);
-  form.append(select);
+  form.append(input, submit, select);
   currentContainer.append(form);
 
-  // If there are already form options saved in local storage, pull them down and make them options
-  // If this exists,
-  if (localStorage.getItem(('formObj').length == 1)) {
-    var formObj = localStorage.getItem("formObj");
-    var arr = [];
-    arr.push(formObj);
-    console.log(`type is ${typeof formObj}`);
-    for (var i = 0; i < formObj.length; i++) {
+   // Get formObj from local storage, OR if that key doesn't exist, console waiting message
+   var formObj = JSON.parse(localStorage.getItem("formObj")) || console.log('formObj doesn\'t exist yet, waiting');
+  // If formObj exists, create datalist options for each item
+   if (formObj){
+     for (var i = 0; i < formObj.length; i++) {
       var formEntry = $('<option>');
       console.log(formObj[i]);
       formEntry.text(formObj[i]);
       select.append(formEntry);
-    }
-  } else if (localStorage.getItem(JSON.parse('formObj').length > 1)) {
-    console.log('load form options');
-    var formObj = JSON.parse(localStorage.getItem('formObj'));
-    console.log(formObj);
-    console.log(`type is ${typeof formObj}`);
-    for (var i = 0; i < formObj.length; i++) {
-      var formEntry = $('<option>');
-      console.log(formObj[i]);
-      formEntry.text(formObj[i]);
-      select.append(formEntry);
-    }
-  } else if (localStorage.getItem('formObj') == null) {
-    console.log('local storage empty, waiting');
-    return
+   }
+}
+})
+
+$(document).on('click', '#submit', function (e) {
+  e.preventDefault();
+  // Get formObj from local storage, OR if that key doesn't exist, create an array
+  var formObj = JSON.parse(localStorage.getItem("formObj")) || [];
+  // Whatever the user types/selects will be newItem
+  var newItem = ($('.input').val());
+  // If the user types in a category that already exists, don't add it to local storage
+  if(formObj.includes(newItem)){
+    console.log('done');
+  } else {
+    // If this category doesn't exist, push it into the array
+    formObj.push(newItem);
+  }
+  // Replace the old value of this array in local storage with this updated version 
+  localStorage.setItem("formObj", JSON.stringify(formObj));
+
+  // Get the entire recipeObj from local storage OR if it doesn't exist, create a new object
+  var recipeObj = JSON.parse(localStorage.getItem("recipeObj")) || {};
+ // If the key newItem exists, 
+ console.log(recipeObj[newItem])
+  if(recipeObj[newItem]){
+    console.log('category does exist');
+    var key = $('#form').siblings('h2').text();
+    console.log(key)
+    var value = $('#form').siblings('.recipe-content').text();
+    console.log(value)
+    // The new object will hold the key and value made above
+    var newObj = {[key]: [value]};
+    console.log(newObj)
+    console.log(recipeObj[newItem]);
+    recipeObj[newItem].push(newObj);
+    // Save newObj as a nested object in the recipeObj
+    localStorage.setItem(recipeObj, JSON.stringify(objKey));
+  } else {
+    console.log('category doesn\'t exist');
+    var key = $('#form').siblings('h2').text();
+    var value = $('#form').siblings('.recipe-content').text();
+    // var objKey = [
+    //   [newItem]  {
+    //       [key]: value,
+    //   }
+    // ]
+
+    var obj = {[key]: [value]};
+    var objKey = {[newItem]: [obj]}
+
+    localStorage.setItem("recipeObj", JSON.stringify(objKey));
   }
 })
 
-  $(document).on('click', '#submit', function (e) {
-    console.log('form submitted!');
-    e.preventDefault();
-    console.log('save to formObj');
-    if (localStorage.getItem('formObj') == null) {
-      localStorage.setItem('formObj', JSON.stringify($('.input').val()));
-    } else {
-      var formOption = JSON.parse(localStorage.getItem('formObj'));
-      var formObj = [];
-      formObj.push(formOption);
-      formObj.push($('.input').val());
-      localStorage.setItem('formObj', JSON.stringify(formObj));
-    }
-    var recipeObj = {};
-    var newKey = $('.input').val();
-    var nestedKey = $(this).closest('h2').text();
-    var nestedVal = $(this).closest('.recipe').children('.recipe-content');
-    var nestedObj = { nestedKey, nestedVal }
-    console.log(`option selected is ${newKey}`);
-    var newObj = { newKey, nestedObj }
-    if (localStorage.getItem('recipeObj') === null) {
-      localStorage.setItem('recipeObj', newObj);
-      console.log('Saved!');
-    } else {
-      recipeObj = JSON.parse(localStorage.getItem('recipeObj'));
-      console.log(existingOption);
-      console.log(optionSelected);
-      existingOption.push(recipeText);
-    }
-  })
+// recipeObj{
+//   [
+//     [Dinner Party]: {
+//         [Gin Fizz]: here's how you make it,
+//     }
+//     [Dinner Party B]:
+//     {
+//       [Gin Fizz]: here's how you make it,
+//   }
+//   ]
+// }
