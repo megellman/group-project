@@ -19,8 +19,8 @@ var wineInput = $('#wine-input')
 var food = "";
 var drinkName = "";
 var wine = "";
-var random = false
-var wineP = false
+var random = "false";
+var wineP = "false";
 
 //API URL's
 var pairingUrl;
@@ -55,17 +55,31 @@ foodSubmit.on('click', function(e){
   e.preventDefault()
   food = foodInput.val()
   localStorage.setItem('food', food)
+  if(wineInput.val() !== ''){
   wine = wineInput.val()
   localStorage.setItem('wine', wine)
+  }
+
+ 
   newFunction()
   return food, wine;// might be dead
 })
-
+ checkBox.on('click', function(){
+   
+  if( checkBox.is(':checked') ){
+    wineP ="true"
+    localStorage.setItem("wineP", wineP)
+  }else{
+    
+    localStorage.removeItem("wineP")
+  }
+  })
 
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
 cocktailSubmit.on('click', function(e){ 
   e.preventDefault()
+  e.stopPropagation()
   drinkName = cocktailInput.val()
   localStorage.setItem('drinkName', drinkName)
   newFunction()
@@ -73,21 +87,14 @@ cocktailSubmit.on('click', function(e){
 })
  
  // toggles wine p value true/false to if button is checked
-  checkBox.on('click', function(e){  
-    if (wineP === 'false' || wineP === false) {
-      wineP = true
-      localStorage.setItem('wineP', wineP)
-    } else {
-      wineP = false
-      localStorage.setItem('wineP', wineP)
-    } 
-  })
-
-  // toggles wine p value true/false to if button is checked
+ 
+  
+ 
   feelingAdvent.on('click', function(e){  
-    e.preventDefault()  
-    if (random !== true) {
-      random = true
+    e.preventDefault() 
+    var random = "false"  
+    if (random === "false") {
+      random = "true"
       localStorage.setItem('random', random)
       newFunction()
     }
