@@ -13,7 +13,9 @@ var cocktailSubmit = $('#cocktails-submit')
 var feelingAdvent = $('#feeling-advent')
 var hungryForm = $('#hungryForm')
 var wineInput = $('#wine-input')
-
+var foodWine = $("#food-wine")
+var cocktails =$("#cocktails")
+var logoHome =$("#logo-home")
 //Parameter Variables 
 
 var food = "";
@@ -30,7 +32,12 @@ var cocktailURLDrinkName;
 var userParameters= [];
 
 
+logoHome.on("click", function(){
+  console.log("did i click")
+location.assign("./index.html")
 
+
+})
 
 
 foodButton.on("click", function(e){
@@ -38,6 +45,7 @@ foodButton.on("click", function(e){
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden')
   form1.removeClass('hidden')
+  
 })
 
 // event listener for homepage cocktailBtn - hides both buttons and unhides cocktail form
@@ -47,6 +55,21 @@ cocktailButton.on('click', function(e){
   cocktailForm.attr('class', 'hidden')
   form2.removeClass('hidden')
 })
+foodWine.on("click", function(e){
+  e.stopPropagation()
+  foodForm.attr('class', 'hidden')
+  cocktailForm.attr('class', 'hidden')
+  form1.removeClass('hidden')
+  form2.attr('class','hidden')
+})
+cocktails.on('click', function(e){
+  e.stopPropagation()
+  foodForm.attr('class', 'hidden')
+  cocktailForm.attr('class', 'hidden')
+  form2.removeClass('hidden')
+  form1.attr('class','hidden')
+})
+
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
 
@@ -55,9 +78,11 @@ foodSubmit.on('click', function(e){
   e.preventDefault()
   food = foodInput.val()
   localStorage.setItem('food', food)
+  foodInput.val("")
   if(wineInput.val() !== ''){
   wine = wineInput.val()
   localStorage.setItem('wine', wine)
+  wineInput.val("")
   }
 
  
