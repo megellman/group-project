@@ -346,15 +346,16 @@ resultsContainer.on('click', '.saveBtn', function () {
    if (formObj){
      for (var i = 0; i < formObj.length; i++) {
       var formEntry = $('<option>');
-      console.log(formObj[i]);
       formEntry.text(formObj[i]);
       select.append(formEntry);
    }
 }
+
 })
 
 $(document).on('click', '#submit', function (e) {
   e.preventDefault();
+  e.stopPropagation();
   // Get formObj from local storage, OR if that key doesn't exist, create an array
   var formObj = JSON.parse(localStorage.getItem("formObj")) || [];
   // Whatever the user types/selects will be newItem
@@ -370,47 +371,68 @@ $(document).on('click', '#submit', function (e) {
   localStorage.setItem("formObj", JSON.stringify(formObj));
 
   // Get the entire recipeObj from local storage OR if it doesn't exist, create a new object
-  var recipeObj = JSON.parse(localStorage.getItem("recipeObj")) || {};
- // If the key newItem exists, 
- console.log(recipeObj[newItem])
-  if(recipeObj[newItem]){
+  var recipeObj = JSON.parse(localStorage.getItem('recipeObj')) || {};
+  console.log(recipeObj)
+  localStorage.removeItem('recipeObj');
+ // If the key newItem exists,
+
+// if the key newItem cannot be found in the object recipeObj
+if(!(newItem in recipeObj)){
+  console.log('category doesn\'t exist');
+  var title = $('#form').siblings('h2').text();
+  var content = $('#form').siblings('.recipe-content').text();
+  recipeObj[newItem] = [{[title]: [content]}];
+
+  localStorage.setItem("recipeObj", JSON.stringify(recipeObj));
+} else if (newItem in recipeObj){
     console.log('category does exist');
-    var key = $('#form').siblings('h2').text();
-    console.log(key)
-    var value = $('#form').siblings('.recipe-content').text();
-    console.log(value)
-    // The new object will hold the key and value made above
-    var newObj = {[key]: [value]};
-    console.log(newObj)
-    console.log(recipeObj[newItem]);
-    recipeObj[newItem].push(newObj);
-    // Save newObj as a nested object in the recipeObj
-    localStorage.setItem(recipeObj, JSON.stringify(objKey));
-  } else {
-    console.log('category doesn\'t exist');
-    var key = $('#form').siblings('h2').text();
-    var value = $('#form').siblings('.recipe-content').text();
-    // var objKey = [
-    //   [newItem]  {
-    //       [key]: value,
-    //   }
-    // ]
-
-    var obj = {[key]: [value]};
-    var objKey = {[newItem]: [obj]}
-
-    localStorage.setItem("recipeObj", JSON.stringify(objKey));
-  }
+    var title = $('#form').siblings('h2').text();
+    var content = $('#form').siblings('.recipe-content').text();
+    recipeObj[newItem].push({[title]: [content]});
+    localStorage.setItem("recipeObj", JSON.stringify([recipeObj]));
+    return
+}
+  $('#form').remove();
 })
 
-// recipeObj{
-//   [
-//     [Dinner Party]: {
-//         [Gin Fizz]: here's how you make it,
-//     }
-//     [Dinner Party B]:
-//     {
-//       [Gin Fizz]: here's how you make it,
-//   }
-//   ]
+testObj = {
+  "Dinner A": {
+    Martini: "Recipe",
+    "Dirty Martini": "Recipe",
+  },
+  "Dinner B": {
+    "Old Fashioned": "Recipe",
+  }
+}
+
+localStorage.setItem('testObj', JSON.stringify([testObj]))
+
+testObj["Dinner C"] = [{"drink": "recipe"}]
+localStorage.setItem('testObj', JSON.stringify([testObj]))
+testObj["Dinner C"].push({"food": "eat"})
+localStorage.setItem('testObj', JSON.stringify([testObj]))
+// // recipeObj{
+// //   [
+// //     {Dinner Party A: [
+// //       {Gin Fizz: here's how you make it,}
+// //       {Martini: here's how you make it,}
+// //     ]}
+// //     Dinner Party B: {Gin Fizz: here's how you make it,}
+// //   ]
+// // }
+
+// recipeObj is an object {}
+// dinnerpartyA is a key
+//   this is in an object 
+//   dirtymartini is a key
+//   recipe is a value
+
+// Dinner Party A
+
+// if(dinnerpartyA key does not exist in the recipeObj){
+//   recipeobj[dinnerpartyA] = [{dirtymartini: recipe}];
+//   localStorage.setItem("recipeobj", recipeObj)
+// } else {
+//   recipeObj[dinnerpartyA].push({dirtymartini: recipe})
+//   localStorage.setItem("recipeobj", recipeObj)
 // }
