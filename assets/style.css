@@ -30,14 +30,23 @@ main, a {
 
 .saveBtn{
     margin: 20px;
-    background-color: aqua;
+    padding: 10px;
+    background-color: rgb(117, 126, 124);
+    color: black;
 }
 
 .input{
-    background-color: bisque;
+    background-color: rgb(170, 184, 181);
     margin: 20px;
 }
 
 #form{
-    background-color: pink;
+    background-color: rgb(117, 126, 124);
+    color: black;
+}
+
+#submit{
+    padding: 10px;
+    background-color: rgb(170, 184, 181);
+    color: black;
 }
