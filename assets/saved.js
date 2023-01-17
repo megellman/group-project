@@ -2,14 +2,16 @@
 var savedContainer = $('#saved-container');
 
 // grabb items from localStorage
-
+loadItems()
 function loadItems() {
-    retrieveItems();
+    var formObj = JSON.parse(localStorage.getItem('formObj')) || []
+    var recipeObj = JSON.parse(localStorage.getItem('recipeObj'))
+    var objSaved = []
+    var recipeSaved = []
     if (localStorage.getItem('formObj') != null) {
-        var formObj = JSON.parse(localStorage.getItem('formObj'))
         for (var i = 0; i < formObj.length; i++) {
-            console.log('formObj', formObj[i])
-
+            formObj.push(objSaved)
+            console.log(formObj[i])
         }
     } else if (formObj.length == 0) {
         console.log('no items')
@@ -17,21 +19,22 @@ function loadItems() {
     }
 }
 
+// localStorage.RemoveItem('formObj')
 
 
-function retrieveItem() {
-    if (food == true) {
-        food = localStorage.getItem("food")
-    } else if (drinkName == true) {
-        drinkName = localStorage.getItem("drinkName")
-    } else if (wine == true) {
-        wine = localStorage.getItem("wine")
-    } else if (randomName == true) {
-        randomName = localStorage.getItem("randomName")
-    } else if (wineP == true) {
-        wineP = localStorage.getItem("wine")
-    }
-}
+// function retrieveItem() {
+//     if (food == true) {
+//         food = localStorage.getItem("food")
+//     } else if (drinkName == true) {
+//         drinkName = localStorage.getItem("drinkName")
+//     } else if (wine == true) {
+//         wine = localStorage.getItem("wine")
+//     } else if (randomName == true) {
+//         randomName = localStorage.getItem("randomName")
+//     } else if (wineP == true) {
+//         wineP = localStorage.getItem("wine")
+//     }
+// }
 
 // create and display items from localStorage
 var devEl = $('<div>')
@@ -48,7 +51,7 @@ devEl.attr('class', 'dev-element')
 cardEl.attr('class', 'card-element w-24 h-48 border')
 unorderList.attr('class', 'unorder-list')
 listedItem.attr('class', '')
-listedItem.attr('src', recipeUrl)
+listedItem.attr('src',)
     // what
     // creating attributes to the created elements
     // how

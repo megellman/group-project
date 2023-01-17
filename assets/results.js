@@ -372,7 +372,7 @@ $(document).on('click', '#submit', function (e) {
   // Get the entire recipeObj from local storage OR if it doesn't exist, create a new object
   var recipeObj = JSON.parse(localStorage.getItem("recipeObj")) || {};
   // If the key newItem exists, 
-  console.log(recipeObj[newItem])
+  console.log(recipeObj, newItem)
   if (recipeObj[newItem]) {
     console.log('category does exist');
     var key = $('#form').siblings('h2').text();
