@@ -21,12 +21,7 @@ var rfContainer = $('#search-form-container')
 //Parameter Variables 
 
 var food = "";
-
 var drinkName = ""
-
-// var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type 
-
-
 var wine = "";
 var random = "false";
 var wineP = "false";
@@ -40,13 +35,10 @@ var userParameters= [];
 
 
 logoHome.on("click", function(){
-  console.log("did i click")
 location.assign("./index.html")
-
-
 })
 
-
+// storing weather the form is on the screen or not is true 
 // click food button on first view of home page
 foodButton.on("click", function(e){
   e.stopPropagation()
@@ -207,8 +199,7 @@ cocktails.on('click', function(e){
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
 
-foodSubmit.on('click', function(e){ 
-  // hungryForm.on('click', '#foodSubmit', function(e){ 
+$(document).on('click','#foodSubmit',function(e){ 
   e.preventDefault()
   food = foodInput.val()
   localStorage.setItem('food', food)
@@ -223,20 +214,19 @@ foodSubmit.on('click', function(e){
   location.assign('./results.html')
   return food, wine;// might be dead
 })
- checkBox.on('click', function(){
+ $(document).on('click','#mycheckbox', function(){
    
   if( checkBox.is(':checked') ){
     wineP ="true"
     localStorage.setItem("wineP", wineP)
   }else{
-    
     localStorage.removeItem("wineP")
   }
   })
 
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
-cocktailSubmit.on('click', function(e){ 
+$(document).on('click', '#cocktails-submit', function(e){ 
   e.preventDefault()
   e.stopPropagation()
   drinkName = cocktailInput.val()
