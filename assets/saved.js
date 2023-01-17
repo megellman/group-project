@@ -1,24 +1,35 @@
 // create elements
-var savedContainer = $('#saved-container');
-// grabb items from localStorage
+var savedContainer = $('.saved-container');
+
+// grab items from localStorage
 loadItems();
 function loadItems() {
     var formObj = JSON.parse(localStorage.getItem('formObj')) ;
     console.log("test");
     var saveItems;
     if (localStorage.getItem('formObj') !== null) {
-        console.log(formObj);
         for (var i = 0; i < formObj.length; i++) {
             saveItems = formObj[i];
-            var event1 = JSON.parse(localStorage.getItem(saveItems));
-            let event2;
-            console.log(event1);
-            for (var j = 0; i < event1.length; j++){
-                event2 = event1[j];
-                console.log(event2)
-            }
+            var title = JSON.parse(localStorage.getItem(saveItems));
+            console.log(title)
+            var entries = Object.entries(title);
+            var data = entries.map(([key, val] = entry) => {
+                var entryContainer = $('<div>');
+                var entryTitle = $('<h2>');
+                var entryContent = $('<p>');
+                
+                entryTitle.text(key);
+                entryContent.text(val);
+
+                entryTitle.attr('class', 'saved-title');
+                entryContent.attr('class', 'saved-content');
+                entryContainer.attr('class', 'saved-container');
+
+                entryContainer.append(entryTitle, entryContent);
+                entryContainer.appendTo(savedContainer);
+            });
+            data;
         }
-        return;
     } else {
         console.log('no items');
     }
