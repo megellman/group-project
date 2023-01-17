@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -23,9 +24,9 @@
           class="place-self-stretch m-5 rounded-full w-24 h-24" />
         <h1 class="flex text-center">Nibble Nabble</h1>
         <nav class="flex items-end flex-row absolute bottom-0 right-0 space-x-5 pr-5 ">
-          <a id="food-wine" href="Form-1" class="box-border p-4 border-4">Food & Wine</a>
-          <a id="cocktail" href="Form-2" class="box-border p-4 border-4">Cocktails</a>
-          <a id="saved" href="./results.html" class="box-border p-4 border-4">Saved</a>
+          <a id="food-wine" href="./index.html" class="box-border p-4 border-4">Food & Wine</a>
+          <a id="cocktail" href="./index.html" class="box-border p-4 border-4">Cocktails</a>
+          <a id="saved" href="./saved.html" class="box-border p-4 border-4">Saved</a>
         </nav>
       </div>
     </div>
@@ -33,12 +34,19 @@
   <main>
     <div class="saved-container"></div>
   </main>
-    
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+  <script src="./assets/saved.js"></script>
+  <script src="./assets/results.js"></script>
+  <script src="./assets/script.js"></script>
+
+  <hr>
 </body>
 
 <footer>
-    <div>
-        <button><a href="./index.html" id="backBtn">backBtn</a></button>
-    </div>
+  <div>
+    <button><a href="./index.html" id="backBtn">backBtn</a></button>
+  </div>
 </footer>
+
 </html>

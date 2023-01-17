@@ -296,7 +296,10 @@ function apiCalls() {
   }
 }
 setURL()
+<<<<<<< HEAD
+=======
 
+>>>>>>> c24e66f6950e1ab3eb1fd152dd8f1e68adeac14b
 function setURL() {
   food = localStorage.getItem("food")
   drinkName = localStorage.getItem("drinkName")
