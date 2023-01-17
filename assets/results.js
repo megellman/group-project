@@ -329,7 +329,7 @@ resultsContainer.on('click', '.saveBtn', function () {
       formEntry.text(formObj[i]);
       select.append(formEntry);
     }
-  } else if (localStorage.getItem(JSON.parse('formObj').length > 1)) {
+  } else if (JSON.parse(localStorage.getItem(('formObj')).length > 1)) {
     console.log('load form options');
     var formObj = JSON.parse(localStorage.getItem('formObj'));
     console.log(formObj);
