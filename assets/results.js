@@ -314,16 +314,21 @@ function setURL() {
 
   apiCalls()
 };
+var visBtn = false
 
 // Click save button to get form to select what category, i.e. "Dinner Party A" to save recipe to
 resultsContainer.on('click', '.saveBtn', function () {
-
-  var currentContainer = $(this).parent();
-  var form = $('<form>');
-  var input = $('<input>');
-  var select = $('<datalist>');
-  var submit = $('<input>');
-  
+  if (visBtn == true) {
+    console.log(true)
+    return;
+  } else  {
+    console.log(false)
+    visBtn = true
+    var currentContainer = $(this).parent();
+    var form = $('<form>');
+    var input = $('<input>');
+    var select = $('<datalist>');
+    var submit = $('<input>');
     input.attr({
       type: 'text',
       list: 'options',
@@ -339,9 +344,7 @@ resultsContainer.on('click', '.saveBtn', function () {
 
     form.append(input, submit, select);
     currentContainer.append(form);
-    if (form = ValidityState) {
-        return;
-      } else {
+
     // Get formObj from local storage, OR if that key doesn't exist, console waiting message
     var formObj = JSON.parse(localStorage.getItem("formObj")) || console.log('formObj doesn\'t exist yet, waiting');
     // If formObj exists, create datalist options for each item
@@ -352,13 +355,13 @@ resultsContainer.on('click', '.saveBtn', function () {
         select.append(formEntry);
       }
     }
-
   }
 })
 
 $(document).on('click', '#submit', function (e) {
   e.preventDefault();
   e.stopPropagation();
+  visBtn = false
   // Get formObj from local storage, OR if that key doesn't exist, create an array
   var formObj = JSON.parse(localStorage.getItem("formObj")) || [];
   // Whatever the user types/selects will be newItem
