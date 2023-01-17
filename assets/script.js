@@ -48,7 +48,7 @@ foodButton.on("click", function(e){
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden')
   form2.attr('class', 'hidden')
-  foodFormGen()
+
 })
 
 //click cocktail btn on first view of home page
@@ -57,6 +57,34 @@ cocktailButton.on('click', function(e){
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden') 
   form1.attr('class', 'hidden')
+  
+   var divEl = $('<div>')
+   var formEl = $('<form>')
+   var h3El = $('<h3>')
+   var labelEl = $('<label>')
+   var inputEL = $('<input>')
+   var buttonEL = $('<button>')
+   var button2EL = $('<button>')
+   var drinkContainer = $('<div>')
+ 
+  divEl.attr( {'id': "form-2", 'class': 'w-max h-max gap-x-8'})
+  formEl.attr({'id': "hungryForm", 'class': 'border border-white flex flex-col p-32 justify-center align-center gap-y-8 text-center'})
+  h3El.text('Thirsty')
+  labelEl.attr({'for': "drink-name", 'class': 'inline'})
+  labelEl.text('Enter Drink ')
+  inputEL.attr({'type':"text", 'id':"cocktail-input", 'class': 'inline ml-5'})
+  
+  buttonEL.attr({'id': "cocktails-submit", 'class': 'inline ml-5'})
+  buttonEL.text('Search')        
+  button2EL.attr({'id':"feeling-advent", 'class':'value=false'})
+  button2EL.text('Feeling Adventurous?') 
+  h3El.attr('class', 'text-5xl');      
+ 
+  rfContainer.append(divEl)
+   divEl.append(formEl)
+   formEl.append(h3El)
+   drinkContainer.append(labelEl, inputEL, buttonEL)
+   formEl.append(drinkContainer, button2EL)
   cocktailFormGen()
 })
 

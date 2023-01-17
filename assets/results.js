@@ -335,10 +335,10 @@ resultsContainer.on('click', '.saveBtn', function () {
     var input = $('<input>');
     var select = $('<datalist>');
     var submit = $('<input>');
+    backButton.text('Go Back')
     backButton.attr({
-      class: 'saveBtn grid justify-items-start flex item-start',
-      text: 'Go Back'
-    })
+      class: 'grid justify-items-start flex item-start box-border p-3',
+    });
     input.attr({
       type: 'text',
       list: 'options',
@@ -351,10 +351,13 @@ resultsContainer.on('click', '.saveBtn', function () {
       value: 'Submit',
       id: 'submit'
     })
-
+    
     form.append(backButton, input, submit, select);
     currentContainer.append(form);
-
+    backButton.on('click', function(){
+          currentContainer.remove('#form')
+          visBtn = false
+        });
     // Get formObj from local storage, OR if that key doesn't exist, console waiting message
     var formObj = JSON.parse(localStorage.getItem("formObj")) || console.log('formObj doesn\'t exist yet, waiting');
     // If formObj exists, create datalist options for each item
