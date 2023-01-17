@@ -35,11 +35,12 @@ function pairedWineRecipes() {
       console.log(dataPF)
 
       var dh = dataPF.hits[0]
-      var resultCardContainer = $('<div>')
+      var resultEntry = $('<div>')
       var saveBtn = $('<button>');
       var recipeImg = $('<img>');
       var nameOfRecipe = $('<h2>');
       var linkToRecipe = $('<a>')
+      var imgPContainer = $('<div>');
 
       recipeImg.attr('src', dataPF.hits[0].recipe.image);
       saveBtn.text('save');
@@ -50,19 +51,20 @@ function pairedWineRecipes() {
       //   'href': dh.recipe.url,
       //   'class': 'recipe-content'
       // }]) // don't know why but these were not working had to separate them 
-      linkToRecipe.attr('href', dh.recipe.url)
-      linkToRecipe.attr('class', 'recipe-content')
-      resultCardContainer.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5')
+      linkToRecipe.attr({
+        'href': dh.recipe.url,
+        'class': 'recipe-content',
+      })
       nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
+      resultEntry.attr('class', 'recipe border-4 border-green-800 border-double my-5');
+      imgPContainer.attr('class', 'content-container')
 
       nameOfRecipe.text(dh.recipe.label)
       linkToRecipe.text('Go to Recipe')
 
       resultsContainer.append(resultCardContainer)
-      resultCardContainer.append(recipeImg)
-      resultCardContainer.append(nameOfRecipe)
-      resultCardContainer.append(linkToRecipe)
-      resultCardContainer.append(saveBtn)
+      imgPContainer.append(recipeImg, linkToRecipe);
+      resultEntry.append(nameOfRecipe, imgPContainer, saveBtn);
     }
 
     )
@@ -82,7 +84,9 @@ function getFoodPairing() {
       var wineImg = $('<img>');
       var wineLink = $('<a>');
       var saveBtn = $('<button>');
+      var imgPContainer = $('<div>');
 
+      imgPContainer.attr('class', 'content-container')
       wineImg.attr('src', data.productMatches[0].imageUrl);
       wineLink.attr({
         'href': data.productMatches[0].link,
@@ -98,11 +102,8 @@ function getFoodPairing() {
       wineLink.text('Grab One Here')
 
       resultsContainer.append(resultEntry);
-      resultEntry.append(wineImg);
-      resultEntry.append(pairingText);
-      resultEntry.append(pairMatch);
-      resultEntry.append(wineLink);
-      resultEntry.append(saveBtn);
+      imgPContainer.append(wineImg, pairingText, pairMatch, wineLink);
+      resultEntry.append(imgPContainer, saveBtn);
 
     })
 }
@@ -118,36 +119,32 @@ function getRecipes() {
       for (var i = 0; i < 5; i++) {
         var dh = data.hits[i]
         var resultEntry = $('<div>');
-        var resultCardContainer = $('<div>')
         var saveBtn = $('<button>');
         var recipeImg = $('<img>');
         var nameOfRecipe = $('<h2>');
         var linkToRecipe = $('<a>')
+        var imgPContainer = $('<div>');
 
+        imgPContainer.attr('class', 'content-container')
         recipeImg.attr({
           'src': data.hits[i].recipe.image,
           'class': 'object-scale-down h-48 w-96'
         });
         saveBtn.text('save');
         saveBtn.attr('class', 'saveBtn');
-        //   resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
+        resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
         linkToRecipe.attr({
           'href': dh.recipe.url,
           'class': 'recipe-content'
         });
-        resultCardContainer.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5')
         nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
 
         nameOfRecipe.text(dh.recipe.label)
         linkToRecipe.text('Go to Recipe')
 
         resultsContainer.append(resultEntry)
-        resultEntry.append(resultCardContainer)
-        resultCardContainer.append(recipeImg)
-        resultCardContainer.append(nameOfRecipe)
-        resultCardContainer.append(linkToRecipe)
-        resultCardContainer.append(saveBtn)
-
+        imgPContainer.append(recipeImg, linkToRecipe);
+        resultEntry.append(nameOfRecipe, imgPContainer, saveBtn)
       }
 
     })
@@ -163,23 +160,27 @@ function getDrinkByName() {
     .then(function (dataDrinkName) {
       console.log(dataDrinkName);
       for (var i = 0; i < 5; i++) {
-        var entryContainer = $('<div>').appendTo(resultsContainer);
-        var drinkName = $('<h2>').appendTo(entryContainer);
-        var ingredients = $('<p>').appendTo(entryContainer)
-        var instructions = $('<p>').appendTo(entryContainer);
-        var measurements = $('<p>').appendTo(entryContainer);
-        var thumbNail = $('<img>').appendTo(entryContainer);
-        var saveBtn = $('<button>').appendTo(entryContainer);
+        var entryContainer = $('<div>');
+        var imgPContainer = $('<div>');
+        var drinkName = $('<h2>');
+        var ingredients = $('<p>');
+        var instructions = $('<p>');
+        var measurements = $('<p>');
+        var thumbNail = $('<img>');
+        var saveBtn = $('<button>');
+        var instructionsCont = $('<div>');
         // URL issue, if time, revisit this
         // var video = $('<iframe>').appendTo(entryContainer);
 
+        instructionsCont.attr('class', 'instr-holder');
+        imgPContainer.attr('class', 'content-container');
         instructions.attr('class', 'recipe-content');
         measurements.attr('class', 'recipe-content');
         ingredients.attr('class', 'recipe-content');
         saveBtn.text('save');
         saveBtn.attr('class', 'saveBtn');
         thumbNail.attr('src', dataDrinkName.drinks[i].strDrinkThumb);
-        entryContainer.attr('class', 'recipe');
+        entryContainer.attr('class', 'recipe border-4 border-green-800 border-double my-5');
         // video.attr({
         //   src: dataDrinkName.drinks[0].strVideo,
         //   class: 'aspect-video'
@@ -197,9 +198,13 @@ function getDrinkByName() {
 
         instructions.text(dataDrinkName.drinks[i].strInstructions);
         drinkName.text(dataDrinkName.drinks[i].strDrink);
-        measurements.text(measurementItems);
-        ingredients.text(ingredientItems);
-
+        measurements.text(`Measurements: ${measurementItems}`);
+        ingredients.text(`Ingredients: ${ingredientItems}`);
+        
+        resultsContainer.append(entryContainer);
+        instructionsCont.append( ingredients, measurements, instructions)
+        imgPContainer.append(thumbNail, instructionsCont)
+        entryContainer.append(drinkName, imgPContainer,  saveBtn)
       }
     })
 }
@@ -221,19 +226,21 @@ function randomDrink() {
       var nameOfDrink = $('<h2>');
       var drinkRecipe = $('<a>');
       var instructions = $('<p>');
-
+      var imgPContainer = $('<div>');
+      
+      imgPContainer.attr('class', 'content-container')
       drinkRecipe.attr('class', 'recipe-content');
       instructions.attr('class', 'recipe-content');
       resultEntry.attr('class', 'recipe border-4 border-green-800 border-double my-5')
       cocktailImg.attr('src', dataR.strDrinkThumb);
       cocktailImg.attr('class', 'object-scale-down h-48 w-96');
       nameOfDrink.attr('class', 'font-bold text-xl mb-2')
-
+      
       drinkRecipe.text("Go to Recipe");
       nameOfDrink.text(dataR.strDrink);
       saveBtn.text('save');
       saveBtn.attr('class', 'saveBtn');
-
+      
       var ingredientList = [];
       for (var i = 0; i < ingredientArray.length; i++) {
         console.log(ingredientArray[i])
@@ -251,18 +258,15 @@ function randomDrink() {
         }
       }
       instructions.text(dataR.strInstructions + '' + 'Ingredients: ' + ingredientList + '.' + ' Amounts: ' + amountList);
-
+      
       resultsContainer.append(resultEntry);
-      resultEntry.append(cocktailImg);
-      resultEntry.append(nameOfDrink);
-      resultEntry.append(instructions);
-      resultEntry.append(saveBtn);
+      imgPContainer.append(instructions);
+      resultEntry.append(nameOfDrink, imgPContainer, cocktailImg, saveBtn);
     })
 }
 
 // this says depending on what parameters the user choose run the corresponding function 
 function apiCalls() {
-
   if (wine !== null) {
     getWinePairing()
     wine = "";
@@ -292,18 +296,13 @@ function apiCalls() {
   }
 }
 setURL()
-console.log(food)
+
 function setURL() {
   food = localStorage.getItem("food")
   drinkName = localStorage.getItem("drinkName")
   wine = localStorage.getItem("wine")
   random = localStorage.getItem("random")
   wineP = localStorage.getItem("wineP")
-  console.log(food + "food" +
-    drinkName + "drinkName" +
-    wine + "wine" +
-    random + "random" +
-    wineP + "wineP")
 
   var recipeApiKey = "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
   pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${recipeApiKey}`;
@@ -316,7 +315,7 @@ function setURL() {
   apiCalls()
 };
 
-// Click save button to get form to select what party (key) to save recipe to
+// Click save button to get form to select what category, i.e. "Dinner Party A" to save recipe to
 resultsContainer.on('click', '.saveBtn', function () {
   var currentContainer = $(this).parent();
   var form = $('<form>');
@@ -353,7 +352,7 @@ resultsContainer.on('click', '.saveBtn', function () {
 
 })
 
-$(document).on('click', '#submit', function(e) {
+$(document).on('click', '#submit', function (e) {
   e.preventDefault();
   e.stopPropagation();
   // Get formObj from local storage, OR if that key doesn't exist, create an array
@@ -368,19 +367,21 @@ $(document).on('click', '#submit', function(e) {
   }
   // Replace the old value of this array in local storage with this updated version 
   localStorage.setItem("formObj", JSON.stringify(formObj));
-
-  // Get the entire recipeObj from local storage OR if it doesn't exist, create a new object
+  // Get the entire the object of the category selected, i.e. "Dinner Party A" from local storage OR if it doesn't exist, create a new object
   var recipeObj = JSON.parse(localStorage.getItem(newItem)) || {};
+  // title is name of recipe and content is everything listed in entry
   var title = $('#form').siblings('h2').text();
   var content = $('#form').siblings('.recipe-content').text();
-
+  // If the entry exists in object, log all done! -- probably switch to updating the page with a message that says that
   if (title in recipeObj) {
     console.log('already saved, done!')
     return
   } else {
+    // If the entry doesn't exist in object, add new nested object with title as key and content as value
     recipeObj[title] = content;
+    // add to local storage
     localStorage.setItem(newItem, JSON.stringify(recipeObj));
-  } 
-  console.log('form reset')
+  }
+  // Removes the save form from page
   $('#form').remove();
 })
