@@ -47,7 +47,7 @@ foodButton.on("click", function(e){
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden')
   form2.attr('class', 'hidden')
-
+  foodFormGen()
 })
 
 //click cocktail btn on first view of home page
