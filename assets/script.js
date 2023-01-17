@@ -8,14 +8,14 @@ var foodSubmit = $('#food-submit')
 var cocktailForm = $('#cocktails-form')
 var cocktailButton = $('#cocktail-bttn')
 var form2 = $('#form-2')
-var cocktailInput =$('#cocktail-input')
+var cocktailInput = $('#cocktail-input')
 var cocktailSubmit = $('#cocktails-submit')
 var feelingAdvent = $('#feeling-advent')
 var hungryForm = $('#hungryForm')
 var wineInput = $('#wine-input')
 var foodWine = $("#food-wine")
-var cocktails =$("#cocktails")
-var logoHome =$("#logo-home")
+var cocktails = $("#cocktails")
+var logoHome = $("#logo-home")
 //Parameter Variables 
 
 var food = "";
@@ -33,80 +33,80 @@ var pairingUrl;
 var foodPairingUrl;
 var edrecipeUrl;
 var cocktailURLDrinkName;
-var userParameters= [];
+var userParameters = [];
 
 
-logoHome.on("click", function(){
+logoHome.on("click", function () {
   console.log("did i click")
-location.assign("./index.html")
+  location.assign("./index.html")
 
 
 })
 
 
-foodButton.on("click", function(e){
+foodButton.on("click", function (e) {
   e.stopPropagation()
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden')
   form1.removeClass('hidden')
-  
+
 })
 
 // event listener for homepage cocktailBtn - hides both buttons and unhides cocktail form
-cocktailButton.on('click', function(e){
+cocktailButton.on('click', function (e) {
   e.stopPropagation()
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden')
   form2.removeClass('hidden')
 })
-foodWine.on("click", function(e){
+foodWine.on("click", function (e) {
   e.stopPropagation()
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden')
   form1.removeClass('hidden')
-  form2.attr('class','hidden')
+  form2.attr('class', 'hidden')
 })
-cocktails.on('click', function(e){
+cocktails.on('click', function (e) {
   e.stopPropagation()
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden')
   form2.removeClass('hidden')
-  form1.attr('class','hidden')
+  form1.attr('class', 'hidden')
 })
 
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
 
-foodSubmit.on('click', function(e){ 
+foodSubmit.on('click', function (e) {
   // hungryForm.on('click', '#foodSubmit', function(e){ 
   e.preventDefault()
   food = foodInput.val()
   localStorage.setItem('food', food)
   foodInput.val("")
-  if(wineInput.val() !== ''){
-  wine = wineInput.val()
-  localStorage.setItem('wine', wine)
-  wineInput.val("")
+  if (wineInput.val() !== '') {
+    wine = wineInput.val()
+    localStorage.setItem('wine', wine)
+    wineInput.val("")
   }
 
- 
+
   newFunction()
   return food, wine;// might be dead
 })
- checkBox.on('click', function(){
-   
-  if( checkBox.is(':checked') ){
-    wineP ="true"
+checkBox.on('click', function () {
+
+  if (checkBox.is(':checked')) {
+    wineP = "true"
     localStorage.setItem("wineP", wineP)
-  }else{
-    
+  } else {
+
     localStorage.removeItem("wineP")
   }
-  })
+})
 
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
-cocktailSubmit.on('click', function(e){ 
+cocktailSubmit.on('click', function (e) {
   e.preventDefault()
   e.stopPropagation()
   drinkName = cocktailInput.val()
@@ -114,23 +114,23 @@ cocktailSubmit.on('click', function(e){
   newFunction()
   return drinkName;
 })
- 
- // toggles wine p value true/false to if button is checked
- 
-  
- 
-  feelingAdvent.on('click', function(e){  
-    e.preventDefault() 
-    var random = "false"  
-    if (random === "false") {
-      random = "true"
-      localStorage.setItem('random', random)
-      newFunction()
-    }
-  })
 
-  
+// toggles wine p value true/false to if button is checked
 
-  function newFunction() {
-    location.assign('./results.html')
+
+
+feelingAdvent.on('click', function (e) {
+  e.preventDefault()
+  var random = "false"
+  if (random === "false") {
+    random = "true"
+    localStorage.setItem('random', random)
+    newFunction()
   }
+})
+
+
+
+function newFunction() {
+  location.assign('./results.html')
+}

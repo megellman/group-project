@@ -200,11 +200,11 @@ function getDrinkByName() {
         drinkName.text(dataDrinkName.drinks[i].strDrink);
         measurements.text(`Measurements: ${measurementItems}`);
         ingredients.text(`Ingredients: ${ingredientItems}`);
-        
+
         resultsContainer.append(entryContainer);
-        instructionsCont.append( ingredients, measurements, instructions)
+        instructionsCont.append(ingredients, measurements, instructions)
         imgPContainer.append(thumbNail, instructionsCont)
-        entryContainer.append(drinkName, imgPContainer,  saveBtn)
+        entryContainer.append(drinkName, imgPContainer, saveBtn)
       }
     })
 }
@@ -227,7 +227,7 @@ function randomDrink() {
       var drinkRecipe = $('<a>');
       var instructions = $('<p>');
       var imgPContainer = $('<div>');
-      
+
       imgPContainer.attr('class', 'content-container')
       drinkRecipe.attr('class', 'recipe-content');
       instructions.attr('class', 'recipe-content');
@@ -235,12 +235,12 @@ function randomDrink() {
       cocktailImg.attr('src', dataR.strDrinkThumb);
       cocktailImg.attr('class', 'object-scale-down h-48 w-96');
       nameOfDrink.attr('class', 'font-bold text-xl mb-2')
-      
+
       drinkRecipe.text("Go to Recipe");
       nameOfDrink.text(dataR.strDrink);
       saveBtn.text('save');
       saveBtn.attr('class', 'saveBtn');
-      
+
       var ingredientList = [];
       for (var i = 0; i < ingredientArray.length; i++) {
         console.log(ingredientArray[i])
@@ -258,7 +258,7 @@ function randomDrink() {
         }
       }
       instructions.text(dataR.strInstructions + '' + 'Ingredients: ' + ingredientList + '.' + ' Amounts: ' + amountList);
-      
+
       resultsContainer.append(resultEntry);
       imgPContainer.append(instructions);
       resultEntry.append(nameOfDrink, imgPContainer, cocktailImg, saveBtn);
@@ -296,10 +296,7 @@ function apiCalls() {
   }
 }
 setURL()
-<<<<<<< HEAD
-=======
 
->>>>>>> c24e66f6950e1ab3eb1fd152dd8f1e68adeac14b
 function setURL() {
   food = localStorage.getItem("food")
   drinkName = localStorage.getItem("drinkName")
@@ -320,39 +317,43 @@ function setURL() {
 
 // Click save button to get form to select what category, i.e. "Dinner Party A" to save recipe to
 resultsContainer.on('click', '.saveBtn', function () {
+
   var currentContainer = $(this).parent();
   var form = $('<form>');
   var input = $('<input>');
   var select = $('<datalist>');
   var submit = $('<input>');
+  
+    input.attr({
+      type: 'text',
+      list: 'options',
+      class: 'input'
+    });
+    select.attr('id', 'options');
+    form.attr('id', 'form');
+    submit.attr({
+      type: 'submit',
+      value: 'Submit',
+      id: 'submit'
+    })
 
-  input.attr({
-    type: 'text',
-    list: 'options',
-    class: 'input'
-  });
-  select.attr('id', 'options');
-  form.attr('id', 'form');
-  submit.attr({
-    type: 'submit',
-    value: 'Submit',
-    id: 'submit'
-  })
-
-  form.append(input, submit, select);
-  currentContainer.append(form);
-
-  // Get formObj from local storage, OR if that key doesn't exist, console waiting message
-  var formObj = JSON.parse(localStorage.getItem("formObj")) || console.log('formObj doesn\'t exist yet, waiting');
-  // If formObj exists, create datalist options for each item
-  if (formObj) {
-    for (var i = 0; i < formObj.length; i++) {
-      var formEntry = $('<option>');
-      formEntry.text(formObj[i]);
-      select.append(formEntry);
+    form.append(input, submit, select);
+    currentContainer.append(form);
+    if (form = ValidityState) {
+        return;
+      } else {
+    // Get formObj from local storage, OR if that key doesn't exist, console waiting message
+    var formObj = JSON.parse(localStorage.getItem("formObj")) || console.log('formObj doesn\'t exist yet, waiting');
+    // If formObj exists, create datalist options for each item
+    if (formObj) {
+      for (var i = 0; i < formObj.length; i++) {
+        var formEntry = $('<option>');
+        formEntry.text(formObj[i]);
+        select.append(formEntry);
+      }
     }
-  }
 
+  }
 })
 
 $(document).on('click', '#submit', function (e) {
@@ -376,6 +377,7 @@ $(document).on('click', '#submit', function (e) {
   var title = $('#form').siblings('h2').text();
   var content = $('#form').siblings('.recipe-content').text();
   // If the entry exists in object, log all done! -- probably switch to updating the page with a message that says that
+
   if (title in recipeObj) {
     console.log('already saved, done!')
     return
@@ -386,5 +388,4 @@ $(document).on('click', '#submit', function (e) {
     localStorage.setItem(newItem, JSON.stringify(recipeObj));
   }
   // Removes the save form from page
-  $('#form').remove();
 })
