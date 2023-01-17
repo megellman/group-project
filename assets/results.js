@@ -264,7 +264,7 @@ function randomDrink() {
         }
       }
       instructions.text(dataR.strInstructions + '' + 'Ingredients: ' + ingredientList + '.' + ' Amounts: ' + amountList);
-      
+
       resultsContainer.append(resultEntry);
       resultEntry.append(cocktailImg, cardContent);
       cardContent.append(nameOfDrink, drinkRecipe, instructions, saveBtn);
@@ -320,47 +320,62 @@ function setURL() {
 
   apiCalls()
 };
+var visBtn = false
 
 // Click save button to get form to select what category, i.e. "Dinner Party A" to save recipe to
 resultsContainer.on('click', '.saveBtn', function () {
-  var currentContainer = $(this).parent();
-  var form = $('<form>');
-  var input = $('<input>');
-  var select = $('<datalist>');
-  var submit = $('<input>');
-
-  input.attr({
-    type: 'text',
-    list: 'options',
-    class: 'input'
-  });
-  select.attr('id', 'options');
-  form.attr('id', 'form');
-  submit.attr({
-    type: 'submit',
-    value: 'Submit',
-    id: 'submit'
-  })
-
-  form.append(input, submit, select);
-  currentContainer.append(form);
-
-  // Get formObj from local storage, OR if that key doesn't exist, console waiting message
-  var formObj = JSON.parse(localStorage.getItem("formObj")) || console.log('formObj doesn\'t exist yet, waiting');
-  // If formObj exists, create datalist options for each item
-  if (formObj) {
-    for (var i = 0; i < formObj.length; i++) {
-      var formEntry = $('<option>');
-      formEntry.text(formObj[i]);
-      select.append(formEntry);
+  if (visBtn == true) {
+    console.log(true);
+    return;
+  } else  {
+    console.log(false);
+    visBtn = true;
+    var currentContainer = $(this).parent();
+    var backButton = $('<button>');
+    var form = $('<form>');
+    var input = $('<input>');
+    var select = $('<datalist>');
+    var submit = $('<input>');
+    backButton.text('Go Back')
+    backButton.attr({
+      class: 'grid justify-items-start flex item-start box-border p-3',
+    });
+    input.attr({
+      type: 'text',
+      list: 'options',
+      class: 'input'
+    });
+    select.attr('id', 'options');
+    form.attr('id', 'form');
+    submit.attr({
+      type: 'submit',
+      value: 'Submit',
+      id: 'submit'
+    })
+    
+    form.append(backButton, input, submit, select);
+    currentContainer.append(form);
+    backButton.on('click', function(){
+          currentContainer.remove('#form')
+          visBtn = false
+        });
+    // Get formObj from local storage, OR if that key doesn't exist, console waiting message
+    var formObj = JSON.parse(localStorage.getItem("formObj")) || console.log('formObj doesn\'t exist yet, waiting');
+    // If formObj exists, create datalist options for each item
+    if (formObj) {
+      for (var i = 0; i < formObj.length; i++) {
+        var formEntry = $('<option>');
+        formEntry.text(formObj[i]);
+        select.append(formEntry);
+      }
     }
   }
-
 })
 
 $(document).on('click', '#submit', function (e) {
   e.preventDefault();
   e.stopPropagation();
+  visBtn = false;
   // Get formObj from local storage, OR if that key doesn't exist, create an array
   var formObj = JSON.parse(localStorage.getItem("formObj")) || [];
   // Whatever the user types/selects will be newItem
@@ -380,9 +395,10 @@ $(document).on('click', '#submit', function (e) {
   var content = $('#form').siblings('.content-container').text();
   console.log(content)
   // If the entry exists in object, log all done! -- probably switch to updating the page with a message that says that
+
   if (title in recipeObj) {
-    console.log('already saved, done!')
-    return
+    console.log('already saved, done!');
+    return;
   } else {
     // If the entry doesn't exist in object, add new nested object with title as key and content as value
     recipeObj[title] = content;
@@ -390,6 +406,5 @@ $(document).on('click', '#submit', function (e) {
     localStorage.setItem(newItem, JSON.stringify(recipeObj));
   }
   // Removes the save form from page
-  $('#form').remove();
 })
 
