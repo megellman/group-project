@@ -4,37 +4,20 @@ var savedContainer = $('#saved-container');
 // grabb items from localStorage
 loadItems()
 function loadItems() {
-    var formObj = JSON.parse(localStorage.getItem('formObj')) || []
+    var formObj = JSON.parse(localStorage.getItem('formObj'))
     var recipeObj = JSON.parse(localStorage.getItem('recipeObj'))
     var objSaved = []
     var recipeSaved = []
-    if (localStorage.getItem('formObj') != null) {
-        for (var i = 0; i < formObj.length; i++) {
-            formObj.push(objSaved)
-            console.log(formObj[i])
-        }
+    if (localStorage.getItem('recipeObj') != null) {
+        recipeSaved.push(recipeObj)
+        console.log(recipeSaved)
+        return
     } else if (formObj.length == 0) {
         console.log('no items')
-
     }
 }
 
 // localStorage.RemoveItem('formObj')
-
-
-// function retrieveItem() {
-//     if (food == true) {
-//         food = localStorage.getItem("food")
-//     } else if (drinkName == true) {
-//         drinkName = localStorage.getItem("drinkName")
-//     } else if (wine == true) {
-//         wine = localStorage.getItem("wine")
-//     } else if (randomName == true) {
-//         randomName = localStorage.getItem("randomName")
-//     } else if (wineP == true) {
-//         wineP = localStorage.getItem("wine")
-//     }
-// }
 
 // create and display items from localStorage
 var devEl = $('<div>')

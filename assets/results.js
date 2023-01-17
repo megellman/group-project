@@ -292,18 +292,12 @@ function apiCalls() {
   }
 }
 setURL()
-console.log(food)
 function setURL() {
   food = localStorage.getItem("food")
   drinkName = localStorage.getItem("drinkName")
   wine = localStorage.getItem("wine")
   random = localStorage.getItem("random")
   wineP = localStorage.getItem("wineP")
-  console.log(food + "food" +
-    drinkName + "drinkName" +
-    wine + "wine" +
-    random + "random" +
-    wineP + "wineP")
 
   var recipeApiKey = "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
   pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${recipeApiKey}`;
