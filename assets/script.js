@@ -47,7 +47,7 @@ foodButton.on("click", function(e){
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden')
   form2.attr('class', 'hidden')
-
+  foodFormGen()
 })
 
 //click cocktail btn on first view of home page
@@ -72,7 +72,6 @@ foodWine.on("click", function(e){
   if (document.getElementById('form-1')){
     return;
   }
- foodFormGen()
 })
 
 
@@ -93,25 +92,21 @@ cocktails.on('click', function(e){
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
 
-$(document).on('click','#foodSubmit',function(e){ 
+$(document).on('click','#food-submit',function(e){ 
   e.preventDefault()
-  food = foodInput.val()
+  food = $('#food-input').val()
   localStorage.setItem('food', food)
-  foodInput.val("")
-  if(wineInput.val() !== ''){
-  wine = wineInput.val()
+  if( $('#wine-input').val() !== ''){
+  wine = $('#wine-input').val()
   localStorage.setItem('wine', wine)
-  wineInput.val("")
   }
-
- 
   location.assign('./results.html')
   return food, wine;// might be dead
 })
+
  $(document).on('click','#mycheckbox', function(){
-   
-  if( checkBox.is(':checked') ){
-    wineP ="true"
+  if( $('#mycheckbox').is(':checked') ){
+    wineP = true;
     localStorage.setItem("wineP", wineP)
   }else{
     localStorage.removeItem("wineP")
@@ -120,10 +115,11 @@ $(document).on('click','#foodSubmit',function(e){
 
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
-$(document).on('click', '#cocktails-submit', function(e){ 
+$('.container').on('click', '#cocktails-submit', function(e){ 
   e.preventDefault()
   e.stopPropagation()
-  drinkName = cocktailInput.val()
+
+  drinkName = $('#cocktail-input').val()
   localStorage.setItem('drinkName', drinkName)
   location.assign('./results.html')
   return drinkName;

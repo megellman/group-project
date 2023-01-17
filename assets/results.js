@@ -163,6 +163,7 @@ function getDrinkByName() {
     })
     .then(function (dataDrinkName) {
       console.log(dataDrinkName);
+      console.log(dataDrinkName)
       for (var i = 0; i < 5; i++) {
         var resultEntry = $('<div>');
           var thumbNail = $('<img>');
