@@ -1,30 +1,50 @@
 // create elements
 var savedContainer = $('#saved-container');
-
-
-
-
-
 // grabb items from localStorage
+loadItems();
+function loadItems() {
+    var formObj = JSON.parse(localStorage.getItem('formObj')) ;
+    console.log("test");
+    var saveItems;
+    if (localStorage.getItem('formObj') !== null) {
+        console.log(formObj);
+        for (var i = 0; i < formObj.length; i++) {
+            saveItems = formObj[i];
+            var event1 = JSON.parse(localStorage.getItem(saveItems));
+            let event2;
+            console.log(event1);
+            for (var j = 0; i < event1.length; j++){
+                event2 = event1[j];
+                console.log(event2)
+            }
+        }
+        return;
+    } else {
+        console.log('no items');
+    }
+}
 
-
-setURL()
-function setURL() {
-  food = localStorage.getItem("food")
-  drinkName = localStorage.getItem("drinkName")
-  wine = localStorage.getItem("wine")
-  random = localStorage.getItem("random")
-  wineP = localStorage.getItem("wineP")
-
-  var recipeApiKey = "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
-  pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${recipeApiKey}`;
-  // this wine pairing is give it a food and get a wine
-  foodPairingUrl = `https://api.spoonacular.com/food/wine/pairing?food=${food}&apiKey=${recipeApiKey}`;
-  edrecipeUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${food}&app_key=d0e7ce8996da109b870161b5504f5e87&app_id=b7a56f5e`;
-
-  cocktailURLDrinkName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?key=1&s=${drinkName}`;
-
-};
+// localStorage.RemoveItem('formObj')
 
 // create and display items from localStorage
- 
+var devEl = $('<div>')
+var cardEl = $('<section>')
+var unorderList = $('<ul>')
+var listedItem = $('<li>')
+// what
+// creating a card for each item that has been saved to localStorage
+// how
+// creating elements to display the card
+// why
+// for the user to save their items
+devEl.attr('class', 'dev-element')
+cardEl.attr('class', 'card-element w-24 h-48 border')
+unorderList.attr('class', 'unorder-list')
+listedItem.attr('class', '')
+listedItem.attr('src',)
+    // what
+    // creating attributes to the created elements
+    // how
+    // adding the jquery object .attr
+    // why
+    // to give characters to the created elements
