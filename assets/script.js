@@ -1,25 +1,26 @@
 // Id Variables
-var foodForm = $('#food-form')
-var form1 = $('#form-1')
-var foodButton = $('#food-bttn')
-var foodInput = $('#food-input')
-var checkBox = $('#mycheckbox')
-var foodSubmit = $('#food-submit')
-var cocktailForm = $('#cocktails-form')
-var cocktailButton = $('#cocktail-bttn')
-var form2 = $('#form-2')
+var foodForm = $('#food-form');
+var form1 = $('#form-1');
+var foodButton = $('#food-bttn');
+var foodInput = $('#food-input');
+var checkBox = $('#mycheckbox');
+var foodSubmit = $('#food-submit');
+var cocktailForm = $('#cocktails-form');
+var cocktailButton = $('#cocktail-bttn');
+var form2 = $('#form-2');
 var cocktailInput =$('#cocktail-input')
-var cocktailSubmit = $('#cocktails-submit')
-var feelingAdvent = $('#feeling-advent')
-var hungryForm = $('#hungryForm')
-var wineInput = $('#wine-input')
-var foodWine = $("#food-wine")
-var cocktails =$("#cocktails")
-var logoHome =$("#logo-home")
+var cocktailSubmit = $('#cocktails-submit');
+var feelingAdvent = $('#feeling-advent');
+var hungryForm = $('#hungryForm');
+var wineInput = $('#wine-input');
+var foodWine = $("#food-wine");
+var cocktails =$("#cocktails");
+var logoHome =$("#logo-home");
+
 //Parameter Variables 
 
 var food = "";
-var drinkName = "martini"
+var drinkName = ""
 localStorage.setItem('drinkName', drinkName);
 // var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type 
 
