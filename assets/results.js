@@ -1,5 +1,5 @@
 // HTML point to variables
-var resultsContainer = $('#results')
+var resultsContainer = $('.container')
 var backBtn = $('#backBtn')
 
 // Give it a wine and get a food
@@ -36,34 +36,33 @@ function pairedWineRecipes() {
 
       var dh = dataPF.hits[0]
       var resultEntry = $('<div>')
-      var saveBtn = $('<button>');
-      var recipeImg = $('<img>');
-      var nameOfRecipe = $('<h2>');
-      var linkToRecipe = $('<a>')
-      var imgPContainer = $('<div>');
+        var recipeImg = $('<img>');
+        var cardContent = $('<div>');
+          var nameOfRecipe = $('<h2>');
+          var linkHolder = $('<div>');
+            var linkToRecipe = $('<a>');
+          var saveBtn = $('<button>');
 
-      recipeImg.attr('src', dataPF.hits[0].recipe.image);
-      saveBtn.text('save');
+      resultEntry.attr('class', 'lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8')
+      recipeImg.attr({'src': dataPF.hits[0].recipe.image, 'class': 'overflow-hidden'});
+      cardContent.attr('class', 'p-4');
       saveBtn.attr('class', 'saveBtn');
-      recipeImg.attr('class', 'object-scale-down h-48 w-96')
-      //   resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
+      recipeImg.attr('class', 'object-scale-down h-48 w-96');
+      linkHolder.attr('class', 'mt-5');
       // linkToRecipe.attr([{
-      //   'href': dh.recipe.url,
-      //   'class': 'recipe-content'
-      // }]) // don't know why but these were not working had to separate them 
-      linkToRecipe.attr({
-        'href': dh.recipe.url,
-        'class': 'recipe-content',
-      })
-      nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
-      resultEntry.attr('class', 'recipe border-4 border-green-800 border-double my-5');
-      imgPContainer.attr('class', 'content-container')
-
+        //   'href': dh.recipe.url,
+        //   'class': 'recipe-content'
+        // }]) // don't know why but these were not working had to separate them 
+        linkToRecipe.attr({'href': dh.recipe.url, 'class': 'hover:bg-gray-700 rounded-full py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100',})
+        nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
+        resultEntry.attr('class', 'px-6 py-4 border-4 border-green-800 border-double my-5');
+        
+      saveBtn.text('save');
       nameOfRecipe.text(dh.recipe.label)
       linkToRecipe.text('Go to Recipe')
 
-      resultsContainer.append(resultCardContainer)
-      imgPContainer.append(recipeImg, linkToRecipe);
+      linkHolder.append(linkToRecipe);
+      resultsContainer.append(resultEntry);
       resultEntry.append(nameOfRecipe, imgPContainer, saveBtn);
     }
 
@@ -79,31 +78,34 @@ function getFoodPairing() {
     .then(function (data) {
       console.log(data)
       var resultEntry = $('<div>');
-      var pairMatch = $('<p>');
-      var pairingText = $('<p>');
-      var wineImg = $('<img>');
-      var wineLink = $('<a>');
-      var saveBtn = $('<button>');
-      var imgPContainer = $('<div>');
+        var wineImg = $('<img>');
+        var cardContent = $('<div>');
+          var pairMatch = $('<h2>');
+          var pairingText = $('<p>');
+          var linkHolder = $('<div>');
+            var wineLink = $('<a>');
+          var saveBtn = $('<button>');
 
-      imgPContainer.attr('class', 'content-container')
-      wineImg.attr('src', data.productMatches[0].imageUrl);
+      cardContent.attr('class', 'p-4')
+      wineImg.attr({'src': data.productMatches[0].imageUrl, 'class': 'object-scale-down h-48 w-96'});
       wineLink.attr({
         'href': data.productMatches[0].link,
-        'class': 'recipe-content'
+        'class': 'hover:bg-gray-700 rounded-full py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100'
       });
-      resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5')
-      pairMatch.attr('class', 'recipe-content');
-      pairingText.attr('class', 'recipe-content');
+      resultEntry.attr('class', 'lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8')
+      pairMatch.attr('class', 'font-medium text-gray-600 text-lg my-2 uppercase');
+      pairingText.attr('class', 'text-justify');
+      linkHolder.attr('class', 'mt-5');
 
       pairMatch.text('Top Choice: ' + data.productMatches[0].title)
       saveBtn.text('Save');
       pairingText.text(data.pairingText)
       wineLink.text('Grab One Here')
 
+      linkHolder.append(wineLink);
       resultsContainer.append(resultEntry);
-      imgPContainer.append(wineImg, pairingText, pairMatch, wineLink);
-      resultEntry.append(imgPContainer, saveBtn);
+      cardContent.append(pairMatch, pairingText, linkHolder);
+      resultEntry.append(wineImg, cardContent);
 
     })
 }
@@ -119,32 +121,34 @@ function getRecipes() {
       for (var i = 0; i < 5; i++) {
         var dh = data.hits[i]
         var resultEntry = $('<div>');
-        var saveBtn = $('<button>');
-        var recipeImg = $('<img>');
-        var nameOfRecipe = $('<h2>');
-        var linkToRecipe = $('<a>')
-        var imgPContainer = $('<div>');
+          var recipeImg = $('<img>');
+          var cardContent = $('<div>');
+          var nameOfRecipe = $('<h2>');
+          var linkHolder = $('<div>');
+            var linkToRecipe = $('<a>');
+          var saveBtn = $('<button>');
 
-        imgPContainer.attr('class', 'content-container')
+        linkHolder.attr('class', 'mt-5');
+        cardContent.attr('class', 'p-4')
         recipeImg.attr({
           'src': data.hits[i].recipe.image,
           'class': 'object-scale-down h-48 w-96'
         });
         saveBtn.text('save');
         saveBtn.attr('class', 'saveBtn');
-        resultEntry.attr('class', 'border-4 border-green-800 border-double my-5')
+        resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5')
         linkToRecipe.attr({
           'href': dh.recipe.url,
-          'class': 'recipe-content'
+          'class': 'hover:bg-gray-700 rounded-full py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100'
         });
-        nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
+        nameOfRecipe.attr('class', 'font-medium text-gray-600 text-lg my-2 uppercase')
 
         nameOfRecipe.text(dh.recipe.label)
         linkToRecipe.text('Go to Recipe')
 
+        linkHolder.append(linkToRecipe);
+        resultEntry.append(recipeImg, cardContent, nameOfRecipe, linkHolder, saveBtn)
         resultsContainer.append(resultEntry)
-        imgPContainer.append(recipeImg, linkToRecipe);
-        resultEntry.append(nameOfRecipe, imgPContainer, saveBtn)
       }
 
     })
@@ -160,27 +164,28 @@ function getDrinkByName() {
     .then(function (dataDrinkName) {
       console.log(dataDrinkName);
       for (var i = 0; i < 5; i++) {
-        var entryContainer = $('<div>');
-        var imgPContainer = $('<div>');
-        var drinkName = $('<h2>');
-        var ingredients = $('<p>');
-        var instructions = $('<p>');
-        var measurements = $('<p>');
-        var thumbNail = $('<img>');
-        var saveBtn = $('<button>');
-        var instructionsCont = $('<div>');
+        var resultEntry = $('<div>');
+          var thumbNail = $('<img>');
+          var cardContent = $('<div>');
+            var drinkName = $('<h2>');
+            var ingredients = $('<p>');
+            var instructions = $('<p>');
+            var measurements = $('<p>');
+            var saveBtn = $('<button>');
         // URL issue, if time, revisit this
         // var video = $('<iframe>').appendTo(entryContainer);
 
-        instructionsCont.attr('class', 'instr-holder');
-        imgPContainer.attr('class', 'content-container');
-        instructions.attr('class', 'recipe-content');
-        measurements.attr('class', 'recipe-content');
-        ingredients.attr('class', 'recipe-content');
+        resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5');
+        thumbNail.attr({
+          'src': dataDrinkName.drinks[i].strDrinkThumb,
+          'class': 'object-scale-down h-48 w-96'});
+        cardContent.attr('class', 'p-4 line-8');
+        drinkName.attr('class', 'font-medium text-gray-600 text-lg my-2 uppercase')
+        instructions.attr('class', 'text-justify text-black mt-5 line-10');
+        measurements.attr('class', 'text-justify text-black mt-5 line-10');
+        ingredients.attr('class', 'text-justify text-black mt-5 line-10');
         saveBtn.text('save');
         saveBtn.attr('class', 'saveBtn');
-        thumbNail.attr('src', dataDrinkName.drinks[i].strDrinkThumb);
-        entryContainer.attr('class', 'recipe border-4 border-green-800 border-double my-5');
         // video.attr({
         //   src: dataDrinkName.drinks[0].strVideo,
         //   class: 'aspect-video'
@@ -200,11 +205,10 @@ function getDrinkByName() {
         drinkName.text(dataDrinkName.drinks[i].strDrink);
         measurements.text(`Measurements: ${measurementItems}`);
         ingredients.text(`Ingredients: ${ingredientItems}`);
-
-        resultsContainer.append(entryContainer);
-        instructionsCont.append(ingredients, measurements, instructions)
-        imgPContainer.append(thumbNail, instructionsCont)
-        entryContainer.append(drinkName, imgPContainer, saveBtn)
+        
+        resultsContainer.append(resultEntry);
+        resultEntry.append(thumbNail, cardContent);
+        cardContent.append(drinkName, ingredients, instructions, measurements, saveBtn)
       }
     })
 }
@@ -221,25 +225,26 @@ function randomDrink() {
       var ingredientArray = [dataR.strIngredient1, dataR.strIngredient2, dataR.strIngredient3, dataR.strIngredient4, dataR.strIngredient5, dataR.strIngredient6, dataR.strIngredient7, dataR.strIngredient8, dataR.strIngredient9, dataR.strIngredient10, dataR.strIngredient11, dataR.strIngredient12, dataR.strIngredient13, dataR.strIngredient14, dataR.strIngredient15]
       var amountArray = [dataR.strMeasure1, dataR.strMeasure2, dataR.strMeasure3, dataR.strMeasure4, dataR.strMeasure5, dataR.strMeasure6, dataR.strMeasure7, dataR.strMeasure8, dataR.strMeasure9, dataR.strMeasure10, dataR.strMeasure11, dataR.strMeasure12, dataR.strMeasure13, dataR.strMeasure14, dataR.strMeasure15]
       var resultEntry = $('<div>');
-      var saveBtn = $('<button>');
-      var cocktailImg = $('<img>');
-      var nameOfDrink = $('<h2>');
-      var drinkRecipe = $('<a>');
-      var instructions = $('<p>');
-      var imgPContainer = $('<div>');
-
-      imgPContainer.attr('class', 'content-container')
+        var cocktailImg = $('<img>');
+        var cardContent = $('<div>');
+          var nameOfDrink = $('<h2>');
+          var drinkRecipe = $('<a>');
+          var instructions = $('<p>');
+          var saveBtn = $('<button>');
+      
       drinkRecipe.attr('class', 'recipe-content');
       instructions.attr('class', 'recipe-content');
-      resultEntry.attr('class', 'recipe border-4 border-green-800 border-double my-5')
-      cocktailImg.attr('src', dataR.strDrinkThumb);
-      cocktailImg.attr('class', 'object-scale-down h-48 w-96');
-      nameOfDrink.attr('class', 'font-bold text-xl mb-2')
-
+      resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5');
+      cocktailImg.attr({
+        'src': dataR.strDrinkThumb,
+        'class': 'object-scale-down h-48 w-96'});
+      nameOfDrink.attr('class', 'font-medium text-gray-600 text-lg my-2 uppercase')
+      cardContent.attr('class', 'p-4');
+      saveBtn.attr('class', 'saveBtn');
+      
       drinkRecipe.text("Go to Recipe");
       nameOfDrink.text(dataR.strDrink);
       saveBtn.text('save');
-      saveBtn.attr('class', 'saveBtn');
 
       var ingredientList = [];
       for (var i = 0; i < ingredientArray.length; i++) {
@@ -260,8 +265,8 @@ function randomDrink() {
       instructions.text(dataR.strInstructions + '' + 'Ingredients: ' + ingredientList + '.' + ' Amounts: ' + amountList);
 
       resultsContainer.append(resultEntry);
-      imgPContainer.append(instructions);
-      resultEntry.append(nameOfDrink, imgPContainer, cocktailImg, saveBtn);
+      resultEntry.append(cocktailImg, cardContent);
+      cardContent.append(nameOfDrink, drinkRecipe, instructions, saveBtn);
     })
 }
 
@@ -378,7 +383,8 @@ $(document).on('click', '#submit', function (e) {
   var recipeObj = JSON.parse(localStorage.getItem(newItem)) || {};
   // title is name of recipe and content is everything listed in entry
   var title = $('#form').siblings('h2').text();
-  var content = $('#form').siblings('.recipe-content').text();
+  var content = $('#form').siblings('.content-container').text();
+  console.log(content)
   // If the entry exists in object, log all done! -- probably switch to updating the page with a message that says that
 
   if (title in recipeObj) {
@@ -392,3 +398,4 @@ $(document).on('click', '#submit', function (e) {
   }
   // Removes the save form from page
 })
+

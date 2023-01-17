@@ -1,7 +1,10 @@
-:root {
-    --dark: ();
-    --light: (#9FC6CD);
+@layer base {
+    :root{
+        --green: (#182b2e);
+        --lgtgrn: (#9FC6CD);
+    }
 }
+
 
 header {
     font-family: 'Cinzel', serif; 
@@ -44,7 +47,7 @@ main, a {
 
 .input{
     background-color: rgb(170, 184, 181);
-    margin: 20px;
+    margin: 10px;
 }
 
 #form{
@@ -58,34 +61,7 @@ main, a {
     color: black;
 }
 
-img{
-    width: 30%;
-    border: #9FC6CD solid 2px;
-    margin-left: 2%;
-    margin-top: 8%;
-}
 
-.recipe > h2{
-    font-size: 2.7em;
-    padding-top: 20px;
-}
-
-
-.content-container {
-    display: flex;
-    align-items: center;
-}
-
-.instr-holder {
-    display: flex;
-    flex-direction: column;
-    row-gap: 30px;
-    line-height: 50px;
-    margin-top: 40px;
-    text-align: right;
-    padding-right: 100px;
-    padding-left: 200px;
-    align-items: flex-end;
-    justify-content: stretch;
-    font-size: 2em;
+.saved-container {
+    padding: 20px;
 }
