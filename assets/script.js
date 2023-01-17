@@ -20,8 +20,7 @@ var logoHome =$("#logo-home");
 //Parameter Variables 
 
 var food = "";
-var drinkName = ""
-localStorage.setItem('drinkName', drinkName);
+var drinkName = "";
 // var spirit does not have input, change checkbox? Maybe dropdown menu w/ spirit type 
 
 
