@@ -68,6 +68,10 @@ foodWine.on("click", function(e){
   form2.attr('class', 'hidden')
   var rc = $('#r-container')
   rc.attr("class", "hidden")
+
+  if (document.getElementById('form-1')){
+    return;
+  }
  foodFormGen()
 })
 
@@ -81,7 +85,9 @@ cocktails.on('click', function(e){
   form1.attr('class', 'hidden')
   var rc = $('#r-container')
   rc.attr("class", "hidden")
-    
+  if (document.getElementById('form-2')){
+    return;
+  } 
   cocktailFormGen()
 })
 
