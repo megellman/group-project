@@ -324,16 +324,21 @@ var visBtn = false
 // Click save button to get form to select what category, i.e. "Dinner Party A" to save recipe to
 resultsContainer.on('click', '.saveBtn', function () {
   if (visBtn == true) {
-    console.log(true)
+    console.log(true);
     return;
   } else  {
-    console.log(false)
-    visBtn = true
+    console.log(false);
+    visBtn = true;
     var currentContainer = $(this).parent();
+    var backButton = $('<button>');
     var form = $('<form>');
     var input = $('<input>');
     var select = $('<datalist>');
     var submit = $('<input>');
+    backButton.attr({
+      class: 'saveBtn grid justify-items-start flex item-start',
+      text: 'Go Back'
+    })
     input.attr({
       type: 'text',
       list: 'options',
@@ -347,7 +352,7 @@ resultsContainer.on('click', '.saveBtn', function () {
       id: 'submit'
     })
 
-    form.append(input, submit, select);
+    form.append(backButton, input, submit, select);
     currentContainer.append(form);
 
     // Get formObj from local storage, OR if that key doesn't exist, console waiting message
@@ -366,7 +371,7 @@ resultsContainer.on('click', '.saveBtn', function () {
 $(document).on('click', '#submit', function (e) {
   e.preventDefault();
   e.stopPropagation();
-  visBtn = false
+  visBtn = false;
   // Get formObj from local storage, OR if that key doesn't exist, create an array
   var formObj = JSON.parse(localStorage.getItem("formObj")) || [];
   // Whatever the user types/selects will be newItem
@@ -388,8 +393,8 @@ $(document).on('click', '#submit', function (e) {
   // If the entry exists in object, log all done! -- probably switch to updating the page with a message that says that
 
   if (title in recipeObj) {
-    console.log('already saved, done!')
-    return
+    console.log('already saved, done!');
+    return;
   } else {
     // If the entry doesn't exist in object, add new nested object with title as key and content as value
     recipeObj[title] = content;
