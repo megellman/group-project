@@ -48,44 +48,6 @@ foodButton.on("click", function(e){
   cocktailForm.attr('class', 'hidden')
   form2.attr('class', 'hidden')
 
-  var divEl = $('<div>')
-  var formEl = $('<form>')
-  var h3El = $('<h3>')
-  var labelEl = $('<label>')
-  var inputEL = $('<input>')
-  var label2El = $('<label>')
-  var input2EL = $('<input>')
-  var input3El = $('<input>')
-  var buttonEL = $('<button>')
-  var foodContainer = $('<div>');
-  winePairLabel = $('<label>');
-  var pairContainer = $('<div>');
-  lineBreak = $('<hr>')
-
- divEl.attr( {'id': "form-1", 'class': 'w-max h-max gap-x-8'})
- formEl.attr({'id': "hungryForm", 'class': 'border border-white flex flex-col p-32 justify-center align-center gap-y-8 text-center'})
- h3El.text('Hungry')
- labelEl.attr({'for': "food-name", 'class': 'inline'})
- labelEl.text(`Food: `)
- inputEL.attr({'type':"text", 'id':"food-input"})
- label2El.attr('for', "wine-name");
- label2El.text(`Wine: `)
- input2EL.attr({'type':"text", 'id':"wine-input"})
- buttonEL.text('Search')
- h3El.attr('class', 'text-5xl');
- input3El.attr({'type':"checkbox",  'id': 'mycheckbox', 'class': 'inline ml-5'})
- buttonEL.attr({'id': 'food-submit'})
- winePairLabel.text('Pair Recipe With Wine?');
- winePairLabel.attr('class', 'inline')
- 
- rfContainer.append(divEl)
-  divEl.append(formEl)
-  formEl.append(h3El, foodContainer, pairContainer, lineBreak)
-  foodContainer.append(labelEl, inputEL)
-  pairContainer.append(winePairLabel, input3El)
-  formEl.append(label2El, buttonEL)
-  label2El.append(input2EL)
-
 })
 
 //click cocktail btn on first view of home page
@@ -122,6 +84,7 @@ cocktailButton.on('click', function(e){
    formEl.append(h3El)
    drinkContainer.append(labelEl, inputEL, buttonEL)
    formEl.append(drinkContainer, button2EL)
+  cocktailFormGen()
 })
 
 // click food wine tab at top
