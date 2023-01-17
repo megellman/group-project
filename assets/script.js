@@ -42,8 +42,6 @@ var userParameters= [];
 logoHome.on("click", function(){
   console.log("did i click")
 location.assign("./index.html")
-
-
 })
 
 
@@ -63,28 +61,35 @@ foodButton.on("click", function(e){
   var input2EL = $('<input>')
   var input3El = $('<input>')
   var buttonEL = $('<button>')
+  var foodContainer = $('<div>');
+  winePairLabel = $('<label>');
+  var pairContainer = $('<div>');
+  lineBreak = $('<hr>')
 
- divEl.attr( 'id', "form-1")
- formEl.attr('id', "hungryForm")
+ divEl.attr( {'id': "form-1", 'class': 'w-max h-max gap-x-8'})
+ formEl.attr({'id': "hungryForm", 'class': 'border border-white flex flex-col p-32 justify-center align-center gap-y-8 text-center'})
  h3El.text('Hungry')
- labelEl.attr('for', "food-name")
- labelEl.text('Food')
+ labelEl.attr({'for': "food-name", 'class': 'inline'})
+ labelEl.text(`Food: `)
  inputEL.attr({'type':"text", 'id':"food-input"})
- label2El.attr('for', "wine-name")
+ label2El.attr('for', "wine-name");
+ label2El.text(`Wine: `)
  input2EL.attr({'type':"text", 'id':"wine-input"})
- input3El.attr({'type':"checkbox",  'id':"mycheckbox"})
- buttonEL.attr('id',"food-submit")
  buttonEL.text('Search')
-
+ h3El.attr('class', 'text-5xl');
+ input3El.attr({'type':"checkbox",  'id': 'mycheckbox', 'class': 'inline ml-5'})
+ buttonEL.attr({'id': 'food-submit'})
+ winePairLabel.text('Pair Recipe With Wine?');
+ winePairLabel.attr('class', 'inline')
+ 
  rfContainer.append(divEl)
   divEl.append(formEl)
-  formEl.append(h3El)
-  formEl.append(labelEl)
-  labelEl.append(inputEL)
-  formEl.append(label2El)
+  formEl.append(h3El, foodContainer, pairContainer, lineBreak)
+  foodContainer.append(labelEl, inputEL)
+  pairContainer.append(winePairLabel, input3El)
+  formEl.append(label2El, buttonEL)
   label2El.append(input2EL)
-  formEl.append(input3El)
-  formEl.append(buttonEL)
+
 })
 
 //click cocktail btn on first view of home page
@@ -101,26 +106,26 @@ cocktailButton.on('click', function(e){
    var inputEL = $('<input>')
    var buttonEL = $('<button>')
    var button2EL = $('<button>')
+   var drinkContainer = $('<div>')
  
-  divEl.attr( 'id',"form-2")
-  formEl.attr('id', "hungryForm")
+  divEl.attr( {'id': "form-2", 'class': 'w-max h-max gap-x-8'})
+  formEl.attr({'id': "hungryForm", 'class': 'border border-white flex flex-col p-32 justify-center align-center gap-y-8 text-center'})
   h3El.text('Thirsty')
-  labelEl.attr('for', "drink-name")
+  labelEl.attr({'for': "drink-name", 'class': 'inline'})
   labelEl.text('Enter Drink ')
-  inputEL.attr({'type':"text", 'id':"cocktail-input"})
+  inputEL.attr({'type':"text", 'id':"cocktail-input", 'class': 'inline ml-5'})
   
-  buttonEL.attr('id',"cocktails-submit")
+  buttonEL.attr({'id': "cocktails-submit", 'class': 'inline ml-5'})
   buttonEL.text('Search')        
   button2EL.attr({'id':"feeling-advent", 'class':'value=false'})
-  button2EL.text('Feeling Adventurous?')       
+  button2EL.text('Feeling Adventurous?') 
+  h3El.attr('class', 'text-5xl');      
  
   rfContainer.append(divEl)
    divEl.append(formEl)
    formEl.append(h3El)
-   formEl.append(labelEl)
-   labelEl.append(inputEL)
-   formEl.append(buttonEL)
-   formEl.append(button2EL)
+   drinkContainer.append(labelEl, inputEL, buttonEL)
+   formEl.append(drinkContainer, button2EL)
 })
 
 // click food wine tab at top
