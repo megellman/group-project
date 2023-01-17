@@ -1,4 +1,5 @@
 // Id Variables
+
 var foodForm = $('#food-form');
 var form1 = $('#form-1');
 var foodButton = $('#food-bttn');
@@ -33,7 +34,7 @@ var pairingUrl;
 var foodPairingUrl;
 var edrecipeUrl;
 var cocktailURLDrinkName;
-var userParameters= [];
+var userParameters = [];
 
 
 logoHome.on("click", function(){
@@ -58,6 +59,7 @@ cocktailButton.on('click', function(e){
   form1.attr('class', 'hidden')
   cocktailFormGen()
 })
+
 
 // click food wine tab at top
 foodWine.on("click", function(e){
@@ -98,11 +100,12 @@ $(document).on('click','#foodSubmit',function(e){
   food = foodInput.val()
   localStorage.setItem('food', food)
   foodInput.val("")
-  if(wineInput.val() !== ''){
-  wine = wineInput.val()
-  localStorage.setItem('wine', wine)
-  wineInput.val("")
+  if (wineInput.val() !== '') {
+    wine = wineInput.val()
+    localStorage.setItem('wine', wine)
+    wineInput.val("")
   }
+
 
  
   location.assign('./results.html')
@@ -116,7 +119,7 @@ $(document).on('click','#foodSubmit',function(e){
   }else{
     localStorage.removeItem("wineP")
   }
-  })
+})
 
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
@@ -128,6 +131,7 @@ $(document).on('click', '#cocktails-submit', function(e){
   location.assign('./results.html')
   return drinkName;
 })
+
  
  // toggles wine p value true/false to if button is checked
  
