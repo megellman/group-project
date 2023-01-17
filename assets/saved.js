@@ -1,19 +1,26 @@
 // create elements
 var savedContainer = $('#saved-container');
-
 // grabb items from localStorage
-loadItems()
+loadItems();
 function loadItems() {
-    var formObj = JSON.parse(localStorage.getItem('formObj'))
-    var recipeObj = JSON.parse(localStorage.getItem('recipeObj'))
-    var objSaved = []
-    var recipeSaved = []
-    if (localStorage.getItem('recipeObj') != null) {
-        recipeSaved.push(recipeObj)
-        console.log(recipeSaved)
-        return
-    } else if (formObj.length == 0) {
-        console.log('no items')
+    var formObj = JSON.parse(localStorage.getItem('formObj')) ;
+    console.log("test");
+    var saveItems;
+    if (localStorage.getItem('formObj') !== null) {
+        console.log(formObj);
+        for (var i = 0; i < formObj.length; i++) {
+            saveItems = formObj[i];
+            var event1 = JSON.parse(localStorage.getItem(saveItems));
+            let event2;
+            console.log(event1);
+            for (var j = 0; i < event1.length; j++){
+                event2 = event1[j];
+                console.log(event2)
+            }
+        }
+        return;
+    } else {
+        console.log('no items');
     }
 }
 
