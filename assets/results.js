@@ -47,15 +47,15 @@ function pairedWineRecipes() {
       recipeImg.attr({'src': dataPF.hits[0].recipe.image, 'class': 'overflow-hidden'});
       cardContent.attr('class', 'p-4');
       saveBtn.attr('class', 'saveBtn');
-      recipeImg.attr('class', 'overflow-hidden');
+      recipeImg.attr('class', 'object-scale-down h-48 w-96');
       linkHolder.attr('class', 'mt-5');
       // linkToRecipe.attr([{
         //   'href': dh.recipe.url,
         //   'class': 'recipe-content'
         // }]) // don't know why but these were not working had to separate them 
         linkToRecipe.attr({'href': dh.recipe.url, 'class': 'hover:bg-gray-700 rounded-full py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100',})
-        nameOfRecipe.attr('class', 'font-medium text-gray-600 text-lg my-2 uppercase')
-        resultEntry.attr('class', 'lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8');
+        nameOfRecipe.attr('class', 'font-bold text-xl mb-2')
+        resultEntry.attr('class', 'px-6 py-4 border-4 border-green-800 border-double my-5');
         
       saveBtn.text('save');
       nameOfRecipe.text(dh.recipe.label)
@@ -87,7 +87,7 @@ function getFoodPairing() {
           var saveBtn = $('<button>');
 
       cardContent.attr('class', 'p-4')
-      wineImg.attr({'src': data.productMatches[0].imageUrl, 'class': 'overflow-hidden'});
+      wineImg.attr({'src': data.productMatches[0].imageUrl, 'class': 'object-scale-down h-48 w-96'});
       wineLink.attr({
         'href': data.productMatches[0].link,
         'class': 'hover:bg-gray-700 rounded-full py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100'
@@ -132,11 +132,11 @@ function getRecipes() {
         cardContent.attr('class', 'p-4')
         recipeImg.attr({
           'src': data.hits[i].recipe.image,
-          'class': 'overflow-hidden'
+          'class': 'object-scale-down h-48 w-96'
         });
         saveBtn.text('save');
         saveBtn.attr('class', 'saveBtn');
-        resultEntry.attr('class', 'lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8')
+        resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5')
         linkToRecipe.attr({
           'href': dh.recipe.url,
           'class': 'hover:bg-gray-700 rounded-full py-2 px-3 font-semibold hover:text-white bg-gray-400 text-gray-100'
@@ -175,10 +175,10 @@ function getDrinkByName() {
         // URL issue, if time, revisit this
         // var video = $('<iframe>').appendTo(entryContainer);
 
-        resultEntry.attr('class', 'lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8');
+        resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5');
         thumbNail.attr({
           'src': dataDrinkName.drinks[i].strDrinkThumb,
-          'class': 'overflow-hidden'});
+          'class': 'object-scale-down h-48 w-96'});
         cardContent.attr('class', 'p-4 line-8');
         drinkName.attr('class', 'font-medium text-gray-600 text-lg my-2 uppercase')
         instructions.attr('class', 'text-justify text-black mt-5 line-10');
@@ -234,10 +234,10 @@ function randomDrink() {
       
       drinkRecipe.attr('class', 'recipe-content');
       instructions.attr('class', 'recipe-content');
-      resultEntry.attr('class', 'lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8');
+      resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5');
       cocktailImg.attr({
         'src': dataR.strDrinkThumb,
-        'class': 'overflow-hidden'});
+        'class': 'object-scale-down h-48 w-96'});
       nameOfDrink.attr('class', 'font-medium text-gray-600 text-lg my-2 uppercase')
       cardContent.attr('class', 'p-4');
       saveBtn.attr('class', 'saveBtn');
@@ -391,3 +391,4 @@ $(document).on('click', '#submit', function (e) {
   // Removes the save form from page
   $('#form').remove();
 })
+
