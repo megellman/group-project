@@ -182,9 +182,9 @@ function getDrinkByName() {
           'class': 'object-scale-down h-48 w-96'});
         cardContent.attr('class', 'p-4 line-8');
         drinkName.attr('class', 'font-medium text-gray-600 text-lg my-2 uppercase')
-        instructions.attr('class', 'text-justify text-black mt-5 line-10');
-        measurements.attr('class', 'text-justify text-black mt-5 line-10');
-        ingredients.attr('class', 'text-justify text-black mt-5 line-10');
+        instructions.attr('class', 'content-container text-justify k mt-5 line-10 leading-6 mt-5');
+        measurements.attr('class', 'content-container text-justify  mt-5 line-10 leading-6 mt-5');
+        ingredients.attr('class', 'content-container text-justify mt-5 line-10 leading-6 mt-5');
         saveBtn.text('save');
         saveBtn.attr('class', 'saveBtn');
         // video.attr({
