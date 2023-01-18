@@ -1,231 +1,110 @@
-# Group Project
-
-## Psuedo Code
-```
-Housekeeping Items
-    - put "Global Variables" -- (at the top of each page)
-    - back button (do as a group at the end)
-    - homepage logo a tag (do as a group at the end)
-    - local storage keys
-    - selector ids/classes
-    - design/color scheme (do as a group at the end)
-    - how js files talk to each other
-Home Page index.html - Michael & Peter 
-Button in main to select food and cocktails
-    - the food and cocktails buttons will disappear
-    - depending on which selected, the food & wine or the cocktails search forms will appear
-Results Page results.html - Megan & Becka
-Once food&wine or cocktails form submitted, js replace location to take user to results html page
-    - nav bar with sections at top and logo (a tag) that takes you to homepage
-    - api call based on form search terms
-    - dynamically generate content on page based on results - div container to house this
-    - save buttons on each results div
-        - when save button clicked, info saved to local storage
-            - key: ex. "christmas dinner" value: object with data from div saved
-            if(local storage variable exists i.e. 'christmas dinner')
-                localStorage.getItem('christmas dinner'), parse,
-                add the new recipe to the christmas dinner object as a nested array, then
-            else
-            localStorage.setItem(christmas dinner, the entire array )
-            var allsavedlists = {
-                christmas: {
-                    pumpkinPie: data returned from the ,
-                },
-                birthdaydinner: {
-                    soup: data returned from the,
-                    cereal: data returned from the,
-                }
-            }
-            - way to limit nested objects? if(objects > num){message "You have too many items saved to this event, please go to your saved page and delete a few"}
-    - when you click on the saved tab,  js replace location to take user to saved html page
-Saved Page saved.html - Reconvene later and divvy out assignments
-    - local storage.getItems to pull down the recipe/event info
-    - div container for each event
-    - divs (cards) for each recipe
-        - x button on card
-            - when clicked, delete element from DOM and remove object from local storage
-```
-## Overview
+# Nibble Nabble
 
-Welcome to Project 1! This is an important step in your full-stack journey as you will now use your newly acquired skills and knowledge to build web application from scratch. With your team, you will conceive and execute a design that solves a real-world problem by integrating data received from multiple server-side API requests. Because you will be working collaboratively, you will learn agile development methodologies and implement feature and bug fixes using the git branch workflow and pull requests.
+## Technology Used 
 
-## Key Topics
+| Technology Used         | Resource URL           | 
+| ------------- |:-------------:| 
+| HTML    | [https://developer.mozilla.org/en-US/docs/Web/HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) |
+| | [https://www.w3schools.com/html/html_basic.asp](https://www.w3schools.com/html/html_basic.asp)     | 
+| CSS     | [https://developer.mozilla.org/en-US/docs/Web/CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)      |
+| | [https://www.w3schools.com/css/css_intro.asp](https://www.w3schools.com/css/css_intro.asp)     |    
+| Git | [https://git-scm.com/](https://git-scm.com/)     | 
+| | [https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) |
+| | [https://www.learnenough.com/git-tutorial/getting_started](https://www.learnenough.com/git-tutorial/getting_started) |
+| JavaScript | [https://developer.mozilla.org/en-US/docs/Web/JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)     | 
+|   | [https://tailwindcss.com/docs](https://tailwindcss.com/docs) |
+| | [https://www.w3schools.com/js/default.asp](https://www.w3schools.com/js/default.asp)     |   
+| | [https://davidwalsh.name/event-delegate](https://davidwalsh.name/event-delegate)     | 
+) |
+| JQuery    | [https://jquery.com/](https://jquery.com/) |
+|     | [https://www.w3schools.com/jquery/](https://www.w3schools.com/jquery/) |
+| Tailwind    | [https://tailwindcss.com/docs](https://tailwindcss.com/docs) |
+| TheCockTailDB   | [https://www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php) |
+| Spoonacular API    | [https://spoonacular.com/food-api/docs](https://spoonacular.com/food-api/docs) |
+| Edamam  | [https://developer.edamam.com/edamam-docs-recipe-api](https://developer.edamam.com/edamam-docs-recipe-api) |
+| Agile Methodology    | [https://en.wikipedia.org/wiki/Agile_software_development](https://en.wikipedia.org/wiki/Agile_software_development) |
+| Tailwind    | [https://tailwindcss.com/docs](https://tailwindcss.com/docs) |
 
-* Server-side APIs
-* Git branching workflow
-* Agile software development
 
-## Comprehension Check
+## Description 
 
-You will be employer-ready if you can answer the following questions:
+[Visit the Deployed Site](https://megellman.github.io/group-project/)
 
-1. What is agile software development?
-2. What is an MVP?
-3. If you pull down a teammate's branch and you have merge conflicts, how do you handle it?
+Nibble Nabble is designed for the on the go host. With our easy to use design you can plan multiple dinner party menu with cocktails and paired wines. You just search what you are looking for and simply save under the dinner party name you are hosting. 
 
-## Learning Objectives
 
-You will be employer-competitive if you are able to:
+![Site Landing Page](./assets/images/homepageimage.png)
 
-* Speak technically about a feature you implemented in your project
-* Explain and execute git branching workflow in a collaborative project
-* Resolve merge conflicts
-* Explain agile software development
-* Design, build, and deploy a client-side web application using GitHub Pages
-* Prepare a professional presentation and repository README for your project
 
-Your project should fulfill the following requirements:
+## Table of Contents 
 
-* Must use a CSS framework other than Bootstrap
+* [Technology](#Technology Used)
+* [Description](#Description)
+* [User Story Example](#code-refactor-example)
+* [Learning Points](#learning-points)
+* [Contributors](#Contributors)
 
-* Must be Deployed (GitHub Pages)
 
-* Must be interactive (i.e: accept and respond to user input)
+## User Story Example Example
 
-* Must have User Input Validation
+AS A Host
+I WANT to be able to easily navigate a recipe site
+SO THAT I can find what I am looking for
 
-* Must use at least two server-side APIs
+![Nav bar ire frame](assets/images/navbar.png)
 
-* Must have some sort of repeating element (table, columns, etc)
+We want our users to be able to navigate multiple ways to get to whatever portion of our site they want to be on with as few clicks possible. In our wire frame we have a conceptual nav bar that will do just that. 
 
-* Does not use alerts, confirms, or prompts (use modals).
+![HTML code snippet](assets/images/navsnippet.png)
+we write out our nave bar in HTML and style it with Tailwind. For consistency copy this code snippet into each page of our site. This allows our our users to acesses miltiple sections of our website with just one click.  The logo even takes you back to the homepage.
 
-* Must utilize at least one new library or technology that we haven’t discussed
+![JS code snippet](assets/images/jscodesnip.png)
+In our JS we have event handlers on all of the tabs. When you click on the two search tabs they hide the content of the current page that you are on and dynamically generate the search form. 
+We had a moment of pivot in our design while in our learning process we discovered that when you change HTML pages the DOM loads fresh and you are not able to tell an event handler to switch the page and then perform other tasks. This is why we chose to dynamically generate our form and instead of bring the user to it we now bring it to the user. 
 
-* Must have a polished frontend / UI
+![Deployed Outcome](#)
 
-* Must meet good quality coding standards (indentation, scoping, naming)
 
-* Use client-side storage to store persistent data.
+## Learning Points 
 
-* Be responsive.
+On this project, we strengthened and learned:
 
-* Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
+* Github
+    * Branching
+    * Merge conflict resolution
+* REST API's
+* JQuery
+* Tailwind
+* JavaScript
+* CSS
+* HTML
 
-* Must utilize Git Branching / Merging. Git Branches based on Feature Built / GitHub Project Card, minimum of 30 meaningful commits per contributor.
 
-* Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
+## Contributors
 
-## Presentation Requirements
+### Megan Ellman
 
-Use this [project presentation template](https://docs.google.com/presentation/d/1Y4ROswmKLgKzBQcAp5ZaYDjx2eALETuXmnwUjcO6byc/edit?usp=sharing) to address the following:
+* [Portfolio](https://megellman.github.io/portfolio/)
+* [LinkedIn](https://www.linkedin.com/in/megan-ellman/)
+* [Github](https://github.com/megellman)
 
-* Elevator pitch: a one minute description of your application
 
-* Motivation for building this w/ Research you did: Into existing apps how is this different how is this the same?
+### Peter Shaughnessy
 
-* Concept: What your user story? What was your motivation for development?
+* [Portfolio](https://prnessy23.github.io/Portfolio/)
+* [LinkedIn](#)
+* [Github](https://github.com/prnessy23)
 
-* Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
 
-* How did you build it out? w/ Infographic of your work-flow
+### Michael Reyna
 
-* Task Assignment => Who did what?
+* [Portfolio](https://michaelreyna25.github.io/portfolio/)
+* [LinkedIn](#)
+* [Github](https://github.com/michaelreyna25)
 
-* Team work-flow => Working Agreements Stand-ups Playbacks
 
-* User Stories => Features => task => Branches => Git Commits
+### Becka McNally
 
-* Planning Wireframe w/ Side by Side of initial Wireframe vs. end product
-
-* Description of what it does w/ Visual Support: Gif / Image of your app doing it.
-
-* User Stories w/ Gif of your application UI completing that user story
-
-* API Research….
-
-* Demo: Show your stuff!
-
-* Directions for Future Development
-
-* Links to the deployed application and the GitHub repository
-
-## Grading Metrics
-
-| Metric                | Weight |
-| ---                   | ---    |
-| Technical Criteria    | 25%    |
-| Concept               | 10%    |
-| Deployment            | 20%    |
-| Repository Quality    | 10%    |
-| Application Quality   | 15%    |
-| Presentation          | 10%    |
-| Collaboration         | 10%    |
-
-## Grading Requirements
-
-This project is graded based on the following criteria:
-
-### Technical Acceptance Criteria: 25%
-
-* Satisfies the following code requirements:
-
-  * Application uses at least two server-side APIs.
-
-  * Application uses client-side storage to store persistent data.
-
-  * Application doesn't use JS alerts, prompts, or confirms (uses modals instead).
-
-  * Application uses a CSS framework other than Bootstrap.
-
-  * Application is interactive (accepts and responds to user input)
-
-### Concept 10%
-
-* Application should be a unique and novel idea.
-
-* Your group should clearly and concisely articulate your project idea.
-
-### Deployment: 20%
-
-* Application deployed at live URL and loads with no errors.
-
-* Application GitHub URL submitted.
-
-### Repository Quality: 10%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a quality README file with description, screenshot, and link to deployed application.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application is responsive.
-
-### Presentation 10%
-
-* Your group should present using Powerpoint or a similar presentation software.
-
-* Every group member should speak during the presentation.
-
-* Your presentation should follow the [Project Presentation Template]().
-
-### Collaboration 10%
-
-* There are no major disparities in the number of GitHub contributions between group members.
-
-## Submission on BCS
-
-Each member is required to submit the following:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository.
-
-## Helpful Links
-
-* 📖 [Agile Methodology](https://en.wikipedia.org/wiki/Agile_software_development)
-
-* 📖 [Git Branching](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows)
-
-* 📖 [Learn Enough Git to Be Dangerous](https://www.learnenough.com/git-tutorial/getting_started)
+* [Portfolio](https://beckamcnally.github.io/beckamcnally/)
+* [LinkedIn](https://www.linkedin.com/in/becka-mcnally-21520670/)
+* [Github](https://github.com/beckamcnally)
