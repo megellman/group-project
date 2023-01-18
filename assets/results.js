@@ -336,7 +336,7 @@ resultsContainer.on('click', '.saveBtn', function () {
     var input = $('<input>');
     var select = $('<datalist>');
     var submit = $('<input>');
-    backButton.text('Go Back')
+    backButton.text('X')
     backButton.attr({
       class: 'grid justify-items-start flex item-start box-border p-3',
     });
@@ -355,8 +355,10 @@ resultsContainer.on('click', '.saveBtn', function () {
     
     form.append(backButton, input, submit, select);
     currentContainer.append(form);
-    backButton.on('click', function(){
-          currentContainer.remove('#form')
+    backButton.on('click', function(event){
+          event.stopPropagation()
+          event.preventDefault()
+          $('#form').remove()
           visBtn = false
         });
     // Get formObj from local storage, OR if that key doesn't exist, console waiting message
