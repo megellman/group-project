@@ -158,13 +158,13 @@ $('.container').on('click', '#cocktails-submit', function(e){
    h3El.text('Hungry')
    labelEl.attr({'for': "food-name", 'class': 'inline'})
    labelEl.text(`Food: `)
-   inputEL.attr({'type':"text", 'id':"food-input"})
+   inputEL.attr({'type':"text", 'id':"food-input", 'class': 'text-black'})
    label2El.attr('for', "wine-name");
    label2El.text(`Wine: `)
-   input2EL.attr({'type':"text", 'id':"wine-input"})
+   input2EL.attr({'type':"text", 'id':"wine-input", 'class': 'text-black'})
    buttonEL.text('Search')
    h3El.attr('class', 'text-5xl');
-   input3El.attr({'type':"checkbox",  'id': 'mycheckbox', 'class': 'inline ml-5'})
+   input3El.attr({'type':"checkbox",  'id': 'mycheckbox', 'class': 'inline ml-5 text-black'})
    buttonEL.attr({'id': 'food-submit'})
    winePairLabel.text('Pair Recipe With Wine?');
    winePairLabel.attr('class', 'inline')
@@ -190,11 +190,11 @@ $('.container').on('click', '#cocktails-submit', function(e){
     var drinkContainer = $('<div>')
   
    divEl.attr( {'id': "form-2", 'class': 'w-max h-max gap-x-8'})
-   formEl.attr({'id': "hungryForm", 'class': 'border border-white flex flex-col p-32 justify-center align-center gap-y-8 text-center'})
+   formEl.attr({'id': "hungryForm", 'class': ' border border-double border-white  flex flex-col p-32 justify-center align-center gap-y-8 text-center'})
    h3El.text('Thirsty')
    labelEl.attr({'for': "drink-name", 'class': 'inline'})
    labelEl.text('Enter Drink ')
-   inputEL.attr({'type':"text", 'id':"cocktail-input", 'class': 'inline ml-5'})
+   inputEL.attr({'type':"text", 'id':"cocktail-input", 'class': 'inline ml-5 text-black'})
    
    buttonEL.attr({'id': "cocktails-submit", 'class': 'inline ml-5'})
    buttonEL.text('Search')        
