@@ -233,9 +233,9 @@ function randomDrink() {
           var instructions = $('<p>');
           var saveBtn = $('<button>');
       
-      drinkRecipe.attr('class', 'recipe-content');
+      // drinkRecipe.attr('class', 'recipe-content');
       instructions.attr('class', 'recipe-content');
-      resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5');
+      resultEntry.attr('class', ' px-6 py-4 border-4 border-green-800 border-double my-5');
       cocktailImg.attr({
         'src': dataR.strDrinkThumb,
         'class': 'object-scale-down h-48 w-96'});
@@ -353,12 +353,11 @@ resultsContainer.on('click', '.saveBtn', function () {
       id: 'submit'
     })
     
+    
     form.append(backButton, input, submit, select);
     currentContainer.append(form);
-
     backButton.on('click', function(){
       $('#form').remove()
-
           visBtn = false
         });
     // Get formObj from local storage, OR if that key doesn't exist, console waiting message
@@ -377,6 +376,7 @@ resultsContainer.on('click', '.saveBtn', function () {
 $(document).on('click', '#submit', function (e) {
   e.preventDefault();
   e.stopPropagation();
+
   visBtn = false;
   // Get formObj from local storage, OR if that key doesn't exist, create an array
   var formObj = JSON.parse(localStorage.getItem("formObj")) || [];
@@ -409,4 +409,5 @@ $(document).on('click', '#submit', function (e) {
   }
   // Removes the save form from page
 })
+
 

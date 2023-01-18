@@ -99,7 +99,7 @@ On this project, we strengthened and learned:
 ### Michael Reyna
 
 * [Portfolio](https://michaelreyna25.github.io/portfolio/)
-* [LinkedIn](#)
+* [LinkedIn](https://www.linkedin.com/in/michael-reyna-35b597245/)
 * [Github](https://github.com/michaelreyna25)
 
 
