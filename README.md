@@ -92,7 +92,7 @@ On this project, we strengthened and learned:
 ### Peter Shaughnessy
 
 * [Portfolio](https://prnessy23.github.io/Portfolio/)
-* [LinkedIn](#)
+* [LinkedIn](https://www.linkedin.com/in/petershaughnessy/)
 * [Github](https://github.com/prnessy23)
 
 
