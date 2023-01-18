@@ -173,9 +173,6 @@ function getDrinkByName() {
             var instructions = $('<p>');
             var measurements = $('<p>');
             var saveBtn = $('<button>');
-        // URL issue, if time, revisit this
-        // var video = $('<iframe>').appendTo(entryContainer);
-
         resultEntry.attr('class', 'recipe px-6 py-4 border-4 border-green-800 border-double my-5');
         thumbNail.attr({
           'src': dataDrinkName.drinks[i].strDrinkThumb,
@@ -187,26 +184,20 @@ function getDrinkByName() {
         ingredients.attr('class', 'content-container text-justify mt-5 line-10 leading-6 mt-5');
         saveBtn.text('save');
         saveBtn.attr('class', 'saveBtn');
-        // video.attr({
-        //   src: dataDrinkName.drinks[0].strVideo,
-        //   class: 'aspect-video'
-        // });
 
         var arr = [dataDrinkName.drinks[i].strIngredient1, dataDrinkName.drinks[i].strIngredient2, dataDrinkName.drinks[i].strIngredient3, dataDrinkName.drinks[i].strIngredient4, dataDrinkName.drinks[i].strIngredient5, dataDrinkName.drinks[i].strIngredient6, dataDrinkName.drinks[i].strIngredient7, dataDrinkName.drinks[i].strIngredient8, dataDrinkName.drinks[i].strIngredient9, dataDrinkName.drinks[i].strIngredient10, dataDrinkName.drinks[i].strIngredient11, dataDrinkName.drinks[i].strIngredient12, dataDrinkName.drinks[i].strIngredient13, dataDrinkName.drinks[i].strIngredient14, dataDrinkName.drinks[i].strIngredient15];
         var measArr = [dataDrinkName.drinks[i].strMeasure1, dataDrinkName.drinks[i].strMeasure2, dataDrinkName.drinks[i].strMeasure3, dataDrinkName.drinks[i].strMeasure, dataDrinkName.drinks[i].strMeasure4, dataDrinkName.drinks[i].strMeasure5, dataDrinkName.drinks[i].strMeasure6, dataDrinkName.drinks[i].strMeasure7, dataDrinkName.drinks[i].strMeasure8, dataDrinkName.drinks[i].strMeasure9, dataDrinkName.drinks[i].strMeasure10, dataDrinkName.drinks[i].strMeasure11, dataDrinkName.drinks[i].strMeasure12, dataDrinkName.drinks[i].strMeasure13, dataDrinkName.drinks[i].strMeasure14, dataDrinkName.drinks[i].strMeasure15]
-
         var ingredientItems = arr.filter(function (el) {
           return el != null;
         });
         var measurementItems = measArr.filter(function (el) {
           return el != null;
         });
-
         instructions.text(dataDrinkName.drinks[i].strInstructions);
         drinkName.text(dataDrinkName.drinks[i].strDrink);
         measurements.text(`Measurements: ${measurementItems}`);
         ingredients.text(`Ingredients: ${ingredientItems}`);
-        
+      
         resultsContainer.append(resultEntry);
         resultEntry.append(thumbNail, cardContent);
         cardContent.append(drinkName, ingredients, instructions, measurements, saveBtn)
@@ -312,7 +303,6 @@ function setURL() {
 
   var recipeApiKey = "0ed1c23457ba46ddaffacdeb0b81d967"; //"20f9574ee747498490dd1bd80b379967"; 
   pairingUrl = `https://api.spoonacular.com/food/wine/dishes?wine=${wine}&apiKey=${recipeApiKey}`;
-  // this wine pairing is give it a food and get a wine
   foodPairingUrl = `https://api.spoonacular.com/food/wine/pairing?food=${food}&apiKey=${recipeApiKey}`;
   edrecipeUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${food}&app_key=d0e7ce8996da109b870161b5504f5e87&app_id=b7a56f5e`;
 
