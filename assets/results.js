@@ -225,14 +225,15 @@ function randomDrink() {
           var saveBtn = $('<button>');
       
       // drinkRecipe.attr('class', 'recipe-content');
-      instructions.attr('class', 'recipe-content');
+      instructions.attr('class', 'content-container');
       resultEntry.attr('class', ' px-6 py-4 border-4 border-green-800 border-double my-5');
       cocktailImg.attr({
         'src': dataR.strDrinkThumb,
         'class': 'object-scale-down h-48 w-96'});
       nameOfDrink.attr('class', 'font-medium text-gray-600 text-lg my-2 uppercase')
-      cardContent.attr('class', 'p-4');
+      cardContent.attr('class', 'content-container p-4');
       saveBtn.attr('class', 'saveBtn');
+      drinkRecipe.attr('class', 'content-container');
       
       drinkRecipe.text("Go to Recipe");
       nameOfDrink.text(dataR.strDrink);
@@ -240,16 +241,12 @@ function randomDrink() {
 
       var ingredientList = [];
       for (var i = 0; i < ingredientArray.length; i++) {
-        console.log(ingredientArray[i])
-        console.log(ingredientArray[i] === null)
         if (ingredientArray[i] !== null) {
           ingredientList.push(ingredientArray[i]);
         }
       }
       var amountList = [];
       for (var i = 0; i < amountArray.length; i++) {
-        console.log(amountArray[i])
-        console.log(amountArray[i] === null)
         if (amountArray[i] !== null) {
           amountList.push(amountArray[i]);
         }
@@ -315,12 +312,11 @@ var visBtn = false
 // Click save button to get form to select what category, i.e. "Dinner Party A" to save recipe to
 resultsContainer.on('click', '.saveBtn', function () {
   if (visBtn == true) {
-    console.log(true);
     return;
   } else  {
-    console.log(false);
     visBtn = true;
     var currentContainer = $(this).parent();
+    console.log($(this).parent())
     var backButton = $('<button>');
     var form = $('<form>');
     var input = $('<input>');
@@ -385,7 +381,6 @@ $(document).on('click', '#submit', function (e) {
   // title is name of recipe and content is everything listed in entry
   var title = $('#form').siblings('h2').text();
   var content = $('#form').siblings('.content-container').text();
-  console.log(content)
   // If the entry exists in object, log all done! -- probably switch to updating the page with a message that says that
 
   if (title in recipeObj) {
@@ -398,6 +393,7 @@ $(document).on('click', '#submit', function (e) {
     localStorage.setItem(newItem, JSON.stringify(recipeObj));
   }
   // Removes the save form from page
+  form.remove();
 })
 
 
