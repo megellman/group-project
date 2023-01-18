@@ -44,5 +44,5 @@ $(function() {
 
 
   function openIndex(){
-    location.assign('./index.html');
+    location.assign('./searchform.html');
   }
