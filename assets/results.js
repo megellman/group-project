@@ -355,8 +355,10 @@ resultsContainer.on('click', '.saveBtn', function () {
     
     form.append(backButton, input, submit, select);
     currentContainer.append(form);
+
     backButton.on('click', function(){
       $('#form').remove()
+
           visBtn = false
         });
     // Get formObj from local storage, OR if that key doesn't exist, console waiting message

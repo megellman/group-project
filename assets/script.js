@@ -37,14 +37,9 @@ var cocktailURLDrinkName;
 var userParameters = [];
 
 
-logoHome.on("click", function(){
-location.assign("./index.html")
-})
-
 // storing weather the form is on the screen or not is true 
 // click food button on first view of home page
-foodButton.on("click", function(e){
-  e.stopPropagation()
+foodButton.on("click", function(){
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden')
   form2.attr('class', 'hidden')
@@ -52,8 +47,7 @@ foodButton.on("click", function(e){
 })
 
 //click cocktail btn on first view of home page
-cocktailButton.on('click', function(e){
-  e.stopPropagation()
+cocktailButton.on('click', function(){
   foodForm.attr('class', 'hidden')
   cocktailForm.attr('class', 'hidden') 
   form1.attr('class', 'hidden')
@@ -74,6 +68,7 @@ foodWine.on("click", function(e){
   if (document.getElementById('form-1')){
     return;
   }
+  foodFormGen()
 })
 
 
@@ -98,8 +93,6 @@ $(document).on('click','#food-submit',function(e){
   e.preventDefault()
   food = $('#food-input').val()
   localStorage.setItem('food', food)
-
-
   if( $('#wine-input').val() !== ''){
   wine = $('#wine-input').val()
   localStorage.setItem('wine', wine)
@@ -122,7 +115,6 @@ $(document).on('click','#food-submit',function(e){
 $('.container').on('click', '#cocktails-submit', function(e){ 
   e.preventDefault()
   e.stopPropagation()
-
   drinkName = $('#cocktail-input').val()
   localStorage.setItem('drinkName', drinkName)
   location.assign('./results.html')
