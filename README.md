@@ -24,6 +24,7 @@
 | Edamam  | [https://developer.edamam.com/edamam-docs-recipe-api](https://developer.edamam.com/edamam-docs-recipe-api) |
 | Agile Methodology    | [https://en.wikipedia.org/wiki/Agile_software_development](https://en.wikipedia.org/wiki/Agile_software_development) |
 | Tailwind    | [https://tailwindcss.com/docs](https://tailwindcss.com/docs) |
+| Form Validation    | [https://www.geeksforgeeks.org/form-validation-using-jquery/](https://www.geeksforgeeks.org/form-validation-using-jquery/) |
 
 
 ## Description 
@@ -62,7 +63,7 @@ we write out our nave bar in HTML and style it with Tailwind. For consistency co
 In our JS we have event handlers on all of the tabs. When you click on the two search tabs they hide the content of the current page that you are on and dynamically generate the search form. 
 We had a moment of pivot in our design while in our learning process we discovered that when you change HTML pages the DOM loads fresh and you are not able to tell an event handler to switch the page and then perform other tasks. This is why we chose to dynamically generate our form and instead of bring the user to it we now bring it to the user. 
 
-![Deployed Outcome](#)
+![Deployed Outcome](./assets/images/readmegif.gif)
 
 
 ## Learning Points 
