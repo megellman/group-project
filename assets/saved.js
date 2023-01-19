@@ -5,7 +5,6 @@ var savedContainer = $('.saved-container');
 loadItems();
 function loadItems() {
     var formObj = JSON.parse(localStorage.getItem('formObj')) ;
-    console.log("test");
     var saveItems;
     if (localStorage.getItem('formObj') !== null) {
         for (var i = 0; i < formObj.length; i++) {
@@ -22,7 +21,7 @@ function loadItems() {
             entryContainer.appendTo(savedContainer);
             
             var title = JSON.parse(localStorage.getItem(saveItems));
-            console.log(title)
+            console.log(`title is ${title}`)
             var entries = Object.entries(title);
             var data = entries.map(([key, val] = entry) => {
                 var contentContainer = $('<div>');

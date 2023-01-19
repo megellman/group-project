@@ -1,56 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nibble Nabble</title>
-  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Bebas+Neue&family=Cinzel:wght@500&family=Italiana&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-  <link rel="stylesheet" href="./assets/style.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="assets/homepage.css"/>
 </head>
-
-<body class="h-screen">
-  <header>
-    <div id="greyish-cyan" class="w-full h-auto relative ">
-      <div class="flex flex-row w-auto">
-        <a id=logo-home href="./index.html">
-          <img src="./assets/images/logo.png" aria-placeholder="Image"
-           class="place-self-stretch m-5 rounded-full w-24 h-24" />
-          <h1 class="flex text-center">Nibble Nabble</h1>
-        </a>
-        <nav class="flex items-end flex-row absolute bottom-0 right-0 space-x-5 pr-5 ">
-          <button id="food-wine" class=" flex flex-wrap box-border p-4 border-4">Food & Wine</button>
-          <button id="cocktails" class="box-border p-4 border-4">Cocktails</button>
-          <a id="saved" class="box-border p-4 border-4" href="./saved.html">Saved</a>
-        </nav>
+<body>
+    <div class="container">
+        <h2>Welcome!</h2>
+        <form action="" name="registration">
+      
+          <label for="firstname">First Name</label>
+          <input type="text" name="firstname" id="firstname" placeholder="John"/>
+      
+          <label for="lastname">Last Name</label>
+          <input type="text" name="lastname" id="lastname" placeholder="Doe"/>
+      
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="john@doe.com"/>
+      
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;"/>
+      
+          <button type="submit">Register</button>
+      
+        </form>
+        <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+        <script src="assets/js/form-validation.js"></script>
       </div>
-    </div>
-  </header>
-<main>
-  <div class="container w-screen h-max flex justify-center items-center gap-x-8">
-    <div id="food-form" class="border border-white  p-32 ">
-      <button id="food-bttn" class="text-5xl">Food & Wine</button>
-    </div>
-    <div id="cocktails-form" class=" border border-white p-32 ">
-      <button id="cocktail-bttn" class="text-5xl">Cocktails</button>
-    </div>
-    <div id="search-form-container"></div>
-  </div>
-</main>
-
-  
-  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-    crossorigin="anonymous"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"> </script> -->
-    <script src="./assets/saved.js"></script>
-    <script src="./assets/results.js"></script>
-    <script src="./assets/script.js"></script>
 </body>
 </html>
