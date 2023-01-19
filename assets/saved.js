@@ -24,15 +24,15 @@ function loadItems() {
             var entries = Object.entries(title);
             var data = entries.map(([key, val] = entry) => {
                 var contentContainer = $('<div>');
-                var entryTitle = $('<h2>');
+                var entryTitle = $('<h3>');
                 var entryContent = $('<p>');
                 
                 entryTitle.text(key);
                 entryContent.text(val);
 
-                entryTitle.attr('class', 'text-xl text-gray-700 font-bold mb-2');
-                entryContent.attr('class', 'text-base text-gray-600 font-normal leading-6');
-                contentContainer.attr('class', 'w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center');
+                entryTitle.attr('class', 'text-5xl saveboxtext');
+                entryContent.attr('class', 'text-base text-black font-normal leading-6');
+                contentContainer.attr('class', 'leading-relaxed recipe px-6 py-4 border-4 border-green-800 border-double my-5 savedBox');
 
                 contentContainer.append(entryTitle, entryContent);
                 contentContainer.appendTo(entryContainer);

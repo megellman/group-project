@@ -10,11 +10,11 @@ header {
     font-family: 'Cinzel', serif; 
     /* font-family: 'Italiana', serif; */
     background-color: #182b2e;
-    color: #9FC6CD;
+    color:  #9FC6CD
 }
 body{
-    background-color: #182b2e;
-    color: white;
+   background-color: #182b2e;
+    color:  white;
     font-family: 'Cinzel', serif; 
 }
 h1 {
@@ -65,4 +65,11 @@ main, a {
 
 .saved-container {
     padding: 20px;
+}
+.savedBox {
+background: #cdbd9f;
+    
+}
+.saveboxtext {
+color: black;
 }
