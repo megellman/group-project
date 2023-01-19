@@ -14,8 +14,7 @@
 | JavaScript | [https://developer.mozilla.org/en-US/docs/Web/JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)     | 
 |   | [https://tailwindcss.com/docs](https://tailwindcss.com/docs) |
 | | [https://www.w3schools.com/js/default.asp](https://www.w3schools.com/js/default.asp)     |   
-| | [https://davidwalsh.name/event-delegate](https://davidwalsh.name/event-delegate)     | 
-) |
+| | [https://davidwalsh.name/event-delegate](https://davidwalsh.name/event-delegate)     |
 | JQuery    | [https://jquery.com/](https://jquery.com/) |
 |     | [https://www.w3schools.com/jquery/](https://www.w3schools.com/jquery/) |
 | Tailwind    | [https://tailwindcss.com/docs](https://tailwindcss.com/docs) |
@@ -39,7 +38,7 @@ Nibble Nabble is designed for the on the go host. With our easy to use design yo
 
 ## Table of Contents 
 
-* [Technology](#Technology Used)
+* [Technology Used](#Technology-Used)
 * [Description](#Description)
 * [User Story Example](#code-refactor-example)
 * [Learning Points](#learning-points)

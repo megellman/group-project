@@ -112,7 +112,7 @@ $(document).on('click','#food-submit',function(e){
 
 
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
-$('.container').on('click', '#cocktails-submit', function(e){ 
+$(document).on('click', '#cocktails-submit', function(e){ 
   e.preventDefault()
   e.stopPropagation()
   drinkName = $('#cocktail-input').val()
