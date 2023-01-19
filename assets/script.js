@@ -90,12 +90,24 @@ cocktails.on('click', function (e) {
 // event listener submit button on food form will add it form as onSubmit after get the variable to work on results.js
 $(document).on('click', '#food-submit', function (e) {
   e.preventDefault()
+  console.log("see me")
+  console.log($('#wine-input').val() !== '')
+  console.log($('#food-input').val() !== '')
+  if ( $('#wine-input').val() !== '' && $('#food-input').val() !== '') {
+    
+    var message = $('<p>');
+    message.attr('class', 'text-s mb-4 font-bold text-white leading-relaxed')
+    message.text('Please only choose one. A recipe or a wine that you would like to know what foods go best with.')
+    $('#hungryForm').append(message) 
+    return;
+  }
   food = $('#food-input').val()
   localStorage.setItem('food', food)
   if ($('#wine-input').val() !== '') {
     wine = $('#wine-input').val()
     localStorage.setItem('wine', wine)
   }
+
   location.assign('./results.html')
   return food, wine;// might be dead
 })
@@ -120,7 +132,6 @@ $(document).on('click', '#cocktails-submit', function (e) {
   return drinkName;
 })
 
-
 $(document).on('click', '#feeling-advent', function (e) {
   e.preventDefault()
   var random = "false"
@@ -130,7 +141,6 @@ $(document).on('click', '#feeling-advent', function (e) {
     location.assign('./results.html')
   }
 })
-
 
 function foodFormGen() {
   if(foodVis === true){
