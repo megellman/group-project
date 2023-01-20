@@ -35,6 +35,7 @@ $(function() {
       // in the "action" attribute of the form when valid
       submitHandler: function(form) {
         form.submit();
+        localStorage.setItem(firstname, JSON.stringify(firstname));
         openIndex();
       }
     });
