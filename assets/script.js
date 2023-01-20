@@ -37,6 +37,10 @@ var edrecipeUrl;
 var cocktailURLDrinkName;
 var userParameters = [];
 
+var welcomeMsg = $('<h2>');
+var message = JSON.parse(localStorage.getItem('firstname'));
+welcomeMsg.text(message);
+// welcomeMsg.attr()
 
 // storing weather the form is on the screen or not is true 
 // click food button on first view of home page
