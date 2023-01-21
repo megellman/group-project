@@ -22,6 +22,12 @@ var btnClicked = true;
 foodVis = false;
 cocktailVis = false;
 
+var welcome = $('<h2>');
+loginObj = JSON.parse(localStorage.getItem("loginObj"))
+welcome.text(`Welcome ${loginObj.firstname} ${loginObj.lastname}!`)
+welcome.attr('class', 'ml-20 mb-10 ')
+
+welcome.appendTo($('#greyish-cyan'))
 
 //Parameter Variables 
 var food = "";
