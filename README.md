@@ -31,7 +31,7 @@
 
 [Visit the Deployed Site](https://megellman.github.io/group-project/)
 
-Nibble Nabble is designed for the on the go host. With our easy to use design you can plan multiple dinner party menu with cocktails and paired wines. You just search what you are looking for and simply save under the dinner party name you are hosting. 
+Nibble Nabble is designed for the busy host. With our easy to use design you can plan multiple dinner parties menus replete with cocktails and paired wines. You simply search for what you are looking for and then save to the dinner party name you have chosen. 
 
 
 ![Site Landing Page](./assets/images/homepageimage.png)

@@ -1,22 +1,11 @@
-@layer base {
-    :root{
-        --green: (#182b2e);
-        --lgtgrn: (#9FC6CD);
-    }
-}
-
-
-header {
+header{
+    /* font-family: 'Antic Didone', serif;  */
     font-family: 'Cinzel', serif; 
     /* font-family: 'Italiana', serif; */
-    background-color: #182b2e;
+    background: #182b2e;
     color: #9FC6CD;
 }
-body{
-    background-color: #182b2e;
-    color: white;
-    font-family: 'Cinzel', serif; 
-}
+
 h1 {
     font-size: xx-large;
     padding: 10px;
@@ -41,28 +30,22 @@ main, a {
 
 .saveBtn{
     margin: 20px;
-    padding: 10px;
-    background-color: rgb(117, 126, 124);
-    color: black;
+    padding: 10px
+    background-color: rgb(117,126,124);
 }
 
 .input{
-    background-color: rgb(170, 184, 181);
-    margin: 10px;
+    background-color: rgb(170,184,181);
+    margin: 20px;
 }
 
 #form{
-    background-color: rgb(117, 126, 124);
-    color: black;
+    background-color: rgb(117, 126,124);
+    color: black; 
 }
 
 #submit{
     padding: 10px;
-    background-color: rgb(170, 184, 181);
+    background-color rgb(170, 184,181);
     color: black;
-}
-
-
-.saved-container {
-    padding: 20px;
 }
